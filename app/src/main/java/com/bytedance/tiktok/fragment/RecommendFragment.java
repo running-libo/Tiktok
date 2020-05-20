@@ -1,13 +1,11 @@
 package com.bytedance.tiktok.fragment;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.adapter.VideoAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
-import com.bytedance.tiktok.databinding.FragmentRecommendBinding;
-
 import java.util.ArrayList;
 
 /**
@@ -33,11 +31,14 @@ public class RecommendFragment extends BaseFragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        PagerSnapHelper snapHelper = new PagerSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView);
+
         loadData();
     }
 
     private void loadData() {
-        for (int i=0;i<10;i++) {
+        for (int i=0;i<3;i++) {
             datas.add("");
         }
         adapter.notifyDataSetChanged();

@@ -4,11 +4,15 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.VideoView;
+
 import androidx.annotation.NonNull;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
 import java.util.List;
+
+import butterknife.BindView;
 
 /**
  * create by apple
@@ -23,7 +27,9 @@ public class VideoAdapter extends BaseRvAdapter<String, VideoAdapter.VideoViewHo
 
     @Override
     protected void onBindData(VideoViewHolder holder, String data, int position) {
-
+        String bgVideoPath = "android.resource://" + context.getPackageName() + "/" + R.raw.video_one;
+        holder.videoView.setVideoPath(bgVideoPath);
+        holder.videoView.start();
     }
 
     @NonNull
@@ -34,9 +40,12 @@ public class VideoAdapter extends BaseRvAdapter<String, VideoAdapter.VideoViewHo
     }
 
     public class VideoViewHolder extends BaseRvViewHolder {
+        VideoView videoView;
 
         public VideoViewHolder(View itemView) {
             super(itemView);
+
+            videoView = itemView.findViewById(R.id.videoview);
         }
     }
 }
