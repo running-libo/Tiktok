@@ -15,7 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@mipmap/cover_one"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:visibility="gone"/>
 
+        <com.bytedance.tiktok.view.LikeView
+            android:id="@+id/likeview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
     </RelativeLayout>
 </layout>

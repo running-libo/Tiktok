@@ -4,15 +4,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.VideoView;
-
 import androidx.annotation.NonNull;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
-import java.util.List;
+import com.bytedance.tiktok.view.LikeView;
 
-import butterknife.BindView;
+import java.util.List;
 
 /**
  * create by apple
@@ -38,10 +36,11 @@ public class VideoAdapter extends BaseRvAdapter<String, VideoAdapter.VideoViewHo
     }
 
     public class VideoViewHolder extends BaseRvViewHolder {
+        public LikeView likeView;
 
         public VideoViewHolder(View itemView) {
             super(itemView);
-
+            likeView = itemView.findViewById(R.id.likeview);
         }
     }
 }
