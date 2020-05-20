@@ -27,9 +27,7 @@ public class VideoAdapter extends BaseRvAdapter<String, VideoAdapter.VideoViewHo
 
     @Override
     protected void onBindData(VideoViewHolder holder, String data, int position) {
-        String bgVideoPath = "android.resource://" + context.getPackageName() + "/" + R.raw.video_one;
-        holder.videoView.setVideoPath(bgVideoPath);
-        holder.videoView.start();
+
     }
 
     @NonNull
@@ -40,12 +38,10 @@ public class VideoAdapter extends BaseRvAdapter<String, VideoAdapter.VideoViewHo
     }
 
     public class VideoViewHolder extends BaseRvViewHolder {
-        VideoView videoView;
 
         public VideoViewHolder(View itemView) {
             super(itemView);
 
-            videoView = itemView.findViewById(R.id.videoview);
         }
     }
 }

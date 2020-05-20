@@ -28,19 +28,21 @@ public class MainFragment extends BaseFragment {
         tabLayout = rootView.findViewById(R.id.tablayout);
 
         currentLocationFragment = new CurrentLocationFragment();
-        focusFragment = new RecommendFragment();
+//        focusFragment = new RecommendFragment();
         recommendFragment = new RecommendFragment();
         fragments.add(currentLocationFragment);
-        fragments.add(focusFragment);
+//        fragments.add(focusFragment);
         fragments.add(recommendFragment);
 
         tabLayout.addTab(tabLayout.newTab().setText("海淀"));
-        tabLayout.addTab(tabLayout.newTab().setText("关注"));
+//        tabLayout.addTab(tabLayout.newTab().setText("关注"));
         tabLayout.addTab(tabLayout.newTab().setText("推荐"));
 
-        pagerAdapter = new CommPagerAdapter(getChildFragmentManager(), fragments, new String[] {"海淀", "关注", "推荐"});
+        pagerAdapter = new CommPagerAdapter(getChildFragmentManager(), fragments, new String[] {"海淀", "推荐"});
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(1).select();
     }
 
 }

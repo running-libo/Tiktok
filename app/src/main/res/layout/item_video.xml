@@ -2,28 +2,20 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable
-            name="item"
-            type="String" />
+
     </data>
 
     <RelativeLayout
+        android:id="@+id/rl_container"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <VideoView
-            android:id="@+id/videoview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"/>
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@mipmap/cover_one"
-            android:scaleType="centerCrop"
-            android:visibility="gone"/>
+            android:scaleType="centerCrop"/>
 
     </RelativeLayout>
 </layout>
