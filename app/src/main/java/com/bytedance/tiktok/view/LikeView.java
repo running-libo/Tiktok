@@ -47,7 +47,7 @@ public class LikeView extends RelativeLayout {
             }
 
             @Override
-            public boolean onSingleTapUp(MotionEvent e) {
+            public boolean onSingleTapConfirmed(MotionEvent e) {
                 if (onPlayPauseListener != null) {
                     onPlayPauseListener.onPlayOrPause();
                 }

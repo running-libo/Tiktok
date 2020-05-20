@@ -2,11 +2,14 @@ package com.bytedance.tiktok.fragment;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
 import androidx.recyclerview.widget.RecyclerView;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.adapter.VideoAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.view.FullScreenVideoView;
+import com.bytedance.tiktok.view.LikeView;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.ViewPagerLayoutManager;
 import java.util.ArrayList;
@@ -92,6 +95,20 @@ public class RecommendFragment extends BaseFragment {
         }
 
         ViewGroup rootView = itemView.findViewById(R.id.rl_container);
+        LikeView likeView = rootView.findViewById(R.id.likeview);
+        ImageView ivPlay = rootView.findViewById(R.id.iv_play);
+        ivPlay.setAlpha(0.4f);
+
+        //播放暂停事件
+        likeView.setOnPlayPauseListener(() -> {
+            if (videoView.isPlaying()) {
+                videoView.pause();
+                ivPlay.setVisibility(View.VISIBLE);
+            } else {
+                videoView.start();
+                ivPlay.setVisibility(View.GONE);
+            }
+        });
         curPlayPos = position;
 
         dettachParentView(rootView);

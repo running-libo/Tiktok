@@ -2,6 +2,8 @@ package com.bytedance.tiktok.fragment;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+
+import com.androidkun.xtablayout.XTabLayout;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
@@ -13,7 +15,7 @@ public class MainFragment extends BaseFragment {
     private RecommendFragment recommendFragment;
     private RecommendFragment focusFragment;
     private ViewPager viewPager;
-    private TabLayout tabLayout;
+    private XTabLayout tabLayout;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
 

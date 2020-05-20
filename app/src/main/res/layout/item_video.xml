@@ -18,9 +18,23 @@
             android:scaleType="centerCrop"
             android:visibility="gone"/>
 
+        <com.bytedance.tiktok.view.ControllerView
+            android:id="@+id/controller"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"/>
+
         <com.bytedance.tiktok.view.LikeView
             android:id="@+id/likeview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@mipmap/ic_play"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
     </RelativeLayout>
 </layout>

@@ -43,9 +43,11 @@ dependencies {
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
     implementation "com.google.android.material:material:1.0.0"
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.0.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata:2.0.0'
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.2.0'
-    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.2.0'
+    implementation 'com.androidkun:XTabLayout:1.1.4'
+
+//    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+//    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.0.0'
+//    implementation 'androidx.lifecycle:lifecycle-livedata:2.0.0'
+//    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.2.0'
+//    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.2.0'
 }

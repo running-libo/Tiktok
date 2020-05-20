@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">抖音短视频</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- 点赞选中 -->
+    <string name="icon_like_fill">&#xe60d;</string>
+    <!--评论-->
+    <string name="icon_comment">&#xe621;</string>
+    <!-- 更多 -->
+    <string name="icon_more">&#xe61b;</string>
+
 </resources>
