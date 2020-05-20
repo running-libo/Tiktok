@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class MainFragment extends BaseFragment {
     private CurrentLocationFragment currentLocationFragment;
     private RecommendFragment recommendFragment;
+    private RecommendFragment focusFragment;
     private ViewPager viewPager;
     private TabLayout tabLayout;
     private ArrayList<Fragment> fragments = new ArrayList<>();
@@ -27,14 +28,17 @@ public class MainFragment extends BaseFragment {
         tabLayout = rootView.findViewById(R.id.tablayout);
 
         currentLocationFragment = new CurrentLocationFragment();
+        focusFragment = new RecommendFragment();
         recommendFragment = new RecommendFragment();
         fragments.add(currentLocationFragment);
+        fragments.add(focusFragment);
         fragments.add(recommendFragment);
 
         tabLayout.addTab(tabLayout.newTab().setText("海淀"));
+        tabLayout.addTab(tabLayout.newTab().setText("关注"));
         tabLayout.addTab(tabLayout.newTab().setText("推荐"));
 
-        pagerAdapter = new CommPagerAdapter(getChildFragmentManager(), fragments, new String[] {"", ""});
+        pagerAdapter = new CommPagerAdapter(getChildFragmentManager(), fragments, new String[] {"海淀", "关注", "推荐"});
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
