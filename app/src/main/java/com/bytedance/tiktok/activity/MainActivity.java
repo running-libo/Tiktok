@@ -7,8 +7,6 @@ import com.bytedance.tiktok.base.BaseActivity;
 import com.bytedance.tiktok.base.CommPagerAdapter;
 import com.bytedance.tiktok.fragment.MainFragment;
 import com.bytedance.tiktok.fragment.PersonalHomeFragment;
-import com.bytedance.tiktok.view.ScrollableViewPager;
-
 import java.util.ArrayList;
 
 /**
@@ -17,7 +15,7 @@ import java.util.ArrayList;
  * description 主页面
  */
 public class MainActivity extends BaseActivity {
-    private ScrollableViewPager viewPager;
+    private ViewPager viewPager;
     private CommPagerAdapter pagerAdapter;
     private ArrayList<Fragment> fragments = new ArrayList<>();
 

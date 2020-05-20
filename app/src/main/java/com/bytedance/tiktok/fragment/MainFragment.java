@@ -1,14 +1,20 @@
 package com.bytedance.tiktok.fragment;
 
-import android.widget.RadioGroup;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseFragment;
+import com.bytedance.tiktok.base.CommPagerAdapter;
+import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 
 public class MainFragment extends BaseFragment {
+    private CurrentLocationFragment currentLocationFragment;
+    private RecommendFragment recommendFragment;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
     private ArrayList<Fragment> fragments = new ArrayList<>();
-    private RadioGroup radioGroup;
+    private CommPagerAdapter pagerAdapter;
 
     @Override
     protected int setLayoutId() {
@@ -17,19 +23,20 @@ public class MainFragment extends BaseFragment {
 
     @Override
     protected void init() {
-        radioGroup = rootView.findViewById(R.id.radiogroup);
+        viewPager = rootView.findViewById(R.id.viewpager);
+        tabLayout = rootView.findViewById(R.id.tablayout);
 
-        setFragmentSwitch();
-    }
+        currentLocationFragment = new CurrentLocationFragment();
+        recommendFragment = new RecommendFragment();
+        fragments.add(currentLocationFragment);
+        fragments.add(recommendFragment);
 
-    private void setFragmentSwitch() {
-        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
-            if (checkedId == R.id.btn_location) {
-                getChildFragmentManager().beginTransaction().add(R.id.framelayout, new CurrentLocationFragment()).commit();
-            } else if (checkedId == R.id.btn_recommend) {
-                getChildFragmentManager().beginTransaction().add(R.id.framelayout, new RecommendFragment()).commit();
-            }
-        });
+        tabLayout.addTab(tabLayout.newTab().setText("海淀"));
+        tabLayout.addTab(tabLayout.newTab().setText("推荐"));
+
+        pagerAdapter = new CommPagerAdapter(getChildFragmentManager(), fragments, new String[] {"", ""});
+        viewPager.setAdapter(pagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
 }
