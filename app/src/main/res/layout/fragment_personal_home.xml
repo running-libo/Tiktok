@@ -4,12 +4,163 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.PersonalHomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.PersonalHomeFragment"
+    android:background="@color/black">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="个人主页"
-        android:layout_centerInParent="true"/>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/iv_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="480dp"
+                        android:scaleType="centerCrop"
+                        android:background="@mipmap/head"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@color/black"
+                        android:layout_alignBottom="@id/iv_bg"
+                        android:padding="12dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <com.bytedance.tiktok.view.CircleImageView
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:src="@mipmap/head"
+                                app:es_shape_type="round"
+                                android:scaleType="centerCrop"/>
+                            
+                            <TextView
+                                android:layout_width="160dp"
+                                android:layout_height="42dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:text="+ 关注"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:gravity="center"
+                                android:background="@drawable/shape_round_red"/>
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="小橘子衣橱"
+                            android:textColor="@color/white"
+                            android:layout_marginTop="12dp"
+                            android:textSize="25sp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/white"
+                            android:text="抖音号: dy908lan10"
+                            android:layout_marginTop="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="保持可爱 赶快长大 \n 这里是你的衣橱间"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:layout_marginTop="20dp"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="14w"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" 获赞"
+                                android:textColor="@color/color_tag"
+                                android:textSize="14sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="310"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:layout_marginLeft="15dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" 关注"
+                                android:textColor="@color/color_tag"
+                                android:textSize="14sp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="291w"
+                                android:textColor="@color/white"
+                                android:textSize="16sp"
+                                android:layout_marginLeft="15dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" 粉丝"
+                                android:textColor="@color/color_tag"
+                                android:textSize="14sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <com.androidkun.xtablayout.XTabLayout
+                android:id="@+id/tablayout"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                app:xTabIndicatorColor="#FF9F00"
+                app:xTabSelectedTextColor="@color/white"
+                app:xTabTextColor="#CCCCCC"
+                app:xTabIndicatorWidth="90dp"
+                app:xTabTextBold="true"
+                app:xTabTextSize="14sp"
+                app:layout_collapseMode="pin"/>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </RelativeLayout>
