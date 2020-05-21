@@ -8,6 +8,7 @@ import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
 import com.bytedance.tiktok.bean.HeadClickEvent;
+import com.bytedance.tiktok.bean.PauseVideoEvent;
 import com.bytedance.tiktok.utils.RxBus;
 
 import java.util.ArrayList;
@@ -59,6 +60,29 @@ public class MainFragment extends BaseFragment {
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(1).select();
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 1) {
+                    //继续播放
+                    RxBus.getDefault().post(new PauseVideoEvent(true));
+                } else {
+                    //切换到其他页面，需要暂停视频
+                    RxBus.getDefault().post(new PauseVideoEvent(false));
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
 }

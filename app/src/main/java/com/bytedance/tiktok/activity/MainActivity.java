@@ -6,6 +6,7 @@ import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseActivity;
 import com.bytedance.tiktok.base.CommPagerAdapter;
 import com.bytedance.tiktok.bean.HeadClickEvent;
+import com.bytedance.tiktok.bean.PauseVideoEvent;
 import com.bytedance.tiktok.fragment.MainFragment;
 import com.bytedance.tiktok.fragment.PersonalHomeFragment;
 import com.bytedance.tiktok.utils.RxBus;
@@ -38,9 +39,31 @@ public class MainActivity extends BaseActivity {
         pagerAdapter = new CommPagerAdapter(getSupportFragmentManager(), fragments, new String[]{"",""});
         viewPager.setAdapter(pagerAdapter);
 
+        //点击头像切换页面
         RxBus.getDefault().toObservable(HeadClickEvent.class)
                 .subscribe((Action1<HeadClickEvent>) event -> {
                     viewPager.setCurrentItem(1);
                 });
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0) {
+                    RxBus.getDefault().post(new PauseVideoEvent(true));
+                } else {
+                    RxBus.getDefault().post(new PauseVideoEvent(false));
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }

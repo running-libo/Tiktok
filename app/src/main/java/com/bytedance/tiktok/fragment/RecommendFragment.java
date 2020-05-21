@@ -13,6 +13,7 @@ import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.adapter.VideoAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.bean.HeadClickEvent;
+import com.bytedance.tiktok.bean.PauseVideoEvent;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
 import com.bytedance.tiktok.utils.RxBus;
 import com.bytedance.tiktok.view.ControllerView;
@@ -21,6 +22,8 @@ import com.bytedance.tiktok.view.LikeView;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.ViewPagerLayoutManager;
 import java.util.ArrayList;
+
+import rx.functions.Action1;
 
 /**
  * create by libo
@@ -56,20 +59,34 @@ public class RecommendFragment extends BaseFragment {
 
         setViewPagerLayoutManager();
 
+        setRefreshEvent();
+
         loadData();
 
-        refreshLayout.setColorSchemeResources(R.color.color_link);
-        refreshLayout.setOnRefreshListener(() -> new CountDownTimer(1000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
+        //监听播放或暂停事件
+        RxBus.getDefault().toObservable(PauseVideoEvent.class)
+            .subscribe((Action1<PauseVideoEvent>) event -> {
+                if (event.isPlayOrPause()) {
+                    videoView.start();
+                } else {
+                    videoView.pause();
+                }
+            });
 
-            }
+    }
 
-            @Override
-            public void onFinish() {
-                refreshLayout.setRefreshing(false);
-            }
-        }.start());
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        videoView.start();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        videoView.pause();
     }
 
     private void setViewPagerLayoutManager() {
@@ -106,6 +123,21 @@ public class RecommendFragment extends BaseFragment {
         videoIds.add(R.raw.video_four);
         videoIds.add(R.raw.video_five);
         videoIds.add(R.raw.video_six);
+    }
+
+    private void setRefreshEvent() {
+        refreshLayout.setColorSchemeResources(R.color.color_link);
+        refreshLayout.setOnRefreshListener(() -> new CountDownTimer(1000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                refreshLayout.setRefreshing(false);
+            }
+        }.start());
     }
 
     private void playCurVideo(int position) {
