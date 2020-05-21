@@ -7,13 +7,9 @@ import com.androidkun.xtablayout.XTabLayout;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
-import com.bytedance.tiktok.bean.HeadClickEvent;
 import com.bytedance.tiktok.bean.PauseVideoEvent;
 import com.bytedance.tiktok.utils.RxBus;
-
 import java.util.ArrayList;
-
-import rx.functions.Action1;
 
 /**
  * create by libo
@@ -23,7 +19,6 @@ import rx.functions.Action1;
 public class MainFragment extends BaseFragment {
     private CurrentLocationFragment currentLocationFragment;
     private RecommendFragment recommendFragment;
-    private RecommendFragment focusFragment;
     private ViewPager viewPager;
     private XTabLayout tabLayout;
     private ArrayList<Fragment> fragments = new ArrayList<>();
@@ -45,14 +40,11 @@ public class MainFragment extends BaseFragment {
 
     private void setFragments() {
         currentLocationFragment = new CurrentLocationFragment();
-//        focusFragment = new RecommendFragment();
         recommendFragment = new RecommendFragment();
         fragments.add(currentLocationFragment);
-//        fragments.add(focusFragment);
         fragments.add(recommendFragment);
 
         tabLayout.addTab(tabLayout.newTab().setText("海淀"));
-//        tabLayout.addTab(tabLayout.newTab().setText("关注"));
         tabLayout.addTab(tabLayout.newTab().setText("推荐"));
 
         pagerAdapter = new CommPagerAdapter(getChildFragmentManager(), fragments, new String[] {"海淀", "推荐"});
