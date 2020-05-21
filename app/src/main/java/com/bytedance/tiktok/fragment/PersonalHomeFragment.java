@@ -2,14 +2,17 @@ package com.bytedance.tiktok.fragment;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-
 import com.androidkun.xtablayout.XTabLayout;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
-
 import java.util.ArrayList;
 
+/**
+ * create by libo
+ * create on 2020-05-19
+ * description 个人主页fragment
+ */
 public class PersonalHomeFragment extends BaseFragment {
     private XTabLayout tabLayout;
     private ViewPager viewPager;
@@ -28,7 +31,7 @@ public class PersonalHomeFragment extends BaseFragment {
         tabLayout = rootView.findViewById(R.id.tablayout);
 
         for (int i=0;i<titles.length;i++) {
-            fragments.add(new CurrentLocationFragment());
+            fragments.add(new WorkFragment());
             tabLayout.addTab(tabLayout.newTab().setText(titles[i]));
         }
 

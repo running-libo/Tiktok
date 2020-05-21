@@ -7,9 +7,13 @@ import com.androidkun.xtablayout.XTabLayout;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
-import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 
+/**
+ * create by libo
+ * create on 2020-05-19
+ * description 主页fragment
+ */
 public class MainFragment extends BaseFragment {
     private CurrentLocationFragment currentLocationFragment;
     private RecommendFragment recommendFragment;

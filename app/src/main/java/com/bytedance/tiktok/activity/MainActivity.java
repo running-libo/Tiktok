@@ -26,7 +26,6 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void init() {
-//        setFullScreen();
 
         viewPager = findViewById(R.id.viewpager);
         fragments.add(new MainFragment());
