@@ -49,6 +49,7 @@
         android:layout_marginRight="12dp">
 
         <com.bytedance.tiktok.view.CircleImageView
+            android:id="@+id/iv_head"
             android:layout_width="52dp"
             android:layout_height="52dp"
             android:layout_centerInParent="true"
@@ -57,6 +58,7 @@
             android:scaleType="centerCrop"/>
 
         <com.bytedance.tiktok.view.IconFontTextView
+            android:id="@+id/iv_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="36sp"
@@ -73,6 +75,7 @@
             android:textColor="@color/white"/>
 
         <com.bytedance.tiktok.view.IconFontTextView
+            android:id="@+id/iv_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="36sp"
@@ -89,6 +92,7 @@
             android:textColor="@color/white"/>
 
         <com.bytedance.tiktok.view.IconFontTextView
+            android:id="@+id/iv_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="36sp"
