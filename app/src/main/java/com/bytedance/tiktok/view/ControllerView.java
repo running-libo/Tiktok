@@ -6,8 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import com.bytedance.tiktok.R;
+import com.bytedance.tiktok.utils.AutoLinkHerfManager;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
+import com.bytedance.tiktok.utils.autolinktextview.AutoLinkTextView;
 
 /**
  * create by libo
@@ -19,6 +23,7 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
     private IconFontTextView ivLike;
     private IconFontTextView ivComment;
     private IconFontTextView ivShare;
+    private AutoLinkTextView autoLinkTextView;
     private OnVideoControllerListener listener;
 
     public ControllerView(Context context, AttributeSet attrs) {
@@ -34,11 +39,14 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
         ivLike = rootView.findViewById(R.id.iv_like);
         ivComment = rootView.findViewById(R.id.iv_comment);
         ivShare = rootView.findViewById(R.id.iv_share);
+        autoLinkTextView = rootView.findViewById(R.id.tv_content);
 
         ivHead.setOnClickListener(this);
         ivLike.setOnClickListener(this);
         ivComment.setOnClickListener(this);
         ivShare.setOnClickListener(this);
+
+        AutoLinkHerfManager.setContent("只有 #允儿 的脸我才敢拉这么近 @肖战 @王一博 来呀来呀", autoLinkTextView);
     }
 
     public void setListener(OnVideoControllerListener listener) {
