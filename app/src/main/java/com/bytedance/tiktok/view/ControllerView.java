@@ -4,14 +4,18 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-
 import com.bytedance.tiktok.R;
+import com.bytedance.tiktok.utils.AnimUtils;
 import com.bytedance.tiktok.utils.AutoLinkHerfManager;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
 import com.bytedance.tiktok.utils.autolinktextview.AutoLinkTextView;
+
+import static android.view.animation.Animation.INFINITE;
 
 /**
  * create by libo
@@ -24,6 +28,7 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
     private IconFontTextView ivComment;
     private IconFontTextView ivShare;
     private AutoLinkTextView autoLinkTextView;
+    private ImageView ivRecord;
     private OnVideoControllerListener listener;
 
     public ControllerView(Context context, AttributeSet attrs) {
@@ -39,6 +44,7 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
         ivLike = rootView.findViewById(R.id.iv_like);
         ivComment = rootView.findViewById(R.id.iv_comment);
         ivShare = rootView.findViewById(R.id.iv_share);
+        ivRecord = rootView.findViewById(R.id.iv_record);
         autoLinkTextView = rootView.findViewById(R.id.tv_content);
 
         ivHead.setOnClickListener(this);
@@ -47,6 +53,8 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
         ivShare.setOnClickListener(this);
 
         AutoLinkHerfManager.setContent("只有 #允儿 的脸我才敢拉这么近 @肖战 @王一博 来呀来呀", autoLinkTextView);
+
+        setRotateAnim();
     }
 
     public void setListener(OnVideoControllerListener listener) {
@@ -73,5 +81,17 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
                 listener.onShareClick();
                 break;
         }
+    }
+
+    /**
+     * 循环旋转动画
+     */
+    private void setRotateAnim() {
+        RotateAnimation rotateAnimation = new RotateAnimation(0, 359,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+        rotateAnimation.setRepeatCount(INFINITE);
+        rotateAnimation.setDuration(5000);
+        rotateAnimation.setInterpolator(new LinearInterpolator());
+        ivRecord.startAnimation(rotateAnimation);
     }
 }

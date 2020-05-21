@@ -47,6 +47,8 @@ dependencies {
 
     implementation 'com.androidkun:XTabLayout:1.1.4'
 
+    implementation 'io.reactivex:rxjava:1.1.0'
+
 //    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
 //    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.0.0'
 //    implementation 'androidx.lifecycle:lifecycle-livedata:2.0.0'

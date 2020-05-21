@@ -7,7 +7,12 @@ import com.androidkun.xtablayout.XTabLayout;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
+import com.bytedance.tiktok.bean.HeadClickEvent;
+import com.bytedance.tiktok.utils.RxBus;
+
 import java.util.ArrayList;
+
+import rx.functions.Action1;
 
 /**
  * create by libo
@@ -33,6 +38,11 @@ public class MainFragment extends BaseFragment {
         viewPager = rootView.findViewById(R.id.viewpager);
         tabLayout = rootView.findViewById(R.id.tablayout);
 
+        setFragments();
+
+    }
+
+    private void setFragments() {
         currentLocationFragment = new CurrentLocationFragment();
 //        focusFragment = new RecommendFragment();
         recommendFragment = new RecommendFragment();

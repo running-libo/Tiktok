@@ -1,7 +1,11 @@
 package com.bytedance.tiktok.fragment;
 
+import android.os.CountDownTimer;
+
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.adapter.GridVideoAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
@@ -16,6 +20,7 @@ public class CurrentLocationFragment extends BaseFragment {
     private RecyclerView recyclerView;
     private GridVideoAdapter adapter;
     private ArrayList<Integer> datas = new ArrayList<>();
+    private SwipeRefreshLayout refreshLayout;
 
     @Override
     protected int setLayoutId() {
@@ -25,12 +30,27 @@ public class CurrentLocationFragment extends BaseFragment {
     @Override
     protected void init() {
         recyclerView = rootView.findViewById(R.id.recyclerview);
+        refreshLayout = rootView.findViewById(R.id.refreshlayout);
+
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         adapter = new GridVideoAdapter(getActivity(), datas);
         recyclerView.setAdapter(adapter);
 
         loadData();
+
+        refreshLayout.setColorSchemeResources(R.color.color_link);
+        refreshLayout.setOnRefreshListener(() -> new CountDownTimer(1000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                refreshLayout.setRefreshing(false);
+            }
+        }.start());
     }
 
     private void loadData() {

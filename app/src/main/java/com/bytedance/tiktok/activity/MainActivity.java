@@ -5,9 +5,14 @@ import androidx.viewpager.widget.ViewPager;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseActivity;
 import com.bytedance.tiktok.base.CommPagerAdapter;
+import com.bytedance.tiktok.bean.HeadClickEvent;
 import com.bytedance.tiktok.fragment.MainFragment;
 import com.bytedance.tiktok.fragment.PersonalHomeFragment;
+import com.bytedance.tiktok.utils.RxBus;
+
 import java.util.ArrayList;
+
+import rx.functions.Action1;
 
 /**
  * create by libo
@@ -32,5 +37,10 @@ public class MainActivity extends BaseActivity {
         fragments.add(new PersonalHomeFragment());
         pagerAdapter = new CommPagerAdapter(getSupportFragmentManager(), fragments, new String[]{"",""});
         viewPager.setAdapter(pagerAdapter);
+
+        RxBus.getDefault().toObservable(HeadClickEvent.class)
+                .subscribe((Action1<HeadClickEvent>) event -> {
+                    viewPager.setCurrentItem(1);
+                });
     }
 }

@@ -1,13 +1,21 @@
 package com.bytedance.tiktok.fragment;
 
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.adapter.VideoAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
+import com.bytedance.tiktok.bean.HeadClickEvent;
+import com.bytedance.tiktok.utils.OnVideoControllerListener;
+import com.bytedance.tiktok.utils.RxBus;
+import com.bytedance.tiktok.view.ControllerView;
 import com.bytedance.tiktok.view.FullScreenVideoView;
 import com.bytedance.tiktok.view.LikeView;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener;
@@ -28,6 +36,7 @@ public class RecommendFragment extends BaseFragment {
     private int curPlayPos = -1;
     private FullScreenVideoView videoView;
     private ArrayList<Integer> videoIds = new ArrayList<>();
+    private SwipeRefreshLayout refreshLayout;
 
     @Override
     protected int setLayoutId() {
@@ -38,6 +47,8 @@ public class RecommendFragment extends BaseFragment {
     protected void init() {
 
         recyclerView = rootView.findViewById(R.id.recyclerview);
+        refreshLayout = rootView.findViewById(R.id.refreshlayout);
+
         adapter = new VideoAdapter(getActivity(), datas);
         recyclerView.setAdapter(adapter);
 
@@ -46,6 +57,19 @@ public class RecommendFragment extends BaseFragment {
         setViewPagerLayoutManager();
 
         loadData();
+
+        refreshLayout.setColorSchemeResources(R.color.color_link);
+        refreshLayout.setOnRefreshListener(() -> new CountDownTimer(1000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                refreshLayout.setRefreshing(false);
+            }
+        }.start());
     }
 
     private void setViewPagerLayoutManager() {
@@ -96,6 +120,7 @@ public class RecommendFragment extends BaseFragment {
 
         ViewGroup rootView = itemView.findViewById(R.id.rl_container);
         LikeView likeView = rootView.findViewById(R.id.likeview);
+        ControllerView controllerView = rootView.findViewById(R.id.controller);
         ImageView ivPlay = rootView.findViewById(R.id.iv_play);
         ivPlay.setAlpha(0.4f);
 
@@ -109,14 +134,14 @@ public class RecommendFragment extends BaseFragment {
                 ivPlay.setVisibility(View.GONE);
             }
         });
+
+        likeShareEvent(controllerView);
+
         curPlayPos = position;
 
         dettachParentView(rootView);
 
-        String bgVideoPath = "android.resource://" + getActivity().getPackageName() + "/" + videoIds.get(position);
-        videoView.setVideoPath(bgVideoPath);
-        videoView.start();
-        videoView.setOnPreparedListener(mp -> mp.setLooping(true));
+        autoPlayVideo(curPlayPos);
     }
 
     /**
@@ -129,6 +154,43 @@ public class RecommendFragment extends BaseFragment {
             parent.removeView(videoView);
         }
         rootView.addView(videoView, 0);
+    }
+
+    /**
+     * 自动播放视频
+     */
+    private void autoPlayVideo(int position) {
+        String bgVideoPath = "android.resource://" + getActivity().getPackageName() + "/" + videoIds.get(position);
+        videoView.setVideoPath(bgVideoPath);
+        videoView.start();
+        videoView.setOnPreparedListener(mp -> mp.setLooping(true));
+    }
+
+    /**
+     * 用户操作事件
+     */
+    private void likeShareEvent(ControllerView controllerView) {
+        controllerView.setListener(new OnVideoControllerListener() {
+            @Override
+            public void onHeadClick() {
+                RxBus.getDefault().post(new HeadClickEvent());
+            }
+
+            @Override
+            public void onLikeClick() {
+
+            }
+
+            @Override
+            public void onCommentClick() {
+
+            }
+
+            @Override
+            public void onShareClick() {
+
+            }
+        });
     }
 
 }

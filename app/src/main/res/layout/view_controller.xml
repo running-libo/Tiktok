@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:background="@color/black">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,7 +13,7 @@
         android:layout_alignParentBottom="true"
         android:orientation="vertical"
         android:layout_marginLeft="12dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="18dp"
         android:layout_marginRight="120dp">
 
         <TextView
@@ -33,12 +34,15 @@
             android:layout_marginTop="10dp"
             app:highlight_textcolor="@color/color_link"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <com.bytedance.tiktok.view.MarqueeTextView
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:text="允儿 创作的原生"
+            android:text=" @大致爱高清 创作的原生 - 大致爱高清"
             android:textColor="@color/white"
             android:textSize="14sp"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:marqueeRepeatLimit="marquee_forever"
             android:layout_marginTop="10dp"/>
     </LinearLayout>
 
@@ -49,7 +53,6 @@
         android:gravity="center_horizontal"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="120dp"
         android:layout_marginRight="12dp">
 
         <com.bytedance.tiktok.view.CircleImageView
@@ -65,7 +68,7 @@
             android:id="@+id/iv_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="36sp"
+            android:textSize="32sp"
             android:textColor="@color/white"
             android:text="@string/icon_like_fill"
             android:layout_marginTop="30dp"/>
@@ -82,7 +85,7 @@
             android:id="@+id/iv_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="36sp"
+            android:textSize="32sp"
             android:textColor="@color/white"
             android:layout_marginTop="12dp"
             android:text="@string/icon_comment"/>
@@ -99,7 +102,7 @@
             android:id="@+id/iv_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="36sp"
+            android:textSize="32sp"
             android:textColor="@color/white"
             android:layout_marginTop="12dp"
             android:text="@string/icon_more"/>
@@ -111,6 +114,14 @@
             android:layout_marginTop="3dp"
             android:textSize="12sp"
             android:textColor="@color/white"/>
+
+        <ImageView
+            android:id="@+id/iv_record"
+            android:layout_width="58dp"
+            android:layout_height="58dp"
+            android:background="@mipmap/ic_record"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="15dp"/>
     </LinearLayout>
 
 </RelativeLayout>
