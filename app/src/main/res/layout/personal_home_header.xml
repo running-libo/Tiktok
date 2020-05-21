@@ -18,6 +18,7 @@
             android:layout_alignParentBottom="true"/>
 
         <com.bytedance.tiktok.view.CircleImageView
+            android:id="@+id/iv_head"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:src="@mipmap/head"

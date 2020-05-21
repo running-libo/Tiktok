@@ -1,6 +1,8 @@
 package com.bytedance.tiktok.fragment;
 
+import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -8,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import com.androidkun.xtablayout.XTabLayout;
 import com.bytedance.tiktok.R;
+import com.bytedance.tiktok.activity.ShowImageActivity;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
 import com.google.android.material.appbar.AppBarLayout;
@@ -25,6 +28,7 @@ public class PersonalHomeFragment extends BaseFragment {
     private Toolbar toolbar;
     private AppBarLayout appBarLayout;
     private TextView tvTitle;
+    private ImageView ivHead;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
     private String[] titles = new String[] {"作品 128", "动态 128", "喜欢 802"};
@@ -41,6 +45,7 @@ public class PersonalHomeFragment extends BaseFragment {
         toolbar = rootView.findViewById(R.id.toolbar);
         appBarLayout = rootView.findViewById(R.id.appbarlayout);
         tvTitle = rootView.findViewById(R.id.tv_title);
+        ivHead = rootView.findViewById(R.id.iv_head);
 
         //解决toolbar左边距问题
         toolbar.setContentInsetsAbsolute(0, 0);
@@ -55,6 +60,8 @@ public class PersonalHomeFragment extends BaseFragment {
         tabLayout.setupWithViewPager(viewPager);
 
         setAppbarLayoutPercent();
+
+        ivHead.setOnClickListener(v -> startActivity(new Intent(getActivity(), ShowImageActivity.class)));
     }
 
     /**
