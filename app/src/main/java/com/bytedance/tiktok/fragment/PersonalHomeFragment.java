@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import com.androidkun.xtablayout.XTabLayout;
@@ -61,7 +63,14 @@ public class PersonalHomeFragment extends BaseFragment {
 
         setAppbarLayoutPercent();
 
-        ivHead.setOnClickListener(v -> startActivity(new Intent(getActivity(), ShowImageActivity.class)));
+        ivHead.setOnClickListener(v -> {
+            transitionAnim(ivHead);
+        });
+    }
+
+    public void transitionAnim(View view){
+        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), view, getString(R.string.trans));
+        ActivityCompat.startActivity(getActivity(), new Intent(getActivity(), ShowImageActivity.class), compat.toBundle());
     }
 
     /**

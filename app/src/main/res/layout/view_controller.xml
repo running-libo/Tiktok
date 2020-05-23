@@ -115,13 +115,28 @@
             android:textSize="12sp"
             android:textColor="@color/white"/>
 
-        <ImageView
-            android:id="@+id/iv_record"
-            android:layout_width="58dp"
-            android:layout_height="58dp"
-            android:background="@mipmap/ic_record"
+        <RelativeLayout
+            android:id="@+id/rl_record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:layout_marginBottom="15dp"/>
+            android:layout_marginBottom="15dp">
+
+            <ImageView
+                android:id="@+id/iv_record"
+                android:layout_width="58dp"
+                android:layout_height="58dp"
+                android:background="@mipmap/ic_record" />
+
+            <com.bytedance.tiktok.view.CircleImageView
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:src="@mipmap/head"
+                app:ease_radius="15dp"
+                app:es_shape_type="round"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

@@ -8,6 +8,8 @@
     <!-- 更多 -->
     <string name="icon_more">&#xe61b;</string>
 
+    <string name="trans">trans</string>
+
     <string name="view_pager_bottom_sheet_behavior" translatable="false" tools:ignore="ExtraTranslation">
         com.goobird.common.application.widget.bottomsheetdialog.viewpagerofbottomsheet.ViewPagerBottomSheetBehavior</string>
 

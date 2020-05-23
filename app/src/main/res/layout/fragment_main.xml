@@ -10,7 +10,8 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginBottom="48dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -46,6 +47,29 @@
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <com.androidkun.xtablayout.XTabLayout
+            android:id="@+id/tab_mainmenu"
+            android:layout_width="match_parent"
+            app:xTabSelectedTextColor="@color/white"
+            app:xTabTextColor="#8F8F94"
+            app:xTabTextBold="true"
+            app:xTabTextSize="15sp"
+            app:xTabSelectedTextSize="16sp"
+            android:layout_height="50dp"
+            android:background="@color/black" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="35dp"
+            android:background="@mipmap/ic_main_menu"
+            android:layout_centerInParent="true"/>
     </RelativeLayout>
 
 </RelativeLayout>

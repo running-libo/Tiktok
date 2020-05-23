@@ -21,6 +21,7 @@ public class MainFragment extends BaseFragment {
     private RecommendFragment recommendFragment;
     private ViewPager viewPager;
     private XTabLayout tabLayout;
+    private XTabLayout tabMainMenu;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
 
@@ -33,9 +34,11 @@ public class MainFragment extends BaseFragment {
     protected void init() {
         viewPager = rootView.findViewById(R.id.viewpager);
         tabLayout = rootView.findViewById(R.id.tablayout);
+        tabMainMenu = rootView.findViewById(R.id.tab_mainmenu);
 
         setFragments();
 
+        setMainMenu();
     }
 
     private void setFragments() {
@@ -75,6 +78,14 @@ public class MainFragment extends BaseFragment {
 
             }
         });
+    }
+
+    private void setMainMenu() {
+        tabMainMenu.addTab(tabMainMenu.newTab().setText("首页"));
+        tabMainMenu.addTab(tabMainMenu.newTab().setText("好友"));
+        tabMainMenu.addTab(tabMainMenu.newTab().setText(""));
+        tabMainMenu.addTab(tabMainMenu.newTab().setText("消息"));
+        tabMainMenu.addTab(tabMainMenu.newTab().setText("我"));
     }
 
 }

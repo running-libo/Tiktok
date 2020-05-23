@@ -8,9 +8,11 @@
     android:background="@color/color_bg_theme">
 
     <com.bytedance.tiktok.view.SquareWidthImageView
+        android:id="@+id/iv_head"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
+        android:transitionName="@string/trans"
         android:background="@mipmap/head"/>
 </RelativeLayout>

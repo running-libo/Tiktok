@@ -28,7 +28,7 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
     private IconFontTextView ivComment;
     private IconFontTextView ivShare;
     private AutoLinkTextView autoLinkTextView;
-    private ImageView ivRecord;
+    private RelativeLayout ivRecord;
     private OnVideoControllerListener listener;
 
     public ControllerView(Context context, AttributeSet attrs) {
@@ -44,7 +44,7 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
         ivLike = rootView.findViewById(R.id.iv_like);
         ivComment = rootView.findViewById(R.id.iv_comment);
         ivShare = rootView.findViewById(R.id.iv_share);
-        ivRecord = rootView.findViewById(R.id.iv_record);
+        ivRecord = rootView.findViewById(R.id.rl_record);
         autoLinkTextView = rootView.findViewById(R.id.tv_content);
 
         ivHead.setOnClickListener(this);
