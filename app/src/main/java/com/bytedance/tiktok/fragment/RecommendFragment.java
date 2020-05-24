@@ -17,6 +17,7 @@ import com.bytedance.tiktok.bean.HeadClickEvent;
 import com.bytedance.tiktok.bean.PauseVideoEvent;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
 import com.bytedance.tiktok.utils.RxBus;
+import com.bytedance.tiktok.view.CommentDialog;
 import com.bytedance.tiktok.view.ControllerView;
 import com.bytedance.tiktok.view.FullScreenVideoView;
 import com.bytedance.tiktok.view.LikeView;
@@ -225,7 +226,7 @@ public class RecommendFragment extends BaseFragment {
 
             @Override
             public void onCommentClick() {
-
+                new CommentDialog(getActivity(), R.style.basedialog_style);
             }
 
             @Override
