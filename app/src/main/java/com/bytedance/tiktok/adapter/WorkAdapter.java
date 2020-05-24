@@ -1,17 +1,16 @@
 package com.bytedance.tiktok.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import androidx.annotation.NonNull;
-
 import com.bytedance.tiktok.R;
+import com.bytedance.tiktok.activity.PlayListActivity;
 import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
-
 import java.util.List;
 
 /**
@@ -28,6 +27,8 @@ public class WorkAdapter extends BaseRvAdapter<Integer, WorkAdapter.WorkViewHold
     @Override
     protected void onBindData(WorkViewHolder holder, Integer data, int position) {
         holder.ivCover.setImageResource(data);
+
+        holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(context, PlayListActivity.class)));
     }
 
     @NonNull

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bytedance.tiktok.R;
+import com.bytedance.tiktok.activity.MainActivity;
 import com.bytedance.tiktok.adapter.VideoAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.bean.HeadClickEvent;
@@ -79,7 +80,9 @@ public class RecommendFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
 
-        videoView.start();
+        if (MainActivity.curMainPage == 0) {
+            videoView.start();
+        }
     }
 
     @Override
@@ -87,6 +90,13 @@ public class RecommendFragment extends BaseFragment {
         super.onPause();
 
         videoView.pause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        videoView.stopPlayback();
     }
 
     private void setViewPagerLayoutManager() {

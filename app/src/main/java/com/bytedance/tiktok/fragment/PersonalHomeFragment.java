@@ -30,7 +30,9 @@ public class PersonalHomeFragment extends BaseFragment {
     private Toolbar toolbar;
     private AppBarLayout appBarLayout;
     private TextView tvTitle;
+    private TextView tvFocus;
     private ImageView ivHead;
+    private ImageView ivBg;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
     private String[] titles = new String[] {"作品 128", "动态 128", "喜欢 802"};
@@ -47,7 +49,9 @@ public class PersonalHomeFragment extends BaseFragment {
         toolbar = rootView.findViewById(R.id.toolbar);
         appBarLayout = rootView.findViewById(R.id.appbarlayout);
         tvTitle = rootView.findViewById(R.id.tv_title);
+        tvFocus = rootView.findViewById(R.id.tv_focus);
         ivHead = rootView.findViewById(R.id.iv_head);
+        ivBg = rootView.findViewById(R.id.iv_bg);
 
         //解决toolbar左边距问题
         toolbar.setContentInsetsAbsolute(0, 0);
@@ -66,8 +70,14 @@ public class PersonalHomeFragment extends BaseFragment {
         ivHead.setOnClickListener(v -> {
             transitionAnim(ivHead);
         });
+
+        ivBg.setOnClickListener(v -> transitionAnim(ivBg));
     }
 
+    /**
+     * 过渡动画跳转页面
+     * @param view
+     */
     public void transitionAnim(View view){
         ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), view, getString(R.string.trans));
         ActivityCompat.startActivity(getActivity(), new Intent(getActivity(), ShowImageActivity.class), compat.toBundle());
@@ -80,10 +90,16 @@ public class PersonalHomeFragment extends BaseFragment {
         appBarLayout.addOnOffsetChangedListener((appBarLayout, verticalOffset) -> {
             float percent = (Math.abs(verticalOffset * 1.0f) / appBarLayout.getTotalScrollRange());  //滑动比例
 
-            if (percent > 0.9) {
+            if (percent > 0.8) {
                 tvTitle.setVisibility(View.VISIBLE);
+                tvFocus.setVisibility(View.VISIBLE);
+
+                float alpha = 1- (1-percent)*5;  //渐变变换
+                tvTitle.setAlpha(alpha);
+                tvFocus.setAlpha(alpha);
             } else {
                 tvTitle.setVisibility(View.GONE);
+                tvFocus.setVisibility(View.GONE);
             }
         });
     }

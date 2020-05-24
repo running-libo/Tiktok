@@ -24,6 +24,7 @@ public class MainActivity extends BaseActivity {
     private ViewPager viewPager;
     private CommPagerAdapter pagerAdapter;
     private ArrayList<Fragment> fragments = new ArrayList<>();
+    public static int curMainPage;
 
     @Override
     protected int setLayoutId() {
@@ -53,6 +54,8 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
+                curMainPage = position;
+
                 if (position == 0) {
                     RxBus.getDefault().post(new PauseVideoEvent(true));
                 } else {

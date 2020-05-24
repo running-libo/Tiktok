@@ -64,6 +64,7 @@ public class MainFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
+
                 if (position == 1) {
                     //继续播放
                     RxBus.getDefault().post(new PauseVideoEvent(true));

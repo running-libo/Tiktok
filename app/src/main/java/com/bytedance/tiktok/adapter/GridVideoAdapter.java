@@ -1,6 +1,7 @@
 package com.bytedance.tiktok.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 
 import com.bytedance.tiktok.R;
+import com.bytedance.tiktok.activity.PlayListActivity;
 import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
 
@@ -28,6 +30,8 @@ public class GridVideoAdapter extends BaseRvAdapter<Integer, GridVideoAdapter.Gr
     @Override
     protected void onBindData(GridVideoViewHolder holder, Integer data, int position) {
         holder.ivCover.setBackgroundResource(data);
+
+        holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(context, PlayListActivity.class)));
     }
 
     @NonNull

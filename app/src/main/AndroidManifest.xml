@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ShowImageActivity"></activity>
+        <activity android:name=".activity.PlayListActivity"></activity>
+        <activity android:name=".activity.ShowImageActivity" />
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait">
