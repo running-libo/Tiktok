@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="@color/color_bg_theme"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:gravity="center_vertical">
+
+    <com.bytedance.tiktok.view.CircleImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:es_shape_type="round"
+        android:src="@mipmap/head"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="一个人的表演"
+        android:textSize="15sp"
+        android:layout_margin="12dp"
+        android:textColor="@color/white"/>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="32dp"
+        android:text="关注"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:background="@drawable/shape_round_red"
+        android:gravity="center"/>
+</LinearLayout>

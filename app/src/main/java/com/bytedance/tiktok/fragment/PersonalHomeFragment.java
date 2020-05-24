@@ -3,6 +3,7 @@ package com.bytedance.tiktok.fragment;
 import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import com.androidkun.xtablayout.XTabLayout;
 import com.bytedance.tiktok.R;
+import com.bytedance.tiktok.activity.FocusActivity;
 import com.bytedance.tiktok.activity.ShowImageActivity;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
  * create on 2020-05-19
  * description 个人主页fragment
  */
-public class PersonalHomeFragment extends BaseFragment {
+public class PersonalHomeFragment extends BaseFragment implements View.OnClickListener {
     private XTabLayout tabLayout;
     private ViewPager viewPager;
     private Toolbar toolbar;
@@ -33,6 +35,7 @@ public class PersonalHomeFragment extends BaseFragment {
     private TextView tvFocus;
     private ImageView ivHead;
     private ImageView ivBg;
+    private LinearLayout llFocus, llFans;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
     private String[] titles = new String[] {"作品 128", "动态 128", "喜欢 802"};
@@ -52,6 +55,8 @@ public class PersonalHomeFragment extends BaseFragment {
         tvFocus = rootView.findViewById(R.id.tv_focus);
         ivHead = rootView.findViewById(R.id.iv_head);
         ivBg = rootView.findViewById(R.id.iv_bg);
+        llFocus = rootView.findViewById(R.id.ll_focus);
+        llFans = rootView.findViewById(R.id.ll_fans);
 
         //解决toolbar左边距问题
         toolbar.setContentInsetsAbsolute(0, 0);
@@ -67,11 +72,10 @@ public class PersonalHomeFragment extends BaseFragment {
 
         setAppbarLayoutPercent();
 
-        ivHead.setOnClickListener(v -> {
-            transitionAnim(ivHead);
-        });
-
-        ivBg.setOnClickListener(v -> transitionAnim(ivBg));
+        ivHead.setOnClickListener(this);
+        ivBg.setOnClickListener(this);
+        llFocus.setOnClickListener(this);
+        llFans.setOnClickListener(this);
     }
 
     /**
@@ -104,4 +108,21 @@ public class PersonalHomeFragment extends BaseFragment {
         });
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_head:
+                transitionAnim(ivHead);
+                break;
+            case R.id.iv_bg:
+                transitionAnim(ivBg);
+                break;
+            case R.id.ll_focus:
+                startActivity(new Intent(getActivity(), FocusActivity.class));
+                break;
+            case R.id.ll_fans:
+                startActivity(new Intent(getActivity(), FocusActivity.class));
+                break;
+        }
+    }
 }

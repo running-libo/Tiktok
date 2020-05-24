@@ -10,8 +10,7 @@
         android:roundIcon="@mipmap/launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PlayListActivity"></activity>
-        <activity android:name=".activity.ShowImageActivity" />
+
         <activity
             android:name=".activity.SplashActivity"
             android:screenOrientation="portrait">
@@ -21,9 +20,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait" />
+
+        <activity android:name=".activity.FocusActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".activity.PlayListActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".activity.ShowImageActivity"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>

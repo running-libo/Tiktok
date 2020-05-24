@@ -142,35 +142,48 @@
                 android:textColor="@color/color_tag"
                 android:textSize="14sp"/>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/ll_focus"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="310"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:layout_marginLeft="15dp"/>
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 关注"
-                android:textColor="@color/color_tag"
-                android:textSize="14sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="310"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="15dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="291w"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:layout_marginLeft="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 关注"
+                    android:textColor="@color/color_tag"
+                    android:textSize="14sp"/>
+            </LinearLayout>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/ll_fans"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 粉丝"
-                android:textColor="@color/color_tag"
-                android:textSize="14sp"/>
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="291w"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_marginLeft="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 粉丝"
+                    android:textColor="@color/color_tag"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 
