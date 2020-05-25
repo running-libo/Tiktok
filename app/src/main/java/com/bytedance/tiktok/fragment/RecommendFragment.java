@@ -21,6 +21,7 @@ import com.bytedance.tiktok.view.CommentDialog;
 import com.bytedance.tiktok.view.ControllerView;
 import com.bytedance.tiktok.view.FullScreenVideoView;
 import com.bytedance.tiktok.view.LikeView;
+import com.bytedance.tiktok.view.ShareDialog;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.ViewPagerLayoutManager;
 import java.util.ArrayList;
@@ -231,7 +232,7 @@ public class RecommendFragment extends BaseFragment {
 
             @Override
             public void onShareClick() {
-
+                new ShareDialog(getActivity(), R.style.basedialog_style);
             }
         });
     }
