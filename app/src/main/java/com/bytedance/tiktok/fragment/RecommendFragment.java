@@ -4,11 +4,8 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.activity.MainActivity;
 import com.bytedance.tiktok.adapter.VideoAdapter;
@@ -25,7 +22,6 @@ import com.bytedance.tiktok.view.ShareDialog;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.ViewPagerLayoutManager;
 import java.util.ArrayList;
-
 import rx.functions.Action1;
 
 /**
@@ -227,12 +223,12 @@ public class RecommendFragment extends BaseFragment {
 
             @Override
             public void onCommentClick() {
-                new CommentDialog(getActivity(), R.style.basedialog_style);
+                new CommentDialog().show(getChildFragmentManager(), "");
             }
 
             @Override
             public void onShareClick() {
-                new ShareDialog(getActivity(), R.style.basedialog_style);
+                new ShareDialog().show(getChildFragmentManager(), "");
             }
         });
     }

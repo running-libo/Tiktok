@@ -37,5 +37,4 @@
         android:background="@color/light_gray"
         android:layout_marginTop="20dp"/>
 
-
 </LinearLayout>
