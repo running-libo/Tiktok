@@ -9,12 +9,12 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
+import com.airbnb.lottie.LottieAnimationView;
 import com.bytedance.tiktok.R;
-import com.bytedance.tiktok.utils.AnimUtils;
 import com.bytedance.tiktok.utils.AutoLinkHerfManager;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
 import com.bytedance.tiktok.utils.autolinktextview.AutoLinkTextView;
-
 import static android.view.animation.Animation.INFINITE;
 
 /**
@@ -28,8 +28,9 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
     private IconFontTextView ivComment;
     private IconFontTextView ivShare;
     private AutoLinkTextView autoLinkTextView;
-    private RelativeLayout ivRecord;
+    private RelativeLayout ivRecord, rlLike;
     private OnVideoControllerListener listener;
+    private LottieAnimationView animationView;
 
     public ControllerView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -46,11 +47,13 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
         ivShare = rootView.findViewById(R.id.iv_share);
         ivRecord = rootView.findViewById(R.id.rl_record);
         autoLinkTextView = rootView.findViewById(R.id.tv_content);
+        rlLike = rootView.findViewById(R.id.rl_like);
+        animationView = rootView.findViewById(R.id.lottie_anim);
 
         ivHead.setOnClickListener(this);
-        ivLike.setOnClickListener(this);
         ivComment.setOnClickListener(this);
         ivShare.setOnClickListener(this);
+        rlLike.setOnClickListener(this);
 
         AutoLinkHerfManager.setContent("只有 #允儿 的脸我才敢拉这么近 @肖战 @王一博 来呀来呀", autoLinkTextView);
 
@@ -71,8 +74,11 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
             case R.id.iv_head:
                 listener.onHeadClick();
                 break;
-            case R.id.iv_like:
+            case R.id.rl_like:
                 listener.onLikeClick();
+
+                animationView.setAnimation("like.json");
+                animationView.playAnimation();
                 break;
             case R.id.iv_comment:
                 listener.onCommentClick();

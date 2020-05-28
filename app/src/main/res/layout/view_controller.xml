@@ -52,34 +52,55 @@
         android:orientation="vertical"
         android:gravity="center_horizontal"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="12dp">
+        android:layout_alignParentBottom="true">
 
-        <com.bytedance.tiktok.view.CircleImageView
-            android:id="@+id/iv_head"
+        <RelativeLayout
             android:layout_width="52dp"
-            android:layout_height="52dp"
-            android:layout_centerInParent="true"
-            android:src="@mipmap/head"
-            app:es_shape_type="round"
-            android:scaleType="centerCrop"/>
+            android:layout_height="62dp">
 
-        <com.bytedance.tiktok.view.IconFontTextView
-            android:id="@+id/iv_like"
+            <com.bytedance.tiktok.view.CircleImageView
+                android:id="@+id/iv_head"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:src="@mipmap/head"
+                app:es_shape_type="round"
+                android:scaleType="centerCrop"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@mipmap/add_focus"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_like"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="32sp"
-            android:textColor="@color/white"
-            android:text="@string/icon_like_fill"
-            android:layout_marginTop="30dp"/>
+            android:layout_height="wrap_content">
+
+            <com.bytedance.tiktok.view.IconFontTextView
+                android:id="@+id/iv_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                android:text="@string/icon_like_fill" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_anim"
+                android:layout_width="85dp"
+                android:layout_height="85dp" />
+        </RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="22.5w"
-            android:layout_marginTop="3dp"
             android:textSize="12sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:layout_marginTop="-18dp"/>
 
         <com.bytedance.tiktok.view.IconFontTextView
             android:id="@+id/iv_comment"
@@ -87,14 +108,14 @@
             android:layout_height="wrap_content"
             android:textSize="32sp"
             android:textColor="@color/white"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="15dp"
             android:text="@string/icon_comment"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3823"
-            android:layout_marginTop="3dp"
+            android:layout_marginTop="6dp"
             android:textSize="12sp"
             android:textColor="@color/white"/>
 
@@ -111,7 +132,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="3371"
-            android:layout_marginTop="3dp"
             android:textSize="12sp"
             android:textColor="@color/white"/>
 
