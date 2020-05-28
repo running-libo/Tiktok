@@ -29,7 +29,7 @@
             android:padding="10dp"/>
 
         <com.androidkun.xtablayout.XTabLayout
-            android:id="@+id/tablayout"
+            android:id="@+id/tab_title"
             android:layout_width="160dp"
             app:xTabIndicatorColor="@color/white"
             app:xTabSelectedTextColor="@color/white"

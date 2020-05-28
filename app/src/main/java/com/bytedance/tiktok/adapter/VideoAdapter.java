@@ -12,6 +12,9 @@ import com.bytedance.tiktok.view.ControllerView;
 import com.bytedance.tiktok.view.LikeView;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * create by libo
  * create on 2020-05-20
@@ -36,13 +39,15 @@ public class VideoAdapter extends BaseRvAdapter<String, VideoAdapter.VideoViewHo
     }
 
     public class VideoViewHolder extends BaseRvViewHolder {
-        public LikeView likeView;
-        public ControllerView controllerView;
+        @BindView(R.id.likeview)
+        LikeView likeView;
+        @BindView(R.id.controller)
+        ControllerView controllerView;
 
         public VideoViewHolder(View itemView) {
             super(itemView);
-            likeView = itemView.findViewById(R.id.likeview);
-            controllerView = itemView.findViewById(R.id.controller);
+
+            ButterKnife.bind(this, itemView);
         }
     }
 }

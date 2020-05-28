@@ -13,6 +13,8 @@ import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * create by libo
  * create on 2020-05-21
@@ -39,12 +41,12 @@ public class WorkAdapter extends BaseRvAdapter<Integer, WorkAdapter.WorkViewHold
     }
 
     public class WorkViewHolder extends BaseRvViewHolder {
-        public ImageView ivCover;
+        @BindView(R.id.iv_cover)
+        ImageView ivCover;
 
         public WorkViewHolder(View itemView) {
             super(itemView);
-
-            ivCover = itemView.findViewById(R.id.iv_cover);
         }
     }
+
 }

@@ -11,16 +11,20 @@ import com.bytedance.tiktok.adapter.GridVideoAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+
 /**
  * create by libo
  * create on 2020-05-19
  * description 附近的人fragment
  */
 public class CurrentLocationFragment extends BaseFragment {
-    private RecyclerView recyclerView;
+    @BindView(R.id.recyclerview)
+    RecyclerView recyclerView;
     private GridVideoAdapter adapter;
     private ArrayList<Integer> datas = new ArrayList<>();
-    private SwipeRefreshLayout refreshLayout;
+    @BindView(R.id.refreshlayout)
+    SwipeRefreshLayout refreshLayout;
 
     @Override
     protected int setLayoutId() {
@@ -29,9 +33,6 @@ public class CurrentLocationFragment extends BaseFragment {
 
     @Override
     protected void init() {
-        recyclerView = rootView.findViewById(R.id.recyclerview);
-        refreshLayout = rootView.findViewById(R.id.refreshlayout);
-
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         adapter = new GridVideoAdapter(getActivity(), datas);

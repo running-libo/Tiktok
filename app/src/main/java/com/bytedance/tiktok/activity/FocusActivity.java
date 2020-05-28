@@ -10,16 +10,20 @@ import com.bytedance.tiktok.base.CommPagerAdapter;
 import com.bytedance.tiktok.fragment.FansFragment;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+
 /**
  * create by libo
  * create on 2020-05-14
  * description 粉丝关注人页面
  */
 public class FocusActivity extends BaseActivity {
-    private XTabLayout tabLayout;
+    @BindView(R.id.tablayout)
+    XTabLayout tabLayout;
+    @BindView(R.id.viewpager)
+    ViewPager viewPager;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
-    private ViewPager viewPager;
     private String[] titles = new String[] {"关注 128", "粉丝 128", "推荐关注"};
 
     @Override
@@ -29,8 +33,6 @@ public class FocusActivity extends BaseActivity {
 
     @Override
     protected void init() {
-        tabLayout = findViewById(R.id.tablayout);
-        viewPager = findViewById(R.id.viewpager);
 
         for (int i=0;i<titles.length;i++) {
             fragments.add(new FansFragment());

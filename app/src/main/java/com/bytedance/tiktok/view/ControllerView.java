@@ -9,12 +9,13 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
 import com.airbnb.lottie.LottieAnimationView;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.utils.AutoLinkHerfManager;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
 import com.bytedance.tiktok.utils.autolinktextview.AutoLinkTextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import static android.view.animation.Animation.INFINITE;
 
 /**
@@ -23,14 +24,29 @@ import static android.view.animation.Animation.INFINITE;
  * description
  */
 public class ControllerView extends RelativeLayout implements View.OnClickListener {
-    private ImageView ivHead;
-    private IconFontTextView ivLike;
-    private IconFontTextView ivComment;
-    private IconFontTextView ivShare;
-    private AutoLinkTextView autoLinkTextView;
-    private RelativeLayout ivRecord, rlLike;
+    @BindView(R.id.tv_content)
+    AutoLinkTextView autoLinkTextView;
+    @BindView(R.id.iv_head)
+    CircleImageView ivHead;
+    @BindView(R.id.lottie_anim)
+    LottieAnimationView animationView;
+    @BindView(R.id.rl_like)
+    RelativeLayout rlLike;
+    @BindView(R.id.iv_comment)
+    IconFontTextView ivComment;
+    @BindView(R.id.iv_share)
+    IconFontTextView ivShare;
+    @BindView(R.id.iv_record)
+    ImageView ivRecord;
+    @BindView(R.id.rl_record)
+    RelativeLayout rlRecord;
+//    private ImageView ivHead;
+//    private IconFontTextView ivLike;
+//    private IconFontTextView ivComment;
+//    private IconFontTextView ivShare;
+//    private AutoLinkTextView autoLinkTextView;
+//    private RelativeLayout ivRecord, rlLike;
     private OnVideoControllerListener listener;
-    private LottieAnimationView animationView;
 
     public ControllerView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -40,15 +56,7 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
 
     private void init() {
         View rootView = LayoutInflater.from(getContext()).inflate(R.layout.view_controller, this);
-
-        ivHead = rootView.findViewById(R.id.iv_head);
-        ivLike = rootView.findViewById(R.id.iv_like);
-        ivComment = rootView.findViewById(R.id.iv_comment);
-        ivShare = rootView.findViewById(R.id.iv_share);
-        ivRecord = rootView.findViewById(R.id.rl_record);
-        autoLinkTextView = rootView.findViewById(R.id.tv_content);
-        rlLike = rootView.findViewById(R.id.rl_like);
-        animationView = rootView.findViewById(R.id.lottie_anim);
+        ButterKnife.bind(this, rootView);
 
         ivHead.setOnClickListener(this);
         ivComment.setOnClickListener(this);

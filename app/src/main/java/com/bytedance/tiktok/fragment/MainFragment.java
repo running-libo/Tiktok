@@ -11,6 +11,8 @@ import com.bytedance.tiktok.bean.PauseVideoEvent;
 import com.bytedance.tiktok.utils.RxBus;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+
 /**
  * create by libo
  * create on 2020-05-19
@@ -19,9 +21,12 @@ import java.util.ArrayList;
 public class MainFragment extends BaseFragment {
     private CurrentLocationFragment currentLocationFragment;
     private RecommendFragment recommendFragment;
-    private ViewPager viewPager;
-    private XTabLayout tabLayout;
-    private XTabLayout tabMainMenu;
+    @BindView(R.id.viewpager)
+    ViewPager viewPager;
+    @BindView(R.id.tab_title)
+    XTabLayout tabTitle;
+    @BindView(R.id.tab_mainmenu)
+    XTabLayout tabMainMenu;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
 
@@ -32,10 +37,6 @@ public class MainFragment extends BaseFragment {
 
     @Override
     protected void init() {
-        viewPager = rootView.findViewById(R.id.viewpager);
-        tabLayout = rootView.findViewById(R.id.tablayout);
-        tabMainMenu = rootView.findViewById(R.id.tab_mainmenu);
-
         setFragments();
 
         setMainMenu();
@@ -47,14 +48,14 @@ public class MainFragment extends BaseFragment {
         fragments.add(currentLocationFragment);
         fragments.add(recommendFragment);
 
-        tabLayout.addTab(tabLayout.newTab().setText("海淀"));
-        tabLayout.addTab(tabLayout.newTab().setText("推荐"));
+        tabTitle.addTab(tabTitle.newTab().setText("海淀"));
+        tabTitle.addTab(tabTitle.newTab().setText("推荐"));
 
         pagerAdapter = new CommPagerAdapter(getChildFragmentManager(), fragments, new String[] {"海淀", "推荐"});
         viewPager.setAdapter(pagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+        tabTitle.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(1).select();
+        tabTitle.getTabAt(1).select();
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

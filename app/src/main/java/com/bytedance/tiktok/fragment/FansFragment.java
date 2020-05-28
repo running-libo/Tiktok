@@ -7,8 +7,11 @@ import com.bytedance.tiktok.adapter.FansAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+
 public class FansFragment extends BaseFragment {
-    private RecyclerView recyclerView;
+    @BindView(R.id.recyclerview)
+    RecyclerView recyclerView;
     private FansAdapter fansAdapter;
     private ArrayList<String> datas = new ArrayList<>();
 
@@ -19,7 +22,6 @@ public class FansFragment extends BaseFragment {
 
     @Override
     protected void init() {
-        recyclerView = rootView.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         fansAdapter = new FansAdapter(getContext(), datas);

@@ -22,6 +22,8 @@ import com.bytedance.tiktok.view.ShareDialog;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.ViewPagerLayoutManager;
 import java.util.ArrayList;
+
+import butterknife.BindView;
 import rx.functions.Action1;
 
 /**
@@ -30,7 +32,8 @@ import rx.functions.Action1;
  * description 推荐播放页
  */
 public class RecommendFragment extends BaseFragment {
-    private RecyclerView recyclerView;
+    @BindView(R.id.recyclerview)
+    RecyclerView recyclerView;
     private ArrayList<String> datas = new ArrayList<>();
     private VideoAdapter adapter;
     private ViewPagerLayoutManager viewPagerLayoutManager;
@@ -38,7 +41,8 @@ public class RecommendFragment extends BaseFragment {
     private int curPlayPos = -1;
     private FullScreenVideoView videoView;
     private ArrayList<Integer> videoIds = new ArrayList<>();
-    private SwipeRefreshLayout refreshLayout;
+    @BindView(R.id.refreshlayout)
+    SwipeRefreshLayout refreshLayout;
 
     @Override
     protected int setLayoutId() {
@@ -47,9 +51,6 @@ public class RecommendFragment extends BaseFragment {
 
     @Override
     protected void init() {
-
-        recyclerView = rootView.findViewById(R.id.recyclerview);
-        refreshLayout = rootView.findViewById(R.id.refreshlayout);
 
         adapter = new VideoAdapter(getActivity(), datas);
         recyclerView.setAdapter(adapter);

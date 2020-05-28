@@ -8,13 +8,16 @@ import com.bytedance.tiktok.base.BaseFragment;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+
 /**
  * create by libo
  * create on 2020-05-19
  * description 个人作品fragment
  */
 public class WorkFragment extends BaseFragment {
-    private RecyclerView recyclerView;
+    @BindView(R.id.recyclerview)
+    RecyclerView recyclerView;
     private WorkAdapter workAdapter;
     private ArrayList<Integer> datas = new ArrayList<>();
 
@@ -25,7 +28,6 @@ public class WorkFragment extends BaseFragment {
 
     @Override
     protected void init() {
-        recyclerView = rootView.findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         workAdapter = new WorkAdapter(getActivity(), datas);
         recyclerView.setAdapter(workAdapter);

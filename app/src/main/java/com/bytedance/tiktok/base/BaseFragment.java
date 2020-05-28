@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
+import butterknife.ButterKnife;
 
 /**
  * create by libo
@@ -18,6 +19,8 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(setLayoutId(), container, false);
+        ButterKnife.bind(this, rootView);
+
         init();
         return rootView;
     }

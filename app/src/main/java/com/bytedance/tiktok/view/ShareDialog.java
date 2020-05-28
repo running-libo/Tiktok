@@ -14,14 +14,19 @@ import com.bytedance.tiktok.adapter.PrivateLetterAdapter;
 import com.bytedance.tiktok.adapter.ShareAdapter;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * create by libo
  * create on 2020-05-25
  * description 分享弹框
  */
 public class ShareDialog extends BaseBottomSheetDialog {
-    private RecyclerView rvPrivateLetter;
-    private RecyclerView rvShare;
+    @BindView(R.id.rv_private_letter)
+    RecyclerView rvPrivateLetter;
+    @BindView(R.id.rv_share)
+    RecyclerView rvShare;
     private ArrayList<String> datas = new ArrayList<>();
     private PrivateLetterAdapter privateLetterAdapter;
     private ShareAdapter shareAdapter;
@@ -31,14 +36,13 @@ public class ShareDialog extends BaseBottomSheetDialog {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.dialog_share, container);
+        ButterKnife.bind(this, view);
         init();
 
         return view;
     }
 
     private void init() {
-        rvPrivateLetter = view.findViewById(R.id.rv_private_letter);
-        rvShare = view.findViewById(R.id.rv_share);
         rvPrivateLetter.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         privateLetterAdapter = new PrivateLetterAdapter(getContext(), datas);
         rvPrivateLetter.setAdapter(privateLetterAdapter);

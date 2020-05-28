@@ -13,6 +13,7 @@ import com.bytedance.tiktok.utils.RxBus;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import rx.functions.Action1;
 
 /**
@@ -21,7 +22,8 @@ import rx.functions.Action1;
  * description 主页面
  */
 public class MainActivity extends BaseActivity {
-    private ViewPager viewPager;
+    @BindView(R.id.viewpager)
+    ViewPager viewPager;
     private CommPagerAdapter pagerAdapter;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     public static int curMainPage;
@@ -34,7 +36,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void init() {
 
-        viewPager = findViewById(R.id.viewpager);
         fragments.add(new MainFragment());
         fragments.add(new PersonalHomeFragment());
         pagerAdapter = new CommPagerAdapter(getSupportFragmentManager(), fragments, new String[]{"",""});

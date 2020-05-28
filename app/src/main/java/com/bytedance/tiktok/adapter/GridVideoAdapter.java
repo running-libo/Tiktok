@@ -16,6 +16,9 @@ import com.bytedance.tiktok.base.BaseRvViewHolder;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * create by libo
  * create on 2020-05-20
@@ -42,12 +45,13 @@ public class GridVideoAdapter extends BaseRvAdapter<Integer, GridVideoAdapter.Gr
     }
 
     public class GridVideoViewHolder extends BaseRvViewHolder {
-        public ImageView ivCover;
+        @BindView(R.id.iv_cover)
+        ImageView ivCover;
 
         public GridVideoViewHolder(View itemView) {
             super(itemView);
 
-            ivCover = itemView.findViewById(R.id.iv_cover);
+            ButterKnife.bind(this, itemView);
         }
     }
 }
