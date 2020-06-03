@@ -68,6 +68,7 @@
                 android:scaleType="centerCrop"/>
 
             <ImageView
+                android:id="@+id/iv_focus"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@mipmap/add_focus"
@@ -96,9 +97,10 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/tv_likecount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="22.5w"
+            tools:text="22.5w"
             android:textSize="12sp"
             android:textColor="@color/white"
             android:layout_marginTop="-18dp"/>
@@ -113,9 +115,10 @@
             android:text="@string/icon_comment"/>
 
         <TextView
+            android:id="@+id/tv_commentcount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3823"
+            tools:text="3823"
             android:layout_marginTop="6dp"
             android:textSize="12sp"
             android:textColor="@color/white"/>
@@ -130,9 +133,10 @@
             android:text="@string/icon_more"/>
 
         <TextView
+            android:id="@+id/tv_sharecount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3371"
+            tools:text="3371"
             android:textSize="12sp"
             android:textColor="@color/white"/>
 

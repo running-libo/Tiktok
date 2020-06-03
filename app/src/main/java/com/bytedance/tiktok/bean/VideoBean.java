@@ -19,6 +19,12 @@ public class VideoBean {
     private boolean isLiked;
     /** 与视频发布距离 */
     private float distance;
+    /** 是否已关注 */
+    private boolean isFocused;
+    /** 点赞数 */
+    private String likeCount;
+    /** 评论数 */
+    private int commentCount;
 
     public int getVideoId() {
         return videoId;
@@ -74,6 +80,30 @@ public class VideoBean {
 
     public void setDistance(float distance) {
         this.distance = distance;
+    }
+
+    public boolean isFocused() {
+        return isFocused;
+    }
+
+    public void setFocused(boolean focused) {
+        isFocused = focused;
+    }
+
+    public String getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(String likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public int getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(int commentCount) {
+        this.commentCount = commentCount;
     }
 
     public static class UserBean {

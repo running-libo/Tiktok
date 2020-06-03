@@ -49,6 +49,16 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
     TextView tvNickname;
     @BindView(R.id.iv_head_anim)
     CircleImageView ivHeadAnim;
+    @BindView(R.id.iv_like)
+    IconFontTextView ivLike;
+    @BindView(R.id.tv_likecount)
+    TextView tvLikecount;
+    @BindView(R.id.tv_commentcount)
+    TextView tvCommentcount;
+    @BindView(R.id.tv_sharecount)
+    TextView tvSharecount;
+    @BindView(R.id.iv_focus)
+    ImageView ivFocus;
     //    private ImageView ivHead;
 //    private IconFontTextView ivLike;
 //    private IconFontTextView ivComment;
@@ -85,6 +95,23 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
         tvNickname.setText(videoData.getUserBean().getNickName());
         autoLinkTextView.setText(videoData.getContent());
         ivHeadAnim.setImageResource(videoData.getUserBean().getHead());
+        tvLikecount.setText(videoData.getLikeCount());
+        tvCommentcount.setText(videoData.getCommentCount() + "");
+        tvSharecount.setText(3452 + "");
+
+        //点赞状态
+        if (videoData.isLiked()) {
+            ivLike.setTextColor(getResources().getColor(R.color.color_FF0041));
+        } else {
+            ivLike.setTextColor(getResources().getColor(R.color.white));
+        }
+
+        //关注状态
+        if (videoData.isFocused()) {
+            ivFocus.setVisibility(GONE);
+        } else {
+            ivFocus.setVisibility(VISIBLE);
+        }
     }
 
     public void setListener(OnVideoControllerListener listener) {
