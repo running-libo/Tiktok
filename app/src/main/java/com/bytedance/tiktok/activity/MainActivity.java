@@ -5,14 +5,12 @@ import androidx.viewpager.widget.ViewPager;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseActivity;
 import com.bytedance.tiktok.base.CommPagerAdapter;
-import com.bytedance.tiktok.bean.HeadClickEvent;
+import com.bytedance.tiktok.bean.MainPageChangeEvent;
 import com.bytedance.tiktok.bean.PauseVideoEvent;
 import com.bytedance.tiktok.fragment.MainFragment;
 import com.bytedance.tiktok.fragment.PersonalHomeFragment;
 import com.bytedance.tiktok.utils.RxBus;
-
 import java.util.ArrayList;
-
 import butterknife.BindView;
 import rx.functions.Action1;
 
@@ -42,9 +40,9 @@ public class MainActivity extends BaseActivity {
         viewPager.setAdapter(pagerAdapter);
 
         //点击头像切换页面
-        RxBus.getDefault().toObservable(HeadClickEvent.class)
-                .subscribe((Action1<HeadClickEvent>) event -> {
-                    viewPager.setCurrentItem(1);
+        RxBus.getDefault().toObservable(MainPageChangeEvent.class)
+                .subscribe((Action1<MainPageChangeEvent>) event -> {
+                    viewPager.setCurrentItem(event.getPage());
                 });
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

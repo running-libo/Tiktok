@@ -6,25 +6,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
-
 import com.androidkun.xtablayout.XTabLayout;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.activity.FocusActivity;
 import com.bytedance.tiktok.activity.ShowImageActivity;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
+import com.bytedance.tiktok.bean.MainPageChangeEvent;
+import com.bytedance.tiktok.utils.RxBus;
 import com.bytedance.tiktok.view.CircleImageView;
 import com.bytedance.tiktok.view.IconFontTextView;
 import com.google.android.material.appbar.AppBarLayout;
-
 import java.util.ArrayList;
-
 import butterknife.BindView;
 
 /**
@@ -85,6 +83,7 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
 
         setAppbarLayoutPercent();
 
+        ivReturn.setOnClickListener(this);
         ivHead.setOnClickListener(this);
         ivBg.setOnClickListener(this);
         llFocus.setOnClickListener(this);
@@ -125,6 +124,9 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.iv_return:
+                RxBus.getDefault().post(new MainPageChangeEvent(0));
+                break;
             case R.id.iv_head:
                 transitionAnim(ivHead);
                 break;

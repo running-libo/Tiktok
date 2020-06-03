@@ -32,8 +32,6 @@ public class CommentAdapter extends BaseRvAdapter<String, CommentAdapter.Comment
     public CommentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_comment, parent, false);
         return new CommentViewHolder(view);
-
-        
     }
 
     public class CommentViewHolder extends BaseRvViewHolder {

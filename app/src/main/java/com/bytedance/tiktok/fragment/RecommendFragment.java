@@ -10,7 +10,7 @@ import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.activity.MainActivity;
 import com.bytedance.tiktok.adapter.VideoAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
-import com.bytedance.tiktok.bean.HeadClickEvent;
+import com.bytedance.tiktok.bean.MainPageChangeEvent;
 import com.bytedance.tiktok.bean.PauseVideoEvent;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
 import com.bytedance.tiktok.utils.RxBus;
@@ -22,7 +22,6 @@ import com.bytedance.tiktok.view.ShareDialog;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.ViewPagerLayoutManager;
 import java.util.ArrayList;
-
 import butterknife.BindView;
 import rx.functions.Action1;
 
@@ -214,7 +213,7 @@ public class RecommendFragment extends BaseFragment {
         controllerView.setListener(new OnVideoControllerListener() {
             @Override
             public void onHeadClick() {
-                RxBus.getDefault().post(new HeadClickEvent());
+                RxBus.getDefault().post(new MainPageChangeEvent(1));
             }
 
             @Override

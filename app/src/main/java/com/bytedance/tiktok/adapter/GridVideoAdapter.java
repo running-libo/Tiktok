@@ -6,16 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
+import android.widget.TextView;
 import androidx.annotation.NonNull;
-
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.activity.PlayListActivity;
 import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
-
+import com.bytedance.tiktok.bean.VideoBean;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -24,15 +22,17 @@ import butterknife.ButterKnife;
  * create on 2020-05-20
  * description
  */
-public class GridVideoAdapter extends BaseRvAdapter<Integer, GridVideoAdapter.GridVideoViewHolder> {
+public class GridVideoAdapter extends BaseRvAdapter<VideoBean, GridVideoAdapter.GridVideoViewHolder> {
 
-    public GridVideoAdapter(Context context, List<Integer> datas) {
+    public GridVideoAdapter(Context context, List<VideoBean> datas) {
         super(context, datas);
     }
 
     @Override
-    protected void onBindData(GridVideoViewHolder holder, Integer data, int position) {
-        holder.ivCover.setBackgroundResource(data);
+    protected void onBindData(GridVideoViewHolder holder, VideoBean videoBean, int position) {
+        holder.ivCover.setBackgroundResource(videoBean.getCoverRes());
+        holder.tvContent.setText(videoBean.getContent());
+        holder.tvDistance.setText(videoBean.getDistance() + "km");
 
         holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(context, PlayListActivity.class)));
     }
@@ -47,6 +47,10 @@ public class GridVideoAdapter extends BaseRvAdapter<Integer, GridVideoAdapter.Gr
     public class GridVideoViewHolder extends BaseRvViewHolder {
         @BindView(R.id.iv_cover)
         ImageView ivCover;
+        @BindView(R.id.tv_content)
+        TextView tvContent;
+        @BindView(R.id.tv_distance)
+        TextView tvDistance;
 
         public GridVideoViewHolder(View itemView) {
             super(itemView);
