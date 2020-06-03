@@ -36,7 +36,7 @@ public class WorkFragment extends BaseFragment {
     }
 
     private void loadData() {
-        int[] picIds = new int[] {R.mipmap.cover_one, R.mipmap.cover_two, R.mipmap.cover_three, R.mipmap.cover_four, R.mipmap.head};
+        int[] picIds = new int[] {R.mipmap.cover_one, R.mipmap.cover_two, R.mipmap.cover_three, R.mipmap.cover_four, R.mipmap.head_six};
         for (int i=0;i<25;i++) {
             int pos = (int) (Math.random()*5);
             datas.add(picIds[pos]);

@@ -17,6 +17,7 @@
         android:layout_marginRight="120dp">
 
         <TextView
+            android:id="@+id/tv_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" @大致爱高清"
@@ -62,7 +63,7 @@
                 android:id="@+id/iv_head"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                android:src="@mipmap/head"
+                tools:src="@mipmap/head_six"
                 app:es_shape_type="round"
                 android:scaleType="centerCrop"/>
 
@@ -149,9 +150,10 @@
                 android:background="@mipmap/ic_record" />
 
             <com.bytedance.tiktok.view.CircleImageView
+                android:id="@+id/iv_head_anim"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
-                android:src="@mipmap/head"
+                tools:src="@mipmap/head_six"
                 app:ease_radius="15dp"
                 app:es_shape_type="round"
                 android:layout_centerInParent="true"/>

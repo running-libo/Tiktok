@@ -10,7 +10,7 @@
     <com.bytedance.tiktok.view.CircleImageView
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@mipmap/head"
+        android:src="@mipmap/head_six"
         app:es_shape_type="round" />
 
     <TextView

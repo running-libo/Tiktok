@@ -33,6 +33,7 @@ public class GridVideoAdapter extends BaseRvAdapter<VideoBean, GridVideoAdapter.
         holder.ivCover.setBackgroundResource(videoBean.getCoverRes());
         holder.tvContent.setText(videoBean.getContent());
         holder.tvDistance.setText(videoBean.getDistance() + "km");
+        holder.ivHead.setImageResource(videoBean.getUserBean().getHead());
 
         holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(context, PlayListActivity.class)));
     }
@@ -51,6 +52,8 @@ public class GridVideoAdapter extends BaseRvAdapter<VideoBean, GridVideoAdapter.
         TextView tvContent;
         @BindView(R.id.tv_distance)
         TextView tvDistance;
+        @BindView(R.id.iv_head)
+        ImageView ivHead;
 
         public GridVideoViewHolder(View itemView) {
             super(itemView);

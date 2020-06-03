@@ -9,13 +9,18 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
 import com.airbnb.lottie.LottieAnimationView;
 import com.bytedance.tiktok.R;
+import com.bytedance.tiktok.bean.VideoBean;
 import com.bytedance.tiktok.utils.AutoLinkHerfManager;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
 import com.bytedance.tiktok.utils.autolinktextview.AutoLinkTextView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import static android.view.animation.Animation.INFINITE;
 
 /**
@@ -40,13 +45,18 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
     ImageView ivRecord;
     @BindView(R.id.rl_record)
     RelativeLayout rlRecord;
-//    private ImageView ivHead;
+    @BindView(R.id.tv_nickname)
+    TextView tvNickname;
+    @BindView(R.id.iv_head_anim)
+    CircleImageView ivHeadAnim;
+    //    private ImageView ivHead;
 //    private IconFontTextView ivLike;
 //    private IconFontTextView ivComment;
 //    private IconFontTextView ivShare;
 //    private AutoLinkTextView autoLinkTextView;
 //    private RelativeLayout ivRecord, rlLike;
     private OnVideoControllerListener listener;
+    private VideoBean videoData;
 
     public ControllerView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -66,6 +76,15 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
         AutoLinkHerfManager.setContent("只有 #允儿 的脸我才敢拉这么近 @肖战 @王一博 来呀来呀", autoLinkTextView);
 
         setRotateAnim();
+    }
+
+    public void setVideoData(VideoBean videoData) {
+        this.videoData = videoData;
+
+        ivHead.setImageResource(videoData.getUserBean().getHead());
+        tvNickname.setText(videoData.getUserBean().getNickName());
+        autoLinkTextView.setText(videoData.getContent());
+        ivHeadAnim.setImageResource(videoData.getUserBean().getHead());
     }
 
     public void setListener(OnVideoControllerListener listener) {

@@ -14,5 +14,5 @@
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
         android:transitionName="@string/trans"
-        android:background="@mipmap/head"/>
+        android:background="@mipmap/head_six"/>
 </RelativeLayout>

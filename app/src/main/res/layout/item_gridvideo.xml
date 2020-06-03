@@ -29,13 +29,14 @@
             android:layout_margin="10dp"/>
 
         <com.bytedance.tiktok.view.CircleImageView
+            android:id="@+id/iv_head"
             android:layout_width="25dp"
             android:layout_height="25dp"
             app:es_shape_type="round"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
             android:layout_margin="10dp"
-            android:src="@mipmap/head"/>
+            android:src="@mipmap/head_six"/>
     </RelativeLayout>
 
     <TextView

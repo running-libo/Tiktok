@@ -8,10 +8,10 @@ import androidx.annotation.NonNull;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
+import com.bytedance.tiktok.bean.VideoBean;
 import com.bytedance.tiktok.view.ControllerView;
 import com.bytedance.tiktok.view.LikeView;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -20,15 +20,15 @@ import butterknife.ButterKnife;
  * create on 2020-05-20
  * description
  */
-public class VideoAdapter extends BaseRvAdapter<String, VideoAdapter.VideoViewHolder> {
+public class VideoAdapter extends BaseRvAdapter<VideoBean, VideoAdapter.VideoViewHolder> {
 
-    public VideoAdapter(Context context, List<String> datas) {
+    public VideoAdapter(Context context, List<VideoBean> datas) {
         super(context, datas);
     }
 
     @Override
-    protected void onBindData(VideoViewHolder holder, String data, int position) {
-
+    protected void onBindData(VideoViewHolder holder, VideoBean data, int position) {
+        holder.controllerView.setVideoData(data);
     }
 
     @NonNull

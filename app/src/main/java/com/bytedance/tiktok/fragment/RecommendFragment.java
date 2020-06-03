@@ -10,8 +10,10 @@ import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.activity.MainActivity;
 import com.bytedance.tiktok.adapter.VideoAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
+import com.bytedance.tiktok.bean.DataCreate;
 import com.bytedance.tiktok.bean.MainPageChangeEvent;
 import com.bytedance.tiktok.bean.PauseVideoEvent;
+import com.bytedance.tiktok.bean.VideoBean;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
 import com.bytedance.tiktok.utils.RxBus;
 import com.bytedance.tiktok.view.CommentDialog;
@@ -33,13 +35,11 @@ import rx.functions.Action1;
 public class RecommendFragment extends BaseFragment {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
-    private ArrayList<String> datas = new ArrayList<>();
     private VideoAdapter adapter;
     private ViewPagerLayoutManager viewPagerLayoutManager;
     /** 当前播放视频位置 */
     private int curPlayPos = -1;
     private FullScreenVideoView videoView;
-    private ArrayList<Integer> videoIds = new ArrayList<>();
     @BindView(R.id.refreshlayout)
     SwipeRefreshLayout refreshLayout;
 
@@ -51,7 +51,7 @@ public class RecommendFragment extends BaseFragment {
     @Override
     protected void init() {
 
-        adapter = new VideoAdapter(getActivity(), datas);
+        adapter = new VideoAdapter(getActivity(), DataCreate.datas);
         recyclerView.setAdapter(adapter);
 
         videoView = new FullScreenVideoView(getActivity());
@@ -59,8 +59,6 @@ public class RecommendFragment extends BaseFragment {
         setViewPagerLayoutManager();
 
         setRefreshEvent();
-
-        loadData();
 
         //监听播放或暂停事件
         RxBus.getDefault().toObservable(PauseVideoEvent.class)
@@ -117,20 +115,6 @@ public class RecommendFragment extends BaseFragment {
                 playCurVideo(position);
             }
         });
-    }
-
-    private void loadData() {
-        for (int i=0;i<6;i++) {
-            datas.add("");
-        }
-        adapter.notifyDataSetChanged();
-
-        videoIds.add(R.raw.video_one);
-        videoIds.add(R.raw.video_two);
-        videoIds.add(R.raw.video_three);
-        videoIds.add(R.raw.video_four);
-        videoIds.add(R.raw.video_five);
-        videoIds.add(R.raw.video_six);
     }
 
     private void setRefreshEvent() {
@@ -200,7 +184,7 @@ public class RecommendFragment extends BaseFragment {
      * 自动播放视频
      */
     private void autoPlayVideo(int position) {
-        String bgVideoPath = "android.resource://" + getActivity().getPackageName() + "/" + videoIds.get(position);
+        String bgVideoPath = "android.resource://" + getActivity().getPackageName() + "/" + DataCreate.datas.get(position).getVideoRes();
         videoView.setVideoPath(bgVideoPath);
         videoView.start();
         videoView.setOnPreparedListener(mp -> mp.setLooping(true));
