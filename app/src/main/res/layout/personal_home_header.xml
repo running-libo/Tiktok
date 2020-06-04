@@ -28,9 +28,10 @@
             android:layout_centerVertical="true"/>
 
         <TextView
+            android:id="@+id/tv_addfocus"
             android:layout_width="150dp"
             android:layout_height="42dp"
-            android:text="+ 关注"
+            android:text="关注"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:gravity="center"

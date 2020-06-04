@@ -17,5 +17,8 @@ public class ShowImageActivity extends BaseActivity {
     @Override
     protected void init() {
         ivHead.setOnClickListener(v -> finish());
+
+        int headRes = getIntent().getIntExtra("res", 0);
+        ivHead.setImageResource(headRes);
     }
 }

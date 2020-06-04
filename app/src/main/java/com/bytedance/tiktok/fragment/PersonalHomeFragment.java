@@ -6,12 +6,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
+
 import com.androidkun.xtablayout.XTabLayout;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.activity.FocusActivity;
@@ -20,12 +22,15 @@ import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
 import com.bytedance.tiktok.bean.CurUserBean;
 import com.bytedance.tiktok.bean.MainPageChangeEvent;
+import com.bytedance.tiktok.bean.VideoBean;
 import com.bytedance.tiktok.utils.NumUtils;
 import com.bytedance.tiktok.utils.RxBus;
 import com.bytedance.tiktok.view.CircleImageView;
 import com.bytedance.tiktok.view.IconFontTextView;
 import com.google.android.material.appbar.AppBarLayout;
+
 import java.util.ArrayList;
+
 import butterknife.BindView;
 import rx.functions.Action1;
 
@@ -71,9 +76,12 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
     TextView tvFocusCount;
     @BindView(R.id.tv_fans_count)
     TextView tvFansCount;
+    @BindView(R.id.tv_addfocus)
+    TextView tvAddfocus;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
-    String[] titleStr = new String[]{"作品 " , "动态 " , "喜欢 " };
+    String[] titleStr = new String[]{"作品 ", "动态 ", "喜欢 "};
+    private VideoBean.UserBean curUserBean;
 
 
     @Override
@@ -105,15 +113,19 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
      *
      * @param view
      */
-    public void transitionAnim(View view) {
+    public void transitionAnim(View view, int res) {
         ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), view, getString(R.string.trans));
-        ActivityCompat.startActivity(getActivity(), new Intent(getActivity(), ShowImageActivity.class), compat.toBundle());
+        Intent intent = new Intent(getActivity(), ShowImageActivity.class);
+        intent.putExtra("res", res);
+        ActivityCompat.startActivity(getActivity(), intent, compat.toBundle());
     }
 
     public void setUserInfo() {
         RxBus.getDefault().toObservable(CurUserBean.class).subscribe((Action1<CurUserBean>) curUserBean -> {
 
             coordinatorLayoutBackTop();
+
+            this.curUserBean = curUserBean.getUserBean();
 
             ivBg.setImageResource(curUserBean.getUserBean().getHead());
             ivHead.setImageResource(curUserBean.getUserBean().getHead());
@@ -187,10 +199,10 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
                 RxBus.getDefault().post(new MainPageChangeEvent(0));
                 break;
             case R.id.iv_head:
-                transitionAnim(ivHead);
+                transitionAnim(ivHead, curUserBean.getHead());
                 break;
             case R.id.iv_bg:
-                transitionAnim(ivBg);
+                transitionAnim(ivBg, curUserBean.getHead());
                 break;
             case R.id.ll_focus:
                 startActivity(new Intent(getActivity(), FocusActivity.class));
