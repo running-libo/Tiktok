@@ -21,7 +21,6 @@
             android:id="@+id/iv_head"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@mipmap/head_six"
             app:es_shape_type="round"
             android:layout_marginLeft="20dp"
             android:scaleType="centerCrop"

@@ -13,6 +13,5 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
-        android:transitionName="@string/trans"
-        android:background="@mipmap/head_six"/>
+        android:transitionName="@string/trans"/>
 </RelativeLayout>

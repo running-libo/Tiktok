@@ -18,15 +18,28 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop" />
 
-        <TextView
-            android:id="@+id/tv_distance"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:text="距离 >10km"
-            android:textSize="12sp"
-            android:textColor="@color/white"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp">
+
+            <com.bytedance.tiktok.view.IconFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/icon_location_fill"
+                android:textSize="13sp"
+                android:textColor="@color/white"/>
+
+            <com.bytedance.tiktok.view.IconFontTextView
+                android:id="@+id/tv_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="10km"
+                android:layout_marginLeft="2dp"
+                android:textSize="13sp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
 
         <com.bytedance.tiktok.view.CircleImageView
             android:id="@+id/iv_head"
@@ -35,8 +48,7 @@
             app:es_shape_type="round"
             android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:layout_margin="10dp"
-            android:src="@mipmap/head_six"/>
+            android:layout_margin="10dp"/>
     </RelativeLayout>
 
     <TextView

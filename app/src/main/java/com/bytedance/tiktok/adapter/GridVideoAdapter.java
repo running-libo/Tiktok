@@ -13,6 +13,8 @@ import com.bytedance.tiktok.activity.PlayListActivity;
 import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
 import com.bytedance.tiktok.bean.VideoBean;
+import com.bytedance.tiktok.view.IconFontTextView;
+
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,7 +34,7 @@ public class GridVideoAdapter extends BaseRvAdapter<VideoBean, GridVideoAdapter.
     protected void onBindData(GridVideoViewHolder holder, VideoBean videoBean, int position) {
         holder.ivCover.setBackgroundResource(videoBean.getCoverRes());
         holder.tvContent.setText(videoBean.getContent());
-        holder.tvDistance.setText(videoBean.getDistance() + "km");
+        holder.tvDistance.setText(videoBean.getDistance() + " km");
         holder.ivHead.setImageResource(videoBean.getUserBean().getHead());
 
         holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(context, PlayListActivity.class)));
@@ -51,7 +53,7 @@ public class GridVideoAdapter extends BaseRvAdapter<VideoBean, GridVideoAdapter.
         @BindView(R.id.tv_content)
         TextView tvContent;
         @BindView(R.id.tv_distance)
-        TextView tvDistance;
+        IconFontTextView tvDistance;
         @BindView(R.id.iv_head)
         ImageView ivHead;
 

@@ -14,7 +14,6 @@ import com.bytedance.tiktok.bean.CurUserBean;
 import com.bytedance.tiktok.bean.DataCreate;
 import com.bytedance.tiktok.bean.MainPageChangeEvent;
 import com.bytedance.tiktok.bean.PauseVideoEvent;
-import com.bytedance.tiktok.bean.VideoBean;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
 import com.bytedance.tiktok.utils.RxBus;
 import com.bytedance.tiktok.view.CommentDialog;
@@ -146,6 +145,7 @@ public class RecommendFragment extends BaseFragment {
         LikeView likeView = rootView.findViewById(R.id.likeview);
         ControllerView controllerView = rootView.findViewById(R.id.controller);
         ImageView ivPlay = rootView.findViewById(R.id.iv_play);
+        ImageView ivCover = rootView.findViewById(R.id.iv_cover);
         ivPlay.setAlpha(0.4f);
 
         //播放暂停事件
@@ -168,7 +168,7 @@ public class RecommendFragment extends BaseFragment {
 
         dettachParentView(rootView);
 
-        autoPlayVideo(curPlayPos);
+        autoPlayVideo(curPlayPos, ivCover);
     }
 
     /**
@@ -180,17 +180,32 @@ public class RecommendFragment extends BaseFragment {
         if (parent != null) {
             parent.removeView(videoView);
         }
-        rootView.addView(videoView, 1);
+        rootView.addView(videoView, 0);
     }
 
     /**
      * 自动播放视频
      */
-    private void autoPlayVideo(int position) {
+    private void autoPlayVideo(int position, ImageView ivCover) {
         String bgVideoPath = "android.resource://" + getActivity().getPackageName() + "/" + DataCreate.datas.get(position).getVideoRes();
         videoView.setVideoPath(bgVideoPath);
         videoView.start();
-        videoView.setOnPreparedListener(mp -> mp.setLooping(true));
+        videoView.setOnPreparedListener(mp -> {
+            mp.setLooping(true);
+
+            //延迟取消封面，避免加载视频黑屏
+            new CountDownTimer(200, 200) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+
+                }
+
+                @Override
+                public void onFinish() {
+                    ivCover.setVisibility(View.GONE);
+                }
+            }.start();
+        });
     }
 
     /**

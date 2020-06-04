@@ -34,8 +34,7 @@
                         android:id="@+id/iv_bg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scaleType="centerCrop"
-                        android:src="@mipmap/head_six"/>
+                        android:scaleType="centerCrop"/>
 
                     <include layout="@layout/personal_home_header"/>
                 </RelativeLayout>

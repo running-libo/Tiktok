@@ -17,6 +17,8 @@
     <string name="icon_qq_space">&#xe61f;</string>
     <!-- 更多 -->
     <string name="icon_more">&#xe61b;</string>
+    <!-- 地理位置 -->
+    <string name="icon_location_fill">&#xe624;</string>
 
     <string name="trans">trans</string>
 
