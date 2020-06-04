@@ -10,7 +10,6 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.airbnb.lottie.LottieAnimationView;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.bean.VideoBean;
@@ -18,10 +17,8 @@ import com.bytedance.tiktok.utils.AutoLinkHerfManager;
 import com.bytedance.tiktok.utils.NumUtils;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
 import com.bytedance.tiktok.utils.autolinktextview.AutoLinkTextView;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 import static android.view.animation.Animation.INFINITE;
 
 /**

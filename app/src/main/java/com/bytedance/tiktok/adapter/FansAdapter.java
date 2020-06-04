@@ -4,12 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
-
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
+import com.bytedance.tiktok.bean.VideoBean;
+
 import java.util.List;
 
 /**
@@ -17,14 +17,14 @@ import java.util.List;
  * create on 2020-05-24
  * description
  */
-public class FansAdapter extends BaseRvAdapter<String, FansAdapter.FansViewHolder> {
+public class FansAdapter extends BaseRvAdapter<VideoBean.UserBean, FansAdapter.FansViewHolder> {
 
-    public FansAdapter(Context context, List<String> datas) {
+    public FansAdapter(Context context, List<VideoBean.UserBean> datas) {
         super(context, datas);
     }
 
     @Override
-    protected void onBindData(FansViewHolder holder, String data, int position) {
+    protected void onBindData(FansViewHolder holder, VideoBean.UserBean userBean, int position) {
 
     }
 
