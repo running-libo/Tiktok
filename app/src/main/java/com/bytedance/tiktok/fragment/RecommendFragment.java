@@ -10,6 +10,7 @@ import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.activity.MainActivity;
 import com.bytedance.tiktok.adapter.VideoAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
+import com.bytedance.tiktok.bean.CurUserBean;
 import com.bytedance.tiktok.bean.DataCreate;
 import com.bytedance.tiktok.bean.MainPageChangeEvent;
 import com.bytedance.tiktok.bean.PauseVideoEvent;
@@ -23,7 +24,6 @@ import com.bytedance.tiktok.view.LikeView;
 import com.bytedance.tiktok.view.ShareDialog;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener;
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.ViewPagerLayoutManager;
-import java.util.ArrayList;
 import butterknife.BindView;
 import rx.functions.Action1;
 
@@ -160,6 +160,9 @@ public class RecommendFragment extends BaseFragment {
         });
 
         likeShareEvent(controllerView);
+
+        //当前播放视频的作者
+        RxBus.getDefault().post(new CurUserBean(DataCreate.datas.get(position).getUserBean()));
 
         curPlayPos = position;
 

@@ -64,6 +64,7 @@
         android:padding="12dp">
 
         <TextView
+            android:id="@+id/tv_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="小橘子衣橱"
@@ -85,6 +86,7 @@
             android:layout_marginTop="10dp"/>
 
         <TextView
+            android:id="@+id/tv_sign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="保持可爱 赶快长大 \n 这里是你的衣橱间"
@@ -129,6 +131,7 @@
             android:layout_marginTop="20dp">
 
             <TextView
+                android:id="@+id/tv_getlike_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="14w"
@@ -148,6 +151,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tv_focus_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="310"
@@ -169,6 +173,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tv_fans_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="291w"

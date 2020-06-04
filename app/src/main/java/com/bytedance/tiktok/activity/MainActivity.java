@@ -9,6 +9,7 @@ import com.bytedance.tiktok.bean.MainPageChangeEvent;
 import com.bytedance.tiktok.bean.PauseVideoEvent;
 import com.bytedance.tiktok.fragment.MainFragment;
 import com.bytedance.tiktok.fragment.PersonalHomeFragment;
+import com.bytedance.tiktok.fragment.RecommendFragment;
 import com.bytedance.tiktok.utils.RxBus;
 import java.util.ArrayList;
 import butterknife.BindView;
@@ -25,6 +26,8 @@ public class MainActivity extends BaseActivity {
     private CommPagerAdapter pagerAdapter;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     public static int curMainPage;
+    private MainFragment mainFragment = new MainFragment();
+    private PersonalHomeFragment personalHomeFragment = new PersonalHomeFragment();
 
     @Override
     protected int setLayoutId() {
@@ -34,8 +37,8 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void init() {
 
-        fragments.add(new MainFragment());
-        fragments.add(new PersonalHomeFragment());
+        fragments.add(mainFragment);
+        fragments.add(personalHomeFragment);
         pagerAdapter = new CommPagerAdapter(getSupportFragmentManager(), fragments, new String[]{"",""});
         viewPager.setAdapter(pagerAdapter);
 
@@ -57,7 +60,7 @@ public class MainActivity extends BaseActivity {
 
                 if (position == 0) {
                     RxBus.getDefault().post(new PauseVideoEvent(true));
-                } else {
+                } else if (position == 1){
                     RxBus.getDefault().post(new PauseVideoEvent(false));
                 }
             }

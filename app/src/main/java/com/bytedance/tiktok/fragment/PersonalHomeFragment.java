@@ -17,6 +17,7 @@ import com.bytedance.tiktok.activity.FocusActivity;
 import com.bytedance.tiktok.activity.ShowImageActivity;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
+import com.bytedance.tiktok.bean.CurUserBean;
 import com.bytedance.tiktok.bean.MainPageChangeEvent;
 import com.bytedance.tiktok.utils.RxBus;
 import com.bytedance.tiktok.view.CircleImageView;
@@ -24,6 +25,7 @@ import com.bytedance.tiktok.view.IconFontTextView;
 import com.google.android.material.appbar.AppBarLayout;
 import java.util.ArrayList;
 import butterknife.BindView;
+import rx.functions.Action1;
 
 /**
  * create by libo
@@ -57,9 +59,20 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
     AppBarLayout appBarLayout;
     @BindView(R.id.viewpager)
     ViewPager viewPager;
+    @BindView(R.id.tv_nickname)
+    TextView tvNickname;
+    @BindView(R.id.tv_sign)
+    TextView tvSign;
+    @BindView(R.id.tv_getlike_count)
+    TextView tvGetLikeCount;
+    @BindView(R.id.tv_focus_count)
+    TextView tvFocusCount;
+    @BindView(R.id.tv_fans_count)
+    TextView tvFansCount;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
-    private String[] titles = new String[]{"作品 128", "动态 128", "喜欢 802"};
+    String[] titleStr = new String[]{"作品 " , "动态 " , "喜欢 " };
+
 
     @Override
     protected int setLayoutId() {
@@ -72,15 +85,6 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
         //解决toolbar左边距问题
         toolbar.setContentInsetsAbsolute(0, 0);
 
-        for (int i = 0; i < titles.length; i++) {
-            fragments.add(new WorkFragment());
-            tabLayout.addTab(tabLayout.newTab().setText(titles[i]));
-        }
-
-        pagerAdapter = new CommPagerAdapter(getChildFragmentManager(), fragments, titles);
-        viewPager.setAdapter(pagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
-
         setAppbarLayoutPercent();
 
         ivReturn.setOnClickListener(this);
@@ -88,6 +92,10 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
         ivBg.setOnClickListener(this);
         llFocus.setOnClickListener(this);
         llFans.setOnClickListener(this);
+
+        setUserInfo();
+
+        setTabLayout();
     }
 
     /**
@@ -98,6 +106,32 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
     public void transitionAnim(View view) {
         ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), view, getString(R.string.trans));
         ActivityCompat.startActivity(getActivity(), new Intent(getActivity(), ShowImageActivity.class), compat.toBundle());
+    }
+
+    public void setUserInfo() {
+        RxBus.getDefault().toObservable(CurUserBean.class).subscribe((Action1<CurUserBean>) curUserBean -> {
+            ivBg.setImageResource(curUserBean.getUserBean().getHead());
+            ivHead.setImageResource(curUserBean.getUserBean().getHead());
+            tvNickname.setText(curUserBean.getUserBean().getNickName());
+            tvSign.setText(curUserBean.getUserBean().getSign());
+
+            tvGetLikeCount.setText(curUserBean.getUserBean().getSubCount() + "");
+            tvFocus.setText(curUserBean.getUserBean().getFocusCount() + "");
+            tvFansCount.setText(curUserBean.getUserBean().getFansCount() + "");
+        });
+    }
+
+    private void setTabLayout() {
+//        String[] titles = new String[]{"作品 " + userInfo.getWorkCount(), "动态 " + userInfo.getDynamicCount(), "喜欢 " + userInfo.getLikeCount()};
+
+        for (int i = 0; i < titleStr.length; i++) {
+            fragments.add(new WorkFragment());
+            tabLayout.addTab(tabLayout.newTab().setText(titleStr[i]));
+        }
+
+        pagerAdapter = new CommPagerAdapter(getChildFragmentManager(), fragments, titleStr);
+        viewPager.setAdapter(pagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
     /**

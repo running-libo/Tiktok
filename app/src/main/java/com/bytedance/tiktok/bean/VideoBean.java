@@ -114,7 +114,7 @@ public class VideoBean {
         private String sign;
         /** 是否已关注 */
         private boolean isFocused;
-        /** 点赞数量 */
+        /** 获赞数量 */
         private int subCount;
         /** 关注数量 */
         private int focusCount;
