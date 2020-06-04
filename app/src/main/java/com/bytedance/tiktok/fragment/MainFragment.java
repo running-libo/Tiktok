@@ -29,6 +29,7 @@ public class MainFragment extends BaseFragment {
     XTabLayout tabMainMenu;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
+    public static int curPage;
 
     @Override
     protected int setLayoutId() {
@@ -65,6 +66,8 @@ public class MainFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
+
+                curPage = position;
 
                 if (position == 1) {
                     //继续播放

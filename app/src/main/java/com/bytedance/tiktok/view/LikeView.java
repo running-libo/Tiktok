@@ -27,6 +27,7 @@ public class LikeView extends RelativeLayout {
     /** 单击是否有点赞效果 */
     private boolean canSingleTabShow = false;
     private OnPlayPauseListener onPlayPauseListener;
+    private OnLikeListener onLikeListener;
 
     public LikeView(Context context) {
         super(context);
@@ -43,6 +44,7 @@ public class LikeView extends RelativeLayout {
             @Override
             public boolean onDoubleTap(MotionEvent e) {
                 addLikeView(e);
+                onLikeListener.onLikeListener();
                 return true;
             }
 
@@ -109,7 +111,23 @@ public class LikeView extends RelativeLayout {
         void onPlayOrPause();
     }
 
+    /**
+     * 设置单机播放暂停事件
+     * @param onPlayPauseListener
+     */
     public void setOnPlayPauseListener(OnPlayPauseListener onPlayPauseListener) {
         this.onPlayPauseListener = onPlayPauseListener;
+    }
+
+    public interface OnLikeListener {
+        void onLikeListener();
+    }
+
+    /**
+     * 设置双击点赞事件
+     * @param onLikeListener
+     */
+    public void setOnLikeListener(OnLikeListener onLikeListener) {
+        this.onLikeListener = onLikeListener;
     }
 }

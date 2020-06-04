@@ -33,6 +33,13 @@ public class VideoAdapter extends BaseRvAdapter<VideoBean, VideoAdapter.VideoVie
         holder.controllerView.setVideoData(videoBean);
 
         holder.ivCover.setImageResource(videoBean.getCoverRes());
+
+        holder.likeView.setOnLikeListener(() -> {
+            if (!videoBean.isLiked()) {  //未点赞，会有点赞效果，否则无
+                holder.controllerView.like();
+            }
+
+        });
     }
 
     @NonNull

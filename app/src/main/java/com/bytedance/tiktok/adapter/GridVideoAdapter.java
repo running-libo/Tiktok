@@ -37,7 +37,10 @@ public class GridVideoAdapter extends BaseRvAdapter<VideoBean, GridVideoAdapter.
         holder.tvDistance.setText(videoBean.getDistance() + " km");
         holder.ivHead.setImageResource(videoBean.getUserBean().getHead());
 
-        holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(context, PlayListActivity.class)));
+        holder.itemView.setOnClickListener(v -> {
+            PlayListActivity.initPos = position;
+            context.startActivity(new Intent(context, PlayListActivity.class));
+        });
     }
 
     @NonNull

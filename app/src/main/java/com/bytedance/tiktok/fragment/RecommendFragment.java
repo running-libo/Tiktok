@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.activity.MainActivity;
+import com.bytedance.tiktok.activity.PlayListActivity;
 import com.bytedance.tiktok.adapter.VideoAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.bean.CurUserBean;
@@ -75,7 +76,8 @@ public class RecommendFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
 
-        if (MainActivity.curMainPage == 0) {
+        //返回时，推荐页面可见，则继续播放视频
+        if (MainActivity.curMainPage == 0 && MainFragment.curPage == 1) {
             videoView.start();
         }
     }
@@ -97,11 +99,12 @@ public class RecommendFragment extends BaseFragment {
     private void setViewPagerLayoutManager() {
         viewPagerLayoutManager = new ViewPagerLayoutManager(getActivity());
         recyclerView.setLayoutManager(viewPagerLayoutManager);
+        recyclerView.scrollToPosition(PlayListActivity.initPos);
 
         viewPagerLayoutManager.setOnViewPagerListener(new OnViewPagerListener() {
             @Override
             public void onInitComplete() {
-                playCurVideo(0);
+                playCurVideo(PlayListActivity.initPos);
             }
 
             @Override
@@ -159,13 +162,15 @@ public class RecommendFragment extends BaseFragment {
             }
         });
 
+        //评论点赞事件
         likeShareEvent(controllerView);
 
-        //当前播放视频的作者
+        //切换播放视频的作者主页数据
         RxBus.getDefault().post(new CurUserBean(DataCreate.datas.get(position).getUserBean()));
 
         curPlayPos = position;
 
+        //切换播放器位置
         dettachParentView(rootView);
 
         autoPlayVideo(curPlayPos, ivCover);

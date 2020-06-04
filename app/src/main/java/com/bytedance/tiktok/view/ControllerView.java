@@ -124,19 +124,7 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
             case R.id.rl_like:
                 listener.onLikeClick();
 
-                if (!videoData.isLiked()) {
-                    //点赞
-                    animationView.setVisibility(VISIBLE);
-                    animationView.playAnimation();
-                    ivLike.setTextColor(getResources().getColor(R.color.color_FF0041));
-                } else {
-                    //取消点赞
-                    animationView.setVisibility(INVISIBLE);
-                    ivLike.setTextColor(getResources().getColor(R.color.white));
-                }
-
-                videoData.setLiked(!videoData.isLiked());
-
+                like();
                 break;
             case R.id.iv_comment:
                 listener.onCommentClick();
@@ -154,14 +142,32 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
     }
 
     /**
+     * 点赞动作
+     */
+    public void like() {
+        if (!videoData.isLiked()) {
+            //点赞
+            animationView.setVisibility(VISIBLE);
+            animationView.playAnimation();
+            ivLike.setTextColor(getResources().getColor(R.color.color_FF0041));
+        } else {
+            //取消点赞
+            animationView.setVisibility(INVISIBLE);
+            ivLike.setTextColor(getResources().getColor(R.color.white));
+        }
+
+        videoData.setLiked(!videoData.isLiked());
+    }
+
+    /**
      * 循环旋转动画
      */
     private void setRotateAnim() {
         RotateAnimation rotateAnimation = new RotateAnimation(0, 359,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         rotateAnimation.setRepeatCount(INFINITE);
-        rotateAnimation.setDuration(5000);
+        rotateAnimation.setDuration(8000);
         rotateAnimation.setInterpolator(new LinearInterpolator());
-        ivRecord.startAnimation(rotateAnimation);
+        rlRecord.startAnimation(rotateAnimation);
     }
 }

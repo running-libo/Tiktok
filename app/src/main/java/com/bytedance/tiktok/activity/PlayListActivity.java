@@ -10,6 +10,7 @@ import com.bytedance.tiktok.fragment.RecommendFragment;
  * description 视频全屏播放页
  */
 public class PlayListActivity extends BaseActivity {
+    public static int initPos;
 
     @Override
     protected int setLayoutId() {

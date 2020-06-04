@@ -34,7 +34,10 @@ public class WorkAdapter extends BaseRvAdapter<VideoBean, WorkAdapter.WorkViewHo
         holder.ivCover.setImageResource(videoBean.getCoverRes());
         holder.tvLikeCount.setText(NumUtils.numberFilter(videoBean.getLikeCount()));
 
-        holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(context, PlayListActivity.class)));
+        holder.itemView.setOnClickListener(v -> {
+            PlayListActivity.initPos = position;
+            context.startActivity(new Intent(context, PlayListActivity.class));
+        });
     }
 
     @NonNull
