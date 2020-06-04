@@ -14,21 +14,24 @@
     android:gravity="center_vertical">
 
     <com.bytedance.tiktok.view.CircleImageView
+        android:id="@+id/iv_head"
         android:layout_width="48dp"
         android:layout_height="48dp"
         app:es_shape_type="round"
-        android:src="@mipmap/head_six"/>
+        tools:src="@mipmap/head_six"/>
 
     <TextView
+        android:id="@+id/tv_nickname"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:text="一个人的表演"
+        tools:text="一个人的表演"
         android:textSize="15sp"
         android:layout_margin="12dp"
         android:textColor="@color/white"/>
 
     <TextView
+        android:id="@+id/tv_focus"
         android:layout_width="100dp"
         android:layout_height="32dp"
         android:text="关注"

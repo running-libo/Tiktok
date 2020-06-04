@@ -83,7 +83,7 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
         this.videoData = videoData;
 
         ivHead.setImageResource(videoData.getUserBean().getHead());
-        tvNickname.setText(videoData.getUserBean().getNickName());
+        tvNickname.setText("@" + videoData.getUserBean().getNickName());
         AutoLinkHerfManager.setContent(videoData.getContent(), autoLinkTextView);
         ivHeadAnim.setImageResource(videoData.getUserBean().getHead());
         tvLikecount.setText(NumUtils.numberFilter(videoData.getLikeCount()));

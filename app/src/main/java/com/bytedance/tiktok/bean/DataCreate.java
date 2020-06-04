@@ -28,7 +28,7 @@ public class DataCreate {
         VideoBean.UserBean userBeanOne = new VideoBean.UserBean();
         userBeanOne.setUid(1);
         userBeanOne.setHead(R.mipmap.head1);
-        userBeanOne.setNickName("@南京街坊");
+        userBeanOne.setNickName("南京街坊");
         userBeanOne.setSign("你们喜欢的话题，就是我们采访的内容");
         userBeanOne.setSubCount(119323);
         userBeanOne.setFocusCount(482);
@@ -54,7 +54,7 @@ public class DataCreate {
         VideoBean.UserBean userBeanTwo = new VideoBean.UserBean();
         userBeanTwo.setUid(2);
         userBeanTwo.setHead( R.mipmap.head2);
-        userBeanTwo.setNickName("@民生直通车");
+        userBeanTwo.setNickName("民生直通车");
         userBeanTwo.setSign("直通现场新闻，直击社会热点，深入事件背后，探寻事实真相");
         userBeanTwo.setSubCount(20323234);
         userBeanTwo.setFocusCount(244);
@@ -80,7 +80,7 @@ public class DataCreate {
         VideoBean.UserBean userBeanThree = new VideoBean.UserBean();
         userBeanThree.setUid(3);
         userBeanThree.setHead(R.mipmap.head3);
-        userBeanThree.setNickName("@七叶篮球");
+        userBeanThree.setNickName("七叶篮球");
         userBeanThree.setSign("老科的视频会一直保留，想他了就回来看看");
         userBeanThree.setSubCount(1039232);
         userBeanThree.setFocusCount(159);
@@ -106,7 +106,7 @@ public class DataCreate {
         VideoBean.UserBean userBeanFour = new VideoBean.UserBean();
         userBeanFour.setUid(4);
         userBeanFour.setHead(R.mipmap.head4);
-        userBeanFour.setNickName("@一只爱修图的剪辑师");
+        userBeanFour.setNickName("一只爱修图的剪辑师");
         userBeanFour.setSign("接剪辑，活动拍摄，修图单\n 合作私信");
         userBeanFour.setSubCount(2689424);
         userBeanFour.setFocusCount(399);
@@ -132,7 +132,7 @@ public class DataCreate {
         VideoBean.UserBean userBeanFive = new VideoBean.UserBean();
         userBeanFive.setUid(5);
         userBeanFive.setHead(R.mipmap.head5);
-        userBeanFive.setNickName("@国际网球联合会");
+        userBeanFive.setNickName("国际网球联合会");
         userBeanFive.setSign("ITF国际网球联合会负责制定统一的网球规则，在世界范围内普及网球运动");
         userBeanFive.setSubCount(1002342);
         userBeanFive.setFocusCount(87);
@@ -158,7 +158,7 @@ public class DataCreate {
         VideoBean.UserBean userBeanSix = new VideoBean.UserBean();
         userBeanSix.setUid(6);
         userBeanSix.setHead(R.mipmap.head6);
-        userBeanSix.setNickName("@罗鑫颖");
+        userBeanSix.setNickName("罗鑫颖");
         userBeanSix.setSign("一个行走在Tr与剪辑之间的人\n 有什么不懂的可以来直播间问我");
         userBeanSix.setSubCount(29342320);
         userBeanSix.setFocusCount(67);
@@ -184,7 +184,7 @@ public class DataCreate {
         VideoBean.UserBean userBeanSeven = new VideoBean.UserBean();
         userBeanSeven.setUid(7);
         userBeanSeven.setHead(R.mipmap.head7);
-        userBeanSeven.setNickName("@Sean");
+        userBeanSeven.setNickName("Sean");
         userBeanSeven.setSign("云深不知处");
         userBeanSeven.setSubCount(471932);
         userBeanSeven.setFocusCount(482);
@@ -210,7 +210,7 @@ public class DataCreate {
         VideoBean.UserBean userBeanEight = new VideoBean.UserBean();
         userBeanEight.setUid(8);
         userBeanEight.setHead(R.mipmap.head8);
-        userBeanEight.setNickName("@曹小宝");
+        userBeanEight.setNickName("曹小宝");
         userBeanEight.setSign("一个晒娃狂魔麻麻，平日里没啥爱好！喜欢拿着手机记录孩子成长片段，风格不喜勿喷！");
         userBeanEight.setSubCount(1832342);
         userBeanEight.setFocusCount(397);

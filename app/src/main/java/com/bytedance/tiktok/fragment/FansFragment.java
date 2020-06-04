@@ -6,12 +6,15 @@ import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.adapter.FansAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.bean.DataCreate;
+import com.bytedance.tiktok.bean.VideoBean;
+import java.util.ArrayList;
 import butterknife.BindView;
 
 public class FansFragment extends BaseFragment {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
     private FansAdapter fansAdapter;
+    private ArrayList<VideoBean.UserBean> userBeans = new ArrayList<>();
 
     @Override
     protected int setLayoutId() {
@@ -22,7 +25,8 @@ public class FansFragment extends BaseFragment {
     protected void init() {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        fansAdapter = new FansAdapter(getContext(), DataCreate.userList);
+        userBeans.addAll(DataCreate.userList);
+        fansAdapter = new FansAdapter(getContext(), userBeans);
         recyclerView.setAdapter(fansAdapter);
     }
 
