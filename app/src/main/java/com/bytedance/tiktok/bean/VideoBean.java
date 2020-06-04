@@ -22,9 +22,11 @@ public class VideoBean {
     /** 是否已关注 */
     private boolean isFocused;
     /** 点赞数 */
-    private String likeCount;
+    private int likeCount;
     /** 评论数 */
     private int commentCount;
+    /** 转发数 */
+    private int shareCount;
 
     public int getVideoId() {
         return videoId;
@@ -90,11 +92,11 @@ public class VideoBean {
         isFocused = focused;
     }
 
-    public String getLikeCount() {
+    public int getLikeCount() {
         return likeCount;
     }
 
-    public void setLikeCount(String likeCount) {
+    public void setLikeCount(int likeCount) {
         this.likeCount = likeCount;
     }
 
@@ -104,6 +106,14 @@ public class VideoBean {
 
     public void setCommentCount(int commentCount) {
         this.commentCount = commentCount;
+    }
+
+    public int getShareCount() {
+        return shareCount;
+    }
+
+    public void setShareCount(int shareCount) {
+        this.shareCount = shareCount;
     }
 
     public static class UserBean {

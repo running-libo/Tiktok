@@ -15,6 +15,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.bean.VideoBean;
 import com.bytedance.tiktok.utils.AutoLinkHerfManager;
+import com.bytedance.tiktok.utils.NumUtils;
 import com.bytedance.tiktok.utils.OnVideoControllerListener;
 import com.bytedance.tiktok.utils.autolinktextview.AutoLinkTextView;
 
@@ -83,8 +84,6 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
         ivShare.setOnClickListener(this);
         rlLike.setOnClickListener(this);
 
-        AutoLinkHerfManager.setContent("只有 #允儿 的脸我才敢拉这么近 @肖战 @王一博 来呀来呀", autoLinkTextView);
-
         setRotateAnim();
     }
 
@@ -93,11 +92,13 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
 
         ivHead.setImageResource(videoData.getUserBean().getHead());
         tvNickname.setText(videoData.getUserBean().getNickName());
-        autoLinkTextView.setText(videoData.getContent());
+        AutoLinkHerfManager.setContent(videoData.getContent(), autoLinkTextView);
         ivHeadAnim.setImageResource(videoData.getUserBean().getHead());
-        tvLikecount.setText(videoData.getLikeCount());
-        tvCommentcount.setText(videoData.getCommentCount() + "");
-        tvSharecount.setText(3452 + "");
+        tvLikecount.setText(NumUtils.numberFilter(videoData.getLikeCount()));
+        tvCommentcount.setText(NumUtils.numberFilter(videoData.getCommentCount()));
+        tvSharecount.setText(NumUtils.numberFilter(videoData.getShareCount()));
+
+        animationView.setAnimation("like.json");
 
         //点赞状态
         if (videoData.isLiked()) {
@@ -131,8 +132,19 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
             case R.id.rl_like:
                 listener.onLikeClick();
 
-                animationView.setAnimation("like.json");
-                animationView.playAnimation();
+                if (!videoData.isLiked()) {
+                    //点赞
+                    animationView.setVisibility(VISIBLE);
+                    animationView.playAnimation();
+                    ivLike.setTextColor(getResources().getColor(R.color.color_FF0041));
+                } else {
+                    //取消点赞
+                    animationView.setVisibility(INVISIBLE);
+                    ivLike.setTextColor(getResources().getColor(R.color.white));
+                }
+
+                videoData.setLiked(!videoData.isLiked());
+
                 break;
             case R.id.iv_comment:
                 listener.onCommentClick();

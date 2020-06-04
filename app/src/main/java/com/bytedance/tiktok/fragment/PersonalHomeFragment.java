@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
@@ -111,17 +112,21 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
 
     public void setUserInfo() {
         RxBus.getDefault().toObservable(CurUserBean.class).subscribe((Action1<CurUserBean>) curUserBean -> {
+
+            coordinatorLayoutBackTop();
+
             ivBg.setImageResource(curUserBean.getUserBean().getHead());
             ivHead.setImageResource(curUserBean.getUserBean().getHead());
             tvNickname.setText(curUserBean.getUserBean().getNickName());
             tvSign.setText(curUserBean.getUserBean().getSign());
+            tvTitle.setText(curUserBean.getUserBean().getNickName());
 
             String subCount = NumUtils.numberFilter(curUserBean.getUserBean().getSubCount());
             String focusCount = NumUtils.numberFilter(curUserBean.getUserBean().getFocusCount());
             String fansCount = NumUtils.numberFilter(curUserBean.getUserBean().getFansCount());
 
             tvGetLikeCount.setText(subCount);
-            tvFocus.setText(focusCount);
+            tvFocusCount.setText(focusCount);
             tvFansCount.setText(fansCount);
         });
     }
@@ -158,6 +163,21 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
                 tvFocus.setVisibility(View.GONE);
             }
         });
+    }
+
+    /**
+     * 自动回顶部
+     */
+    private void coordinatorLayoutBackTop() {
+        CoordinatorLayout.Behavior behavior =
+                ((CoordinatorLayout.LayoutParams) appBarLayout.getLayoutParams()).getBehavior();
+        if (behavior instanceof AppBarLayout.Behavior) {
+            AppBarLayout.Behavior appBarLayoutBehavior = (AppBarLayout.Behavior) behavior;
+            int topAndBottomOffset = appBarLayoutBehavior.getTopAndBottomOffset();
+            if (topAndBottomOffset != 0) {
+                appBarLayoutBehavior.setTopAndBottomOffset(0);
+            }
+        }
     }
 
     @Override

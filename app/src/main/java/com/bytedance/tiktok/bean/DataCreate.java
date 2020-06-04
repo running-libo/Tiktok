@@ -20,8 +20,9 @@ public class DataCreate {
         videoBeanOne.setDistance(7.9f);
         videoBeanOne.setFocused(false);
         videoBeanOne.setLiked(true);
-        videoBeanOne.setLikeCount("22.5w");
+        videoBeanOne.setLikeCount(226823);
         videoBeanOne.setCommentCount(3480);
+        videoBeanOne.setShareCount(4252);
 
         VideoBean.UserBean userBeanOne = new VideoBean.UserBean();
         userBeanOne.setHead(R.mipmap.head1);
@@ -43,8 +44,9 @@ public class DataCreate {
         videoBeanTwo.setDistance(19.7f);
         videoBeanTwo.setFocused(true);
         videoBeanTwo.setLiked(false);
-        videoBeanTwo.setLikeCount("108w");
+        videoBeanTwo.setLikeCount(1938230);
         videoBeanTwo.setCommentCount(8923);
+        videoBeanTwo.setShareCount(5892);
 
         VideoBean.UserBean userBeanTwo = new VideoBean.UserBean();
         userBeanTwo.setHead( R.mipmap.head2);
@@ -66,8 +68,9 @@ public class DataCreate {
         videoBeanThree.setDistance(15.9f);
         videoBeanThree.setFocused(false);
         videoBeanThree.setLiked(false);
-        videoBeanThree.setLikeCount("50.1w");
+        videoBeanThree.setLikeCount(592032);
         videoBeanThree.setCommentCount(9221);
+        videoBeanThree.setShareCount(982);
 
         VideoBean.UserBean userBeanThree = new VideoBean.UserBean();
         userBeanThree.setHead(R.mipmap.head3);
@@ -89,8 +92,9 @@ public class DataCreate {
         videoBeanFour.setDistance(25.2f);
         videoBeanFour.setFocused(false);
         videoBeanFour.setLiked(false);
-        videoBeanFour.setLikeCount("88w");
+        videoBeanFour.setLikeCount(887232);
         videoBeanFour.setCommentCount(2731);
+        videoBeanFour.setShareCount(8924);
 
         VideoBean.UserBean userBeanFour = new VideoBean.UserBean();
         userBeanFour.setHead(R.mipmap.head4);
@@ -112,8 +116,9 @@ public class DataCreate {
         videoBeanFive.setDistance(9.2f);
         videoBeanFive.setFocused(false);
         videoBeanFive.setLiked(false);
-        videoBeanFive.setLikeCount("13.2w");
+        videoBeanFive.setLikeCount(8293241);
         videoBeanFive.setCommentCount(982);
+        videoBeanFive.setShareCount(8923);
 
         VideoBean.UserBean userBeanFive = new VideoBean.UserBean();
         userBeanFive.setHead(R.mipmap.head5);
@@ -135,8 +140,9 @@ public class DataCreate {
         videoBeanSix.setDistance(16.4f);
         videoBeanSix.setFocused(true);
         videoBeanSix.setLiked(true);
-        videoBeanSix.setLikeCount("210w");
+        videoBeanSix.setLikeCount(2109823);
         videoBeanSix.setCommentCount(9723);
+        videoBeanFive.setShareCount(424);
 
         VideoBean.UserBean userBeanSix = new VideoBean.UserBean();
         userBeanSix.setHead(R.mipmap.head6);
@@ -158,8 +164,9 @@ public class DataCreate {
         videoBeanSeven.setDistance(16.4f);
         videoBeanSeven.setFocused(false);
         videoBeanSeven.setLiked(false);
-        videoBeanSeven.setLikeCount("18.5w");
+        videoBeanSeven.setLikeCount(185782);
         videoBeanSeven.setCommentCount(2452);
+        videoBeanSeven.setShareCount(3812);
 
         VideoBean.UserBean userBeanSeven = new VideoBean.UserBean();
         userBeanSeven.setHead(R.mipmap.head7);
@@ -181,8 +188,9 @@ public class DataCreate {
         videoBeanEight.setDistance(8.4f);
         videoBeanEight.setFocused(false);
         videoBeanEight.setLiked(false);
-        videoBeanEight.setLikeCount("170w");
+        videoBeanEight.setLikeCount(1708324);
         videoBeanEight.setCommentCount(8372);
+        videoBeanEight.setShareCount(982);
 
         VideoBean.UserBean userBeanEight = new VideoBean.UserBean();
         userBeanEight.setHead(R.mipmap.head8);

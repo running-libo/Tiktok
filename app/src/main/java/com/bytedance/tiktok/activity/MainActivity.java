@@ -51,7 +51,9 @@ public class MainActivity extends BaseActivity {
         //点击头像切换页面
         RxBus.getDefault().toObservable(MainPageChangeEvent.class)
                 .subscribe((Action1<MainPageChangeEvent>) event -> {
-                    viewPager.setCurrentItem(event.getPage());
+                    if (viewPager != null) {
+                        viewPager.setCurrentItem(event.getPage());
+                    }
                 });
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
