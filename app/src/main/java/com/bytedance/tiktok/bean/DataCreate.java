@@ -15,7 +15,7 @@ public class DataCreate {
     public void initData() {
 
         VideoBean videoBeanOne = new VideoBean();
-        videoBeanOne.setCoverRes(R.mipmap.head1);
+        videoBeanOne.setCoverRes(R.mipmap.cover1);
         videoBeanOne.setContent("#街坊 #颜值打分 给自己颜值打100分的女生集合");
         videoBeanOne.setVideoRes(R.raw.video1);
         videoBeanOne.setDistance(7.9f);
@@ -41,7 +41,7 @@ public class DataCreate {
         videoBeanOne.setUserBean(userBeanOne);
 
         VideoBean videoBeanTwo = new VideoBean();
-        videoBeanTwo.setCoverRes(R.mipmap.head2);
+        videoBeanTwo.setCoverRes(R.mipmap.cover2);
         videoBeanTwo.setContent("400 户摊主开进济南环联夜市，你们要的烟火气终于来了！");
         videoBeanTwo.setVideoRes(R.raw.video2);
         videoBeanTwo.setDistance(19.7f);
@@ -67,7 +67,7 @@ public class DataCreate {
         videoBeanTwo.setUserBean(userBeanTwo);
 
         VideoBean videoBeanThree = new VideoBean();
-        videoBeanThree.setCoverRes(R.mipmap.head3);
+        videoBeanThree.setCoverRes(R.mipmap.cover3);
         videoBeanThree.setContent("科比生涯霸气庆祝动作，最后动作诠释了一生荣耀 #科比 @路人王篮球 ");
         videoBeanThree.setVideoRes(R.raw.video3);
         videoBeanThree.setDistance(15.9f);
@@ -93,7 +93,7 @@ public class DataCreate {
         videoBeanThree.setUserBean(userBeanThree);
 
         VideoBean videoBeanFour = new VideoBean();
-        videoBeanFour.setCoverRes(R.mipmap.head4);
+        videoBeanFour.setCoverRes(R.mipmap.cover4);
         videoBeanFour.setContent("美好的一天，从发现美开始 #莉莉柯林斯 ");
         videoBeanFour.setVideoRes(R.raw.video4);
         videoBeanFour.setDistance(25.2f);
@@ -119,7 +119,7 @@ public class DataCreate {
         videoBeanFour.setUserBean(userBeanFour);
 
         VideoBean videoBeanFive = new VideoBean();
-        videoBeanFive.setCoverRes(R.mipmap.head5);
+        videoBeanFive.setCoverRes(R.mipmap.cover5);
         videoBeanFive.setContent("有梦就去追吧，我说到做到。 #网球  #网球小威 ");
         videoBeanFive.setVideoRes(R.raw.video5);
         videoBeanFive.setDistance(9.2f);
@@ -145,7 +145,7 @@ public class DataCreate {
         videoBeanFive.setUserBean(userBeanFive);
 
         VideoBean videoBeanSix = new VideoBean();
-        videoBeanSix.setCoverRes(R.mipmap.head6);
+        videoBeanSix.setCoverRes(R.mipmap.cover6);
         videoBeanSix.setContent("能力越大，责任越大，英雄可能会迟到，但永远不会缺席  #蜘蛛侠 ");
         videoBeanSix.setVideoRes(R.raw.video6);
         videoBeanSix.setDistance(16.4f);
@@ -171,7 +171,7 @@ public class DataCreate {
         videoBeanSix.setUserBean(userBeanSix);
 
         VideoBean videoBeanSeven = new VideoBean();
-        videoBeanSeven.setCoverRes(R.mipmap.head7);
+        videoBeanSeven.setCoverRes(R.mipmap.cover7);
         videoBeanSeven.setContent("真的拍不出来你的神颜！现场看大屏帅疯！#陈情令南京演唱会 #王一博 😭");
         videoBeanSeven.setVideoRes(R.raw.video7);
         videoBeanSeven.setDistance(16.4f);
@@ -197,7 +197,7 @@ public class DataCreate {
         videoBeanSeven.setUserBean(userBeanSeven);
 
         VideoBean videoBeanEight = new VideoBean();
-        videoBeanEight.setCoverRes(R.mipmap.head8);
+        videoBeanEight.setCoverRes(R.mipmap.cover8);
         videoBeanEight.setContent("逆序只是想告诉大家，学了舞蹈的她气质开了挂！");
         videoBeanEight.setVideoRes(R.raw.video8);
         videoBeanEight.setDistance(8.4f);

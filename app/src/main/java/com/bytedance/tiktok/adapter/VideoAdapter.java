@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseRvAdapter;
@@ -27,8 +29,10 @@ public class VideoAdapter extends BaseRvAdapter<VideoBean, VideoAdapter.VideoVie
     }
 
     @Override
-    protected void onBindData(VideoViewHolder holder, VideoBean data, int position) {
-        holder.controllerView.setVideoData(data);
+    protected void onBindData(VideoViewHolder holder, VideoBean videoBean, int position) {
+        holder.controllerView.setVideoData(videoBean);
+
+        holder.ivCover.setImageResource(videoBean.getCoverRes());
     }
 
     @NonNull
@@ -43,6 +47,8 @@ public class VideoAdapter extends BaseRvAdapter<VideoBean, VideoAdapter.VideoVie
         LikeView likeView;
         @BindView(R.id.controller)
         ControllerView controllerView;
+        @BindView(R.id.iv_cover)
+        ImageView ivCover;
 
         public VideoViewHolder(View itemView) {
             super(itemView);

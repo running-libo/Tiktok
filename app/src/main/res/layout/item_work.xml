@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="160dp">
+    android:layout_height="185dp"
+    android:layout_margin="1dp">
 
     <ImageView
         android:id="@+id/iv_cover"
@@ -26,11 +27,12 @@
             android:textColor="@color/white"/>
 
         <TextView
+            android:id="@+id/tv_likecount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:layout_marginLeft="3dp"
-            android:text="8242"/>
+            tools:text="8242"/>
     </LinearLayout>
 </RelativeLayout>

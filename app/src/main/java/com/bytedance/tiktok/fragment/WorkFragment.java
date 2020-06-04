@@ -5,9 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.adapter.WorkAdapter;
 import com.bytedance.tiktok.base.BaseFragment;
-
-import java.util.ArrayList;
-
+import com.bytedance.tiktok.bean.DataCreate;
 import butterknife.BindView;
 
 /**
@@ -19,7 +17,6 @@ public class WorkFragment extends BaseFragment {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
     private WorkAdapter workAdapter;
-    private ArrayList<Integer> datas = new ArrayList<>();
 
     @Override
     protected int setLayoutId() {
@@ -29,19 +26,8 @@ public class WorkFragment extends BaseFragment {
     @Override
     protected void init() {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
-        workAdapter = new WorkAdapter(getActivity(), datas);
+        workAdapter = new WorkAdapter(getActivity(), DataCreate.datas);
         recyclerView.setAdapter(workAdapter);
-
-        loadData();
-    }
-
-    private void loadData() {
-        int[] picIds = new int[] {R.mipmap.cover_one, R.mipmap.cover_two, R.mipmap.cover_three, R.mipmap.cover_four, R.mipmap.head_six};
-        for (int i=0;i<25;i++) {
-            int pos = (int) (Math.random()*5);
-            datas.add(picIds[pos]);
-        }
-        workAdapter.notifyDataSetChanged();
     }
 
 }

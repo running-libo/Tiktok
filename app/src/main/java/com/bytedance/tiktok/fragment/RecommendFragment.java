@@ -180,7 +180,7 @@ public class RecommendFragment extends BaseFragment {
         if (parent != null) {
             parent.removeView(videoView);
         }
-        rootView.addView(videoView, 0);
+        rootView.addView(videoView, 1);
     }
 
     /**

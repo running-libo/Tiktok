@@ -10,13 +10,13 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="250dp">
+        android:layout_height="270dp">
 
         <ImageView
             android:id="@+id/iv_cover"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/tv_distance"

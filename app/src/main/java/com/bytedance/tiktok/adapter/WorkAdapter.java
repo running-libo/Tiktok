@@ -6,13 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.activity.PlayListActivity;
 import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
+import com.bytedance.tiktok.bean.VideoBean;
+import com.bytedance.tiktok.utils.NumUtils;
 import java.util.List;
-
 import butterknife.BindView;
 
 /**
@@ -20,15 +23,16 @@ import butterknife.BindView;
  * create on 2020-05-21
  * description
  */
-public class WorkAdapter extends BaseRvAdapter<Integer, WorkAdapter.WorkViewHolder> {
+public class WorkAdapter extends BaseRvAdapter<VideoBean, WorkAdapter.WorkViewHolder> {
 
-    public WorkAdapter(Context context, List<Integer> datas) {
+    public WorkAdapter(Context context, List<VideoBean> datas) {
         super(context, datas);
     }
 
     @Override
-    protected void onBindData(WorkViewHolder holder, Integer data, int position) {
-        holder.ivCover.setImageResource(data);
+    protected void onBindData(WorkViewHolder holder, VideoBean videoBean, int position) {
+        holder.ivCover.setImageResource(videoBean.getCoverRes());
+        holder.tvLikeCount.setText(NumUtils.numberFilter(videoBean.getLikeCount()));
 
         holder.itemView.setOnClickListener(v -> context.startActivity(new Intent(context, PlayListActivity.class)));
     }
@@ -43,6 +47,8 @@ public class WorkAdapter extends BaseRvAdapter<Integer, WorkAdapter.WorkViewHold
     public class WorkViewHolder extends BaseRvViewHolder {
         @BindView(R.id.iv_cover)
         ImageView ivCover;
+        @BindView(R.id.tv_likecount)
+        TextView tvLikeCount;
 
         public WorkViewHolder(View itemView) {
             super(itemView);
