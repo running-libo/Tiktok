@@ -19,6 +19,7 @@ import com.bytedance.tiktok.base.BaseFragment;
 import com.bytedance.tiktok.base.CommPagerAdapter;
 import com.bytedance.tiktok.bean.CurUserBean;
 import com.bytedance.tiktok.bean.MainPageChangeEvent;
+import com.bytedance.tiktok.utils.NumUtils;
 import com.bytedance.tiktok.utils.RxBus;
 import com.bytedance.tiktok.view.CircleImageView;
 import com.bytedance.tiktok.view.IconFontTextView;
@@ -115,9 +116,13 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
             tvNickname.setText(curUserBean.getUserBean().getNickName());
             tvSign.setText(curUserBean.getUserBean().getSign());
 
-            tvGetLikeCount.setText(curUserBean.getUserBean().getSubCount() + "");
-            tvFocus.setText(curUserBean.getUserBean().getFocusCount() + "");
-            tvFansCount.setText(curUserBean.getUserBean().getFansCount() + "");
+            String subCount = NumUtils.numberFilter(curUserBean.getUserBean().getSubCount());
+            String focusCount = NumUtils.numberFilter(curUserBean.getUserBean().getFocusCount());
+            String fansCount = NumUtils.numberFilter(curUserBean.getUserBean().getFansCount());
+
+            tvGetLikeCount.setText(subCount);
+            tvFocus.setText(focusCount);
+            tvFansCount.setText(fansCount);
         });
     }
 
