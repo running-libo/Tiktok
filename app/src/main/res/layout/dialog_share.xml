@@ -18,7 +18,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_private_letter"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:padding="10dp"/>
 
     <View
         android:layout_width="match_parent"
@@ -29,7 +30,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_share"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:padding="10dp"/>
 
     <View
         android:layout_width="match_parent"

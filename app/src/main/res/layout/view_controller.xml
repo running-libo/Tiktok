@@ -69,9 +69,10 @@
 
             <ImageView
                 android:id="@+id/iv_focus"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@mipmap/add_focus"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:src="@mipmap/add_focus"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"/>
         </RelativeLayout>

@@ -5,10 +5,18 @@
     <string name="icon_like_fill">&#xe60d;</string>
     <!--评论-->
     <string name="icon_comment">&#xe621;</string>
-    <!-- 更多 -->
-    <string name="icon_more">&#xe61b;</string>
+    <!-- 微博 -->
+    <string name="icon_weibo">&#xe620;</string>
+    <!-- 微信 -->
+    <string name="icon_wechat">&#xe61d;</string>
     <!-- 微信朋友圈 -->
     <string name="icon_friends">&#xe61c;</string>
+    <!-- QQ -->
+    <string name="icon_qq">&#xe61e;</string>
+    <!-- QQ空间 -->
+    <string name="icon_qq_space">&#xe61f;</string>
+    <!-- 更多 -->
+    <string name="icon_more">&#xe61b;</string>
 
     <string name="trans">trans</string>
 

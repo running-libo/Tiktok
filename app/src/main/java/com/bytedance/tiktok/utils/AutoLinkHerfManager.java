@@ -1,9 +1,8 @@
 package com.bytedance.tiktok.utils;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
-
 import com.bytedance.tiktok.utils.autolinktextview.AutoLinkMode;
 import com.bytedance.tiktok.utils.autolinktextview.AutoLinkTextView;
 
@@ -29,17 +28,13 @@ public class AutoLinkHerfManager {
 
             switch (autoLinkMode) {
                 case MODE_HASHTAG:
-//                    String topicStr = matchedText.substring(1, matchedText.length() - 1);
-//                    JumpManager.startTopicDetailActivity(topicStr);
+                    Log.i("minfo", "话题 " + matchedText);
                     break;
                 case MODE_MENTION:
-//                    String nickName = matchedText.substring(1, matchedText.length() - 1);
-//                    checkUserExist(nickName);
-                    break;
-                case MODE_URL:
-//                    JumpManager.startWebActivity(matchedText);
+                    Log.i("minfo", "at " + matchedText);
                     break;
             }
         });
     }
+
 }

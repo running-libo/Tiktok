@@ -8,16 +8,20 @@
     android:gravity="center_horizontal">
 
     <com.bytedance.tiktok.view.CircleImageView
+        android:id="@+id/iv_head"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:src="@mipmap/head_six"
         app:es_shape_type="round" />
 
     <TextView
+        android:id="@+id/tv_nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:layout_marginTop="8dp"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:text="迪丽冷巴" />
 
     <TextView

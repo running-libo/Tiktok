@@ -60,12 +60,6 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
     TextView tvSharecount;
     @BindView(R.id.iv_focus)
     ImageView ivFocus;
-    //    private ImageView ivHead;
-//    private IconFontTextView ivLike;
-//    private IconFontTextView ivComment;
-//    private IconFontTextView ivShare;
-//    private AutoLinkTextView autoLinkTextView;
-//    private RelativeLayout ivRecord, rlLike;
     private OnVideoControllerListener listener;
     private VideoBean videoData;
 
@@ -83,6 +77,7 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
         ivComment.setOnClickListener(this);
         ivShare.setOnClickListener(this);
         rlLike.setOnClickListener(this);
+        ivFocus.setOnClickListener(this);
 
         setRotateAnim();
     }
@@ -151,6 +146,12 @@ public class ControllerView extends RelativeLayout implements View.OnClickListen
                 break;
             case R.id.iv_share:
                 listener.onShareClick();
+                break;
+            case R.id.iv_focus:
+                if (!videoData.isFocused()) {
+                    videoData.setLiked(true);
+                    ivFocus.setVisibility(GONE);
+                }
                 break;
         }
     }

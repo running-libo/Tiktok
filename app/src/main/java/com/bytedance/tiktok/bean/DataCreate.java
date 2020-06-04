@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class DataCreate {
     public static ArrayList<VideoBean> datas = new ArrayList<>();
+    public static ArrayList<VideoBean.UserBean> userList = new ArrayList<>();
 
     public void initData() {
 
@@ -25,6 +26,7 @@ public class DataCreate {
         videoBeanOne.setShareCount(4252);
 
         VideoBean.UserBean userBeanOne = new VideoBean.UserBean();
+        userBeanOne.setUid(1);
         userBeanOne.setHead(R.mipmap.head1);
         userBeanOne.setNickName("@南京街坊");
         userBeanOne.setSign("你们喜欢的话题，就是我们采访的内容");
@@ -35,6 +37,7 @@ public class DataCreate {
         userBeanOne.setDynamicCount(42);
         userBeanOne.setLikeCount(821);
 
+        userList.add(userBeanOne);
         videoBeanOne.setUserBean(userBeanOne);
 
         VideoBean videoBeanTwo = new VideoBean();
@@ -49,6 +52,7 @@ public class DataCreate {
         videoBeanTwo.setShareCount(5892);
 
         VideoBean.UserBean userBeanTwo = new VideoBean.UserBean();
+        userBeanTwo.setUid(2);
         userBeanTwo.setHead( R.mipmap.head2);
         userBeanTwo.setNickName("@民生直通车");
         userBeanTwo.setSign("直通现场新闻，直击社会热点，深入事件背后，探寻事实真相");
@@ -59,6 +63,7 @@ public class DataCreate {
         userBeanTwo.setDynamicCount(123);
         userBeanTwo.setLikeCount(344);
 
+        userList.add(userBeanTwo);
         videoBeanTwo.setUserBean(userBeanTwo);
 
         VideoBean videoBeanThree = new VideoBean();
@@ -73,6 +78,7 @@ public class DataCreate {
         videoBeanThree.setShareCount(982);
 
         VideoBean.UserBean userBeanThree = new VideoBean.UserBean();
+        userBeanThree.setUid(3);
         userBeanThree.setHead(R.mipmap.head3);
         userBeanThree.setNickName("@七叶篮球");
         userBeanThree.setSign("老科的视频会一直保留，想他了就回来看看");
@@ -83,6 +89,7 @@ public class DataCreate {
         userBeanThree.setDynamicCount(173);
         userBeanThree.setLikeCount(1724);
 
+        userList.add(userBeanThree);
         videoBeanThree.setUserBean(userBeanThree);
 
         VideoBean videoBeanFour = new VideoBean();
@@ -97,6 +104,7 @@ public class DataCreate {
         videoBeanFour.setShareCount(8924);
 
         VideoBean.UserBean userBeanFour = new VideoBean.UserBean();
+        userBeanFour.setUid(4);
         userBeanFour.setHead(R.mipmap.head4);
         userBeanFour.setNickName("@一只爱修图的剪辑师");
         userBeanFour.setSign("接剪辑，活动拍摄，修图单\n 合作私信");
@@ -107,6 +115,7 @@ public class DataCreate {
         userBeanFour.setDynamicCount(570);
         userBeanFour.setLikeCount(4310);
 
+        userList.add(userBeanFour);
         videoBeanFour.setUserBean(userBeanFour);
 
         VideoBean videoBeanFive = new VideoBean();
@@ -121,6 +130,7 @@ public class DataCreate {
         videoBeanFive.setShareCount(8923);
 
         VideoBean.UserBean userBeanFive = new VideoBean.UserBean();
+        userBeanFive.setUid(5);
         userBeanFive.setHead(R.mipmap.head5);
         userBeanFive.setNickName("@国际网球联合会");
         userBeanFive.setSign("ITF国际网球联合会负责制定统一的网球规则，在世界范围内普及网球运动");
@@ -131,6 +141,7 @@ public class DataCreate {
         userBeanFive.setDynamicCount(122);
         userBeanFive.setLikeCount(9);
 
+        userList.add(userBeanFive);
         videoBeanFive.setUserBean(userBeanFive);
 
         VideoBean videoBeanSix = new VideoBean();
@@ -145,6 +156,7 @@ public class DataCreate {
         videoBeanFive.setShareCount(424);
 
         VideoBean.UserBean userBeanSix = new VideoBean.UserBean();
+        userBeanSix.setUid(6);
         userBeanSix.setHead(R.mipmap.head6);
         userBeanSix.setNickName("@罗鑫颖");
         userBeanSix.setSign("一个行走在Tr与剪辑之间的人\n 有什么不懂的可以来直播间问我");
@@ -155,6 +167,7 @@ public class DataCreate {
         userBeanSix.setDynamicCount(5159);
         userBeanSix.setLikeCount(0);
 
+        userList.add(userBeanSix);
         videoBeanSix.setUserBean(userBeanSix);
 
         VideoBean videoBeanSeven = new VideoBean();
@@ -169,6 +182,7 @@ public class DataCreate {
         videoBeanSeven.setShareCount(3812);
 
         VideoBean.UserBean userBeanSeven = new VideoBean.UserBean();
+        userBeanSeven.setUid(7);
         userBeanSeven.setHead(R.mipmap.head7);
         userBeanSeven.setNickName("@Sean");
         userBeanSeven.setSign("云深不知处");
@@ -179,6 +193,7 @@ public class DataCreate {
         userBeanSeven.setDynamicCount(245);
         userBeanSeven.setLikeCount(839);
 
+        userList.add(userBeanSeven);
         videoBeanSeven.setUserBean(userBeanSeven);
 
         VideoBean videoBeanEight = new VideoBean();
@@ -193,6 +208,7 @@ public class DataCreate {
         videoBeanEight.setShareCount(982);
 
         VideoBean.UserBean userBeanEight = new VideoBean.UserBean();
+        userBeanEight.setUid(8);
         userBeanEight.setHead(R.mipmap.head8);
         userBeanEight.setNickName("@曹小宝");
         userBeanEight.setSign("一个晒娃狂魔麻麻，平日里没啥爱好！喜欢拿着手机记录孩子成长片段，风格不喜勿喷！");
@@ -203,6 +219,7 @@ public class DataCreate {
         userBeanEight.setDynamicCount(167);
         userBeanEight.setLikeCount(0);
 
+        userList.add(userBeanEight);
         videoBeanEight.setUserBean(userBeanEight);
 
         datas.add(videoBeanOne);

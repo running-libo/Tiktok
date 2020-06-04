@@ -1,6 +1,5 @@
 package com.bytedance.tiktok.view;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.adapter.PrivateLetterAdapter;
 import com.bytedance.tiktok.adapter.ShareAdapter;
+import com.bytedance.tiktok.bean.DataCreate;
+import com.bytedance.tiktok.bean.ShareBean;
 import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -27,10 +27,10 @@ public class ShareDialog extends BaseBottomSheetDialog {
     RecyclerView rvPrivateLetter;
     @BindView(R.id.rv_share)
     RecyclerView rvShare;
-    private ArrayList<String> datas = new ArrayList<>();
     private PrivateLetterAdapter privateLetterAdapter;
     private ShareAdapter shareAdapter;
     private View view;
+    private ArrayList<ShareBean> shareBeans = new ArrayList<>();
 
     @Nullable
     @Override
@@ -43,28 +43,33 @@ public class ShareDialog extends BaseBottomSheetDialog {
     }
 
     private void init() {
+
         rvPrivateLetter.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        privateLetterAdapter = new PrivateLetterAdapter(getContext(), datas);
+        privateLetterAdapter = new PrivateLetterAdapter(getContext(), DataCreate.userList);
         rvPrivateLetter.setAdapter(privateLetterAdapter);
 
         rvShare.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        shareAdapter = new ShareAdapter(getContext(), datas);
+        shareAdapter = new ShareAdapter(getContext(), shareBeans);
         rvShare.setAdapter(shareAdapter);
 
-        loadPrivateData();
+        setShareDatas();
+
     }
 
-    private void loadPrivateData() {
-        for (int i=0;i<8;i++) {
-            datas.add("");
-        }
-        privateLetterAdapter.notifyDataSetChanged();
+    private void setShareDatas() {
+        shareBeans.add(new ShareBean(R.string.icon_friends, "朋友圈", R.color.color_wechat_iconbg));
+        shareBeans.add(new ShareBean(R.string.icon_wechat, "微信好友", R.color.color_wechat_iconbg));
+        shareBeans.add(new ShareBean(R.string.icon_qq, "QQ", R.color.color_qq_iconbg));
+        shareBeans.add(new ShareBean(R.string.icon_qq_space, "QQ空间", R.color.color_qqzone_iconbg));
+        shareBeans.add(new ShareBean(R.string.icon_weibo, "微博", R.color.color_weibo_iconbg));
+        shareBeans.add(new ShareBean(R.string.icon_more, "转发", R.color.color_more_iconbg));
+
         shareAdapter.notifyDataSetChanged();
     }
 
     @Override
     protected int getHeight() {
-        return dp2px(getContext(), 255);
+        return dp2px(getContext(), 300);
     }
 
 }
