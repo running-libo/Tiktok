@@ -11,9 +11,10 @@
         android:layout_height="40dp">
 
         <TextView
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="92条评论"
+            android:text="9221条评论"
             android:layout_centerInParent="true"/>
 
         <TextView

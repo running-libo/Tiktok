@@ -9,6 +9,7 @@ public class CommentBean {
     private String content;
     private VideoBean.UserBean userBean;
     private int likeCount;
+    private boolean isLiked;
 
     public String getContent() {
         return content == null ? "" : content;
@@ -32,5 +33,13 @@ public class CommentBean {
 
     public void setLikeCount(int likeCount) {
         this.likeCount = likeCount;
+    }
+
+    public boolean isLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
     }
 }

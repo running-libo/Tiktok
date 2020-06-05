@@ -42,6 +42,7 @@ public class RecommendFragment extends BaseFragment {
     private FullScreenVideoView videoView;
     @BindView(R.id.refreshlayout)
     SwipeRefreshLayout refreshLayout;
+    private ImageView ivCurCover;
 
     @Override
     protected int setLayoutId() {
@@ -109,7 +110,9 @@ public class RecommendFragment extends BaseFragment {
 
             @Override
             public void onPageRelease(boolean isNext, int position) {
-
+                if (ivCurCover != null) {
+                    ivCurCover.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -208,6 +211,7 @@ public class RecommendFragment extends BaseFragment {
                 @Override
                 public void onFinish() {
                     ivCover.setVisibility(View.GONE);
+                    ivCurCover = ivCover;
                 }
             }.start();
         });
@@ -230,7 +234,8 @@ public class RecommendFragment extends BaseFragment {
 
             @Override
             public void onCommentClick() {
-                new CommentDialog().show(getChildFragmentManager(), "");
+                CommentDialog commentDialog = new CommentDialog();
+                commentDialog.show(getChildFragmentManager(), "");
             }
 
             @Override

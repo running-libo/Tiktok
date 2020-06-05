@@ -58,18 +58,18 @@ public class ShareDialog extends BaseBottomSheetDialog {
 
     private void setShareDatas() {
         shareBeans.add(new ShareBean(R.string.icon_friends, "朋友圈", R.color.color_wechat_iconbg));
-        shareBeans.add(new ShareBean(R.string.icon_wechat, "微信好友", R.color.color_wechat_iconbg));
+        shareBeans.add(new ShareBean(R.string.icon_wechat, "微信", R.color.color_wechat_iconbg));
         shareBeans.add(new ShareBean(R.string.icon_qq, "QQ", R.color.color_qq_iconbg));
         shareBeans.add(new ShareBean(R.string.icon_qq_space, "QQ空间", R.color.color_qqzone_iconbg));
         shareBeans.add(new ShareBean(R.string.icon_weibo, "微博", R.color.color_weibo_iconbg));
-        shareBeans.add(new ShareBean(R.string.icon_more, "转发", R.color.color_more_iconbg));
+        shareBeans.add(new ShareBean(R.string.icon_comment, "私信好友", R.color.color_FF0041));
 
         shareAdapter.notifyDataSetChanged();
     }
 
     @Override
     protected int getHeight() {
-        return dp2px(getContext(), 300);
+        return dp2px(getContext(), 355);
     }
 
 }

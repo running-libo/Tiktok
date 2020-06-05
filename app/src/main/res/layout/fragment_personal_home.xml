@@ -104,13 +104,13 @@
             <com.androidkun.xtablayout.XTabLayout
                 android:id="@+id/tablayout"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
+                android:layout_height="45dp"
                 app:xTabIndicatorColor="#FF9F00"
                 app:xTabSelectedTextColor="@color/white"
                 app:xTabTextColor="#CCCCCC"
                 app:xTabIndicatorWidth="90dp"
                 app:xTabTextBold="true"
-                app:xTabTextSize="14sp"/>
+                app:xTabTextSize="15sp"/>
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager.widget.ViewPager

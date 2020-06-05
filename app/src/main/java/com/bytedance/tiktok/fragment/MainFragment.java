@@ -29,7 +29,8 @@ public class MainFragment extends BaseFragment {
     XTabLayout tabMainMenu;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
-    public static int curPage;
+    /** 默认显示第一页推荐页 */
+    public static int curPage = 1;
 
     @Override
     protected int setLayoutId() {

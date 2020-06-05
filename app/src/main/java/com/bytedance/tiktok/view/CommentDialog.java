@@ -4,15 +4,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.adapter.CommentAdapter;
 import com.bytedance.tiktok.bean.CommentBean;
 import com.bytedance.tiktok.bean.DataCreate;
+
 import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -24,11 +29,13 @@ import butterknife.ButterKnife;
 public class CommentDialog extends BaseBottomSheetDialog {
     @BindView(R.id.recyclerview)
     RecyclerView recyclerView;
+    @BindView(R.id.tv_title)
+    TextView tvTitle;
     private CommentAdapter commentAdapter;
     private ArrayList<CommentBean> datas = new ArrayList<>();
     private View view;
-    private int[] likeArray = new int[] {4919, 334,121,423,221,23};
-    private String[] commentArray = new String[] {"我就说左脚踩右脚可以上天你们还不信！", "全是评论点赞，没人关注吗", "哈哈哈哈", "像谁，没看出来", "你这西安话真好听"};
+    private int[] likeArray = new int[]{4919, 334, 121, 423, 221, 23};
+    private String[] commentArray = new String[]{"我就说左脚踩右脚可以上天你们还不信！", "全是评论点赞，没人关注吗", "哈哈哈哈", "像谁，没看出来", "你这西安话真好听"};
 
     @Nullable
     @Override
@@ -53,8 +60,8 @@ public class CommentDialog extends BaseBottomSheetDialog {
         for (int i = 0; i < DataCreate.userList.size(); i++) {
             CommentBean commentBean = new CommentBean();
             commentBean.setUserBean(DataCreate.userList.get(i));
-            commentBean.setContent(commentArray[(int) (Math.random()*commentArray.length)]);
-            commentBean.setLikeCount(likeArray[(int) (Math.random()*likeArray.length)]);
+            commentBean.setContent(commentArray[(int) (Math.random() * commentArray.length)]);
+            commentBean.setLikeCount(likeArray[(int) (Math.random() * likeArray.length)]);
             datas.add(commentBean);
         }
         commentAdapter.notifyDataSetChanged();

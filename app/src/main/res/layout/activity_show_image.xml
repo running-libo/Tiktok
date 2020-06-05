@@ -14,4 +14,12 @@
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
         android:transitionName="@string/trans"/>
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@mipmap/ic_download"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"/>
 </RelativeLayout>

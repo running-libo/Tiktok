@@ -32,6 +32,7 @@ import com.google.android.material.appbar.AppBarLayout;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import rx.Subscription;
 import rx.functions.Action1;
 
 /**
@@ -80,9 +81,8 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
     TextView tvAddfocus;
     private ArrayList<Fragment> fragments = new ArrayList<>();
     private CommPagerAdapter pagerAdapter;
-    String[] titleStr = new String[]{"作品 ", "动态 ", "喜欢 "};
     private VideoBean.UserBean curUserBean;
-
+    private Subscription subscription;
 
     @Override
     protected int setLayoutId() {
@@ -104,8 +104,6 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
         llFans.setOnClickListener(this);
 
         setUserInfo();
-
-        setTabLayout();
     }
 
     /**
@@ -121,7 +119,7 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
     }
 
     public void setUserInfo() {
-        RxBus.getDefault().toObservable(CurUserBean.class).subscribe((Action1<CurUserBean>) curUserBean -> {
+        subscription = RxBus.getDefault().toObservable(CurUserBean.class).subscribe((Action1<CurUserBean>) curUserBean -> {
 
             coordinatorLayoutBackTop();
 
@@ -137,21 +135,34 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
             String focusCount = NumUtils.numberFilter(curUserBean.getUserBean().getFocusCount());
             String fansCount = NumUtils.numberFilter(curUserBean.getUserBean().getFansCount());
 
+            //获赞 关注 粉丝
             tvGetLikeCount.setText(subCount);
             tvFocusCount.setText(focusCount);
             tvFansCount.setText(fansCount);
+
+            //关注状态
+            if (curUserBean.getUserBean().isFocused()) {
+                tvAddfocus.setText("已关注");
+                tvAddfocus.setBackgroundResource(R.drawable.shape_round_halfwhite);
+            } else {
+                tvAddfocus.setText("关注");
+                tvAddfocus.setBackgroundResource(R.drawable.shape_round_red);
+            }
+
+            setTabLayout();
         });
     }
 
     private void setTabLayout() {
-//        String[] titles = new String[]{"作品 " + userInfo.getWorkCount(), "动态 " + userInfo.getDynamicCount(), "喜欢 " + userInfo.getLikeCount()};
+        String[] titles = new String[]{"作品 " + curUserBean.getWorkCount(), "动态 " + curUserBean.getDynamicCount(), "喜欢 " + curUserBean.getLikeCount()};
 
-        for (int i = 0; i < titleStr.length; i++) {
+        fragments.clear();
+        for (int i = 0; i < titles.length; i++) {
             fragments.add(new WorkFragment());
-            tabLayout.addTab(tabLayout.newTab().setText(titleStr[i]));
+            tabLayout.addTab(tabLayout.newTab().setText(titles[i]));
         }
 
-        pagerAdapter = new CommPagerAdapter(getChildFragmentManager(), fragments, titleStr);
+        pagerAdapter = new CommPagerAdapter(getChildFragmentManager(), fragments, titles);
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -202,7 +213,7 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
                 transitionAnim(ivHead, curUserBean.getHead());
                 break;
             case R.id.iv_bg:
-                transitionAnim(ivBg, curUserBean.getHead());
+
                 break;
             case R.id.ll_focus:
                 startActivity(new Intent(getActivity(), FocusActivity.class));
@@ -210,6 +221,15 @@ public class PersonalHomeFragment extends BaseFragment implements View.OnClickLi
             case R.id.ll_fans:
                 startActivity(new Intent(getActivity(), FocusActivity.class));
                 break;
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        if (subscription != null) {
+            subscription.unsubscribe();
         }
     }
 }

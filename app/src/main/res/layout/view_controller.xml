@@ -63,15 +63,14 @@
                 android:id="@+id/iv_head"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
-                tools:src="@mipmap/head_six"
                 app:es_shape_type="round"
                 android:scaleType="centerCrop"/>
 
             <ImageView
                 android:id="@+id/iv_focus"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:padding="5dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:padding="3dp"
                 android:src="@mipmap/add_focus"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"/>
@@ -104,7 +103,7 @@
             tools:text="22.5w"
             android:textSize="12sp"
             android:textColor="@color/white"
-            android:layout_marginTop="-18dp"/>
+            android:layout_marginTop="-22dp"/>
 
         <com.bytedance.tiktok.view.IconFontTextView
             android:id="@+id/iv_comment"
@@ -120,7 +119,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="3823"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="2dp"
             android:textSize="12sp"
             android:textColor="@color/white"/>
 
@@ -139,13 +138,14 @@
             android:layout_height="wrap_content"
             tools:text="3371"
             android:textSize="12sp"
+            android:layout_marginTop="-5dp"
             android:textColor="@color/white"/>
 
         <RelativeLayout
             android:id="@+id/rl_record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="45dp"
             android:layout_marginBottom="15dp">
 
             <ImageView

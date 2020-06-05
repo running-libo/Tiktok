@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="120dp"
+    android:layout_marginTop="100dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
@@ -19,8 +19,8 @@
 
         <com.bytedance.tiktok.view.CircleImageView
             android:id="@+id/iv_head"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:es_shape_type="round"
             android:layout_marginLeft="20dp"
             android:scaleType="centerCrop"
@@ -28,11 +28,11 @@
 
         <TextView
             android:id="@+id/tv_addfocus"
-            android:layout_width="150dp"
-            android:layout_height="42dp"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
             android:text="关注"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:gravity="center"
             android:layout_marginRight="4dp"
             android:layout_centerVertical="true"
@@ -61,7 +61,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/color_bg_theme"
-        android:padding="12dp">
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="12dp">
 
         <TextView
             android:id="@+id/tv_nickname"
