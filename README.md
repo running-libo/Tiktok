@@ -1,12 +1,14 @@
 高仿抖音APP
 
-[简书地址](!https://www.jianshu.com/p/f1f452abc328)
+![简书地址](https://www.jianshu.com/p/f1f452abc328)
+
+![抖音，记录别人的美好生活](https://upload-images.jianshu.io/upload_images/8669504-3293ef3c6d1d27d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
 
 抖音这么火，我就想着要不自己也做一个吧，于是就有了我的自制抖音。喜欢的可以点个star或关注一下，以后会保持维护和优化。
 
 
 ###主要效果演示
-https://upload-images.jianshu.io/upload_images/8669504-5f63ca6bf575707f.gif?imageMogr2/auto-orient/strip|imageView2/2/w/224/format/webp
+![](https://upload-images.jianshu.io/upload_images/8669504-5f63ca6bf575707f.gif?imageMogr2/auto-orient/strip)
 
 ####仿抖音App做的技术点及特点：
 - 全屏切换播放效果用的是Recycler加PagerSnapHelper控制。
