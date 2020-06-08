@@ -36,7 +36,6 @@
 - 同城视频
 ![](https://upload-images.jianshu.io/upload_images/8669504-fb5e3e9ad10cd1c5.gif?imageMogr2/auto-orient/strip)
 
-
 - 话题# @用户控件，可标颜色可点击
 ![](https://upload-images.jianshu.io/upload_images/8669504-475553d2484c356a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/400)
 
