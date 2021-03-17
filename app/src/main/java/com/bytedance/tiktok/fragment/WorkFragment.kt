@@ -7,6 +7,7 @@ import com.bytedance.tiktok.R
 import com.bytedance.tiktok.adapter.WorkAdapter
 import com.bytedance.tiktok.base.BaseFragment
 import com.bytedance.tiktok.bean.DataCreate
+import kotlinx.android.synthetic.main.fragment_work.*
 
 /**
  * create by libo
@@ -14,8 +15,6 @@ import com.bytedance.tiktok.bean.DataCreate
  * description 个人作品fragment
  */
 class WorkFragment : BaseFragment() {
-    @BindView(R.id.recyclerview)
-    var recyclerView: RecyclerView? = null
     private var workAdapter: WorkAdapter? = null
 
     override fun setLayoutId(): Int {
@@ -23,8 +22,8 @@ class WorkFragment : BaseFragment() {
     }
 
     override fun init() {
-        recyclerView!!.layoutManager = GridLayoutManager(activity, 3)
+        recyclerview!!.layoutManager = GridLayoutManager(activity, 3)
         workAdapter = WorkAdapter(activity, DataCreate.datas)
-        recyclerView!!.adapter = workAdapter
+        recyclerview!!.adapter = workAdapter
     }
 }

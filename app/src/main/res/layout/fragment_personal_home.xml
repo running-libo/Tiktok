@@ -31,7 +31,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
-                        android:id="@+id/iv_bg"
+                        android:id="@+id/ivBg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:scaleType="centerCrop"/>
@@ -50,7 +50,7 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:id="@+id/iv_return"
+                            android:id="@+id/ivReturn"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:src="@mipmap/return_white"
@@ -60,7 +60,7 @@
                             android:layout_centerVertical="true"/>
 
                         <TextView
-                            android:id="@+id/tv_title"
+                            android:id="@+id/tvTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             tools:text="小橘子衣橱"
@@ -70,7 +70,7 @@
                             android:layout_centerInParent="true"/>
 
                         <TextView
-                            android:id="@+id/tv_focus"
+                            android:id="@+id/tvFocus"
                             android:layout_width="60dp"
                             android:layout_height="30dp"
                             android:background="@drawable/shape_round_red"
@@ -102,7 +102,7 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
             <com.androidkun.xtablayout.XTabLayout
-                android:id="@+id/tablayout"
+                android:id="@+id/tabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
                 app:xTabIndicatorColor="#FF9F00"
@@ -114,7 +114,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager"
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>

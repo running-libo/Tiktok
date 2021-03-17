@@ -8,7 +8,7 @@
     tools:context=".fragment.MainFragment">
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager"
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="48dp"/>
@@ -29,7 +29,7 @@
             android:padding="10dp"/>
 
         <com.androidkun.xtablayout.XTabLayout
-            android:id="@+id/tab_title"
+            android:id="@+id/tabTitle"
             android:layout_width="160dp"
             app:xTabIndicatorColor="@color/white"
             app:xTabSelectedTextColor="@color/white"
@@ -55,7 +55,7 @@
         android:layout_alignParentBottom="true">
 
         <com.androidkun.xtablayout.XTabLayout
-            android:id="@+id/tab_mainmenu"
+            android:id="@+id/tabMainMenu"
             android:layout_width="match_parent"
             app:xTabSelectedTextColor="@color/white"
             app:xTabTextColor="#8F8F94"

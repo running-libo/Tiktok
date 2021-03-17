@@ -1,15 +1,13 @@
 package com.bytedance.tiktok.fragment
 
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
-import butterknife.BindView
-import com.androidkun.xtablayout.XTabLayout
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.base.BaseFragment
 import com.bytedance.tiktok.base.CommPagerAdapter
 import com.bytedance.tiktok.bean.PauseVideoEvent
 import com.bytedance.tiktok.utils.RxBus
+import kotlinx.android.synthetic.main.fragment_main.*
 import java.util.*
 
 /**
@@ -21,14 +19,6 @@ class MainFragment : BaseFragment() {
     private var currentLocationFragment: CurrentLocationFragment? = null
     private var recommendFragment: RecommendFragment? = null
 
-    @BindView(R.id.viewpager)
-    var viewPager: ViewPager? = null
-
-    @BindView(R.id.tab_title)
-    var tabTitle: XTabLayout? = null
-
-    @BindView(R.id.tab_mainmenu)
-    var tabMainMenu: XTabLayout? = null
     private val fragments = ArrayList<Fragment>()
     private var pagerAdapter: CommPagerAdapter? = null
 

@@ -18,7 +18,7 @@
             android:layout_alignParentBottom="true"/>
 
         <com.bytedance.tiktok.view.CircleImageView
-            android:id="@+id/iv_head"
+            android:id="@+id/ivHead"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:es_shape_type="round"
@@ -27,7 +27,7 @@
             android:layout_centerVertical="true"/>
 
         <TextView
-            android:id="@+id/tv_addfocus"
+            android:id="@+id/tvAddfocus"
             android:layout_width="160dp"
             android:layout_height="40dp"
             android:text="关注"
@@ -66,7 +66,7 @@
         android:paddingBottom="12dp">
 
         <TextView
-            android:id="@+id/tv_nickname"
+            android:id="@+id/tvNickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="小橘子衣橱"
@@ -88,7 +88,7 @@
             android:layout_marginTop="10dp"/>
 
         <TextView
-            android:id="@+id/tv_sign"
+            android:id="@+id/tvSign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="保持可爱 赶快长大 \n 这里是你的衣橱间"
@@ -133,7 +133,7 @@
             android:layout_marginTop="20dp">
 
             <TextView
-                android:id="@+id/tv_getlike_count"
+                android:id="@+id/tvGetLikeCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="14w"
@@ -148,12 +148,12 @@
                 android:textSize="14sp"/>
 
             <LinearLayout
-                android:id="@+id/ll_focus"
+                android:id="@+id/llFocus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_focus_count"
+                    android:id="@+id/tvFocusCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="310"
@@ -170,12 +170,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_fans"
+                android:id="@+id/llFans"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_fans_count"
+                    android:id="@+id/tvFansCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="291w"

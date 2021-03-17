@@ -1,14 +1,12 @@
 package com.bytedance.tiktok.fragment
 
 import android.os.CountDownTimer
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import butterknife.BindView
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.adapter.GridVideoAdapter
 import com.bytedance.tiktok.base.BaseFragment
 import com.bytedance.tiktok.bean.DataCreate
+import kotlinx.android.synthetic.main.fragment_current_location.*
 
 /**
  * create by libo
@@ -16,12 +14,7 @@ import com.bytedance.tiktok.bean.DataCreate
  * description 附近的人fragment
  */
 class CurrentLocationFragment : BaseFragment() {
-    @BindView(R.id.recyclerview)
-    var recyclerView: RecyclerView? = null
     private var adapter: GridVideoAdapter? = null
-
-    @BindView(R.id.refreshlayout)
-    var refreshLayout: SwipeRefreshLayout? = null
 
     override fun setLayoutId(): Int {
         return R.layout.fragment_current_location

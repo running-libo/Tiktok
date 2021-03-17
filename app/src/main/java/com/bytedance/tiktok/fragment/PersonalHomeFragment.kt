@@ -2,18 +2,10 @@ package com.bytedance.tiktok.fragment
 
 import android.content.Intent
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
-import androidx.appcompat.widget.Toolbar
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
-import butterknife.BindView
-import com.androidkun.xtablayout.XTabLayout
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.activity.FocusActivity
 import com.bytedance.tiktok.activity.ShowImageActivity
@@ -24,14 +16,12 @@ import com.bytedance.tiktok.bean.MainPageChangeEvent
 import com.bytedance.tiktok.bean.VideoBean.UserBean
 import com.bytedance.tiktok.utils.NumUtils
 import com.bytedance.tiktok.utils.RxBus
-import com.bytedance.tiktok.view.CircleImageView
-import com.bytedance.tiktok.view.IconFontTextView
 import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
+import kotlinx.android.synthetic.main.fragment_personal_home.*
+import kotlinx.android.synthetic.main.personal_home_header.*
 import rx.Subscription
 import rx.functions.Action1
 import java.util.*
-import kotlin.collections.forEachIndexed as forEachIndexed1
 
 /**
  * create by libo
@@ -39,62 +29,6 @@ import kotlin.collections.forEachIndexed as forEachIndexed1
  * description 个人主页fragment
  */
 class PersonalHomeFragment : BaseFragment(), View.OnClickListener {
-    @BindView(R.id.iv_bg)
-    var ivBg: ImageView? = null
-
-    @BindView(R.id.iv_head)
-    var ivHead: CircleImageView? = null
-
-    @BindView(R.id.rl_dropdown)
-    var rlDropdown: RelativeLayout? = null
-
-    @BindView(R.id.ll_focus)
-    var llFocus: LinearLayout? = null
-
-    @BindView(R.id.ll_fans)
-    var llFans: LinearLayout? = null
-
-    @BindView(R.id.iv_return)
-    var ivReturn: ImageView? = null
-
-    @BindView(R.id.tv_title)
-    var tvTitle: TextView? = null
-
-    @BindView(R.id.tv_focus)
-    var tvFocus: TextView? = null
-
-    @BindView(R.id.iv_more)
-    var ivMore: IconFontTextView? = null
-
-    @BindView(R.id.toolbar)
-    var toolbar: Toolbar? = null
-
-    @BindView(R.id.tablayout)
-    var tabLayout: XTabLayout? = null
-
-    @BindView(R.id.appbarlayout)
-    var appBarLayout: AppBarLayout? = null
-
-    @BindView(R.id.viewpager)
-    var viewPager: ViewPager? = null
-
-    @BindView(R.id.tv_nickname)
-    var tvNickname: TextView? = null
-
-    @BindView(R.id.tv_sign)
-    var tvSign: TextView? = null
-
-    @BindView(R.id.tv_getlike_count)
-    var tvGetLikeCount: TextView? = null
-
-    @BindView(R.id.tv_focus_count)
-    var tvFocusCount: TextView? = null
-
-    @BindView(R.id.tv_fans_count)
-    var tvFansCount: TextView? = null
-
-    @BindView(R.id.tv_addfocus)
-    var tvAddfocus: TextView? = null
     private val fragments = ArrayList<Fragment>()
     private var pagerAdapter: CommPagerAdapter? = null
     private var curUserBean: UserBean? = null
@@ -108,7 +42,7 @@ class PersonalHomeFragment : BaseFragment(), View.OnClickListener {
 
         //解决toolbar左边距问题
         toolbar!!.setContentInsetsAbsolute(0, 0)
-        setAppbarLayoutPercent()
+        setappbarlayoutPercent()
         ivReturn!!.setOnClickListener(this)
         ivHead!!.setOnClickListener(this)
         ivBg!!.setOnClickListener(this)
@@ -174,9 +108,9 @@ class PersonalHomeFragment : BaseFragment(), View.OnClickListener {
     /**
      * 根据滚动比例渐变view
      */
-    private fun setAppbarLayoutPercent() {
-        appBarLayout!!.addOnOffsetChangedListener(OnOffsetChangedListener { appBarLayout: AppBarLayout, verticalOffset: Int ->
-            val percent = Math.abs(verticalOffset * 1.0f) / appBarLayout.totalScrollRange //滑动比例
+    private fun setappbarlayoutPercent() {
+        appbarlayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appbarlayout, verticalOffset ->
+            val percent = Math.abs(verticalOffset * 1.0f) / appbarlayout.totalScrollRange //滑动比例
             if (percent > 0.8) {
                 tvTitle!!.visibility = View.VISIBLE
                 tvFocus!!.visibility = View.VISIBLE
@@ -194,24 +128,24 @@ class PersonalHomeFragment : BaseFragment(), View.OnClickListener {
      * 自动回顶部
      */
     private fun coordinatorLayoutBackTop() {
-        val behavior = (appBarLayout!!.layoutParams as CoordinatorLayout.LayoutParams).behavior
+        val behavior = (appbarlayout!!.layoutParams as CoordinatorLayout.LayoutParams).behavior
         if (behavior is AppBarLayout.Behavior) {
-            val appBarLayoutBehavior = behavior
-            val topAndBottomOffset = appBarLayoutBehavior.topAndBottomOffset
+            val appbarlayoutBehavior = behavior
+            val topAndBottomOffset = appbarlayoutBehavior.topAndBottomOffset
             if (topAndBottomOffset != 0) {
-                appBarLayoutBehavior.topAndBottomOffset = 0
+                appbarlayoutBehavior.topAndBottomOffset = 0
             }
         }
     }
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.iv_return -> RxBus.getDefault().post(MainPageChangeEvent(0))
+            R.id.ivReturn -> RxBus.getDefault().post(MainPageChangeEvent(0))
             R.id.iv_head -> transitionAnim(ivHead, curUserBean!!.head)
-            R.id.iv_bg -> {
+            R.id.ivBg -> {
             }
-            R.id.ll_focus -> startActivity(Intent(activity, FocusActivity::class.java))
-            R.id.ll_fans -> startActivity(Intent(activity, FocusActivity::class.java))
+            R.id.llFocus -> startActivity(Intent(activity, FocusActivity::class.java))
+            R.id.llFans -> startActivity(Intent(activity, FocusActivity::class.java))
         }
     }
 

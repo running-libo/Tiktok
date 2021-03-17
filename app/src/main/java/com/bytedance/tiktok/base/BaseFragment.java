@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import butterknife.ButterKnife;
 
@@ -20,9 +23,13 @@ public abstract class BaseFragment extends Fragment {
                              Bundle savedInstanceState) {
         rootView = inflater.inflate(setLayoutId(), container, false);
         ButterKnife.bind(this, rootView);
-
-        init();
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        init();
     }
 
     protected abstract int setLayoutId();

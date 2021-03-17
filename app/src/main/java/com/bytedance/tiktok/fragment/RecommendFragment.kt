@@ -5,9 +5,6 @@ import android.os.CountDownTimer
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import butterknife.BindView
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.activity.MainActivity
 import com.bytedance.tiktok.activity.PlayListActivity
@@ -22,6 +19,7 @@ import com.bytedance.tiktok.utils.RxBus
 import com.bytedance.tiktok.view.*
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.ViewPagerLayoutManager
+import kotlinx.android.synthetic.main.fragment_recommend.*
 import rx.functions.Action1
 
 /**
@@ -30,8 +28,9 @@ import rx.functions.Action1
  * description 推荐播放页
  */
 class RecommendFragment : BaseFragment() {
-    @BindView(R.id.recyclerview)
-    var recyclerView: RecyclerView? = null
+//    @JvmField
+//    @BindView(R.id.recyclerview)
+//    var recyclerView: RecyclerView? = null
     private var adapter: VideoAdapter? = null
     private var viewPagerLayoutManager: ViewPagerLayoutManager? = null
 
@@ -39,8 +38,9 @@ class RecommendFragment : BaseFragment() {
     private var curPlayPos = -1
     private var videoView: FullScreenVideoView? = null
 
-    @BindView(R.id.refreshlayout)
-    var refreshLayout: SwipeRefreshLayout? = null
+//    @JvmField
+//    @BindView(R.id.refreshlayout)
+//    var refreshLayout: SwipeRefreshLayout? = null
     private var ivCurCover: ImageView? = null
 
     override fun setLayoutId(): Int {
@@ -157,8 +157,9 @@ class RecommendFragment : BaseFragment() {
      */
     private fun dettachParentView(rootView: ViewGroup) {
         //1.添加videoview到当前需要播放的item中,添加进item之前，保证ijkVideoView没有父view
-        val parent = videoView!!.parent as ViewGroup
-        parent?.removeView(videoView)
+        videoView?.parent?.let {
+            (it as ViewGroup).removeView(videoView)
+        }
         rootView.addView(videoView, 0)
     }
 
