@@ -39,14 +39,14 @@ public class GridVideoAdapter extends BaseRvAdapter<VideoBean, GridVideoAdapter.
 
         holder.itemView.setOnClickListener(v -> {
             PlayListActivity.initPos = position;
-            context.startActivity(new Intent(context, PlayListActivity.class));
+            getContext().startActivity(new Intent(getContext(), PlayListActivity.class));
         });
     }
 
     @NonNull
     @Override
     public GridVideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_gridvideo, parent, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.item_gridvideo, parent, false);
         return new GridVideoViewHolder(view);
     }
 

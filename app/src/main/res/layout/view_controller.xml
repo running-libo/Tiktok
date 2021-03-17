@@ -17,7 +17,7 @@
         android:layout_marginRight="120dp">
 
         <TextView
-            android:id="@+id/tv_nickname"
+            android:id="@+id/tvNickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" @大致爱高清"
@@ -26,7 +26,7 @@
             android:textColor="@color/white"/>
 
         <com.bytedance.tiktok.utils.autolinktextview.AutoLinkTextView
-            android:id="@+id/tv_content"
+            android:id="@+id/autoLinkTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="只有 #允儿 的脸我才敢拉这么近"
@@ -60,14 +60,14 @@
             android:layout_height="62dp">
 
             <com.bytedance.tiktok.view.CircleImageView
-                android:id="@+id/iv_head"
+                android:id="@+id/ivHead"
                 android:layout_width="52dp"
                 android:layout_height="52dp"
                 app:es_shape_type="round"
                 android:scaleType="centerCrop"/>
 
             <ImageView
-                android:id="@+id/iv_focus"
+                android:id="@+id/ivFocus"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:padding="3dp"
@@ -77,12 +77,12 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl_like"
+            android:id="@+id/rlLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.bytedance.tiktok.view.IconFontTextView
-                android:id="@+id/iv_like"
+                android:id="@+id/ivLike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="32sp"
@@ -91,13 +91,13 @@
                 android:text="@string/icon_like_fill" />
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/lottie_anim"
+                android:id="@+id/animationView"
                 android:layout_width="85dp"
                 android:layout_height="85dp" />
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/tv_likecount"
+            android:id="@+id/tvLikecount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="22.5w"
@@ -106,7 +106,7 @@
             android:layout_marginTop="-22dp"/>
 
         <com.bytedance.tiktok.view.IconFontTextView
-            android:id="@+id/iv_comment"
+            android:id="@+id/ivComment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="32sp"
@@ -115,7 +115,7 @@
             android:text="@string/icon_comment"/>
 
         <TextView
-            android:id="@+id/tv_commentcount"
+            android:id="@+id/tvCommentcount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="3823"
@@ -124,7 +124,7 @@
             android:textColor="@color/white"/>
 
         <com.bytedance.tiktok.view.IconFontTextView
-            android:id="@+id/iv_share"
+            android:id="@+id/ivShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="32sp"
@@ -133,7 +133,7 @@
             android:text="@string/icon_more"/>
 
         <TextView
-            android:id="@+id/tv_sharecount"
+            android:id="@+id/tvSharecount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="3371"
@@ -142,20 +142,20 @@
             android:textColor="@color/white"/>
 
         <RelativeLayout
-            android:id="@+id/rl_record"
+            android:id="@+id/rlRecord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
             android:layout_marginBottom="15dp">
 
             <ImageView
-                android:id="@+id/iv_record"
+                android:id="@+id/ivRecord"
                 android:layout_width="58dp"
                 android:layout_height="58dp"
                 android:background="@mipmap/ic_record" />
 
             <com.bytedance.tiktok.view.CircleImageView
-                android:id="@+id/iv_head_anim"
+                android:id="@+id/ivHeadAnim"
                 android:layout_width="34dp"
                 android:layout_height="34dp"
                 app:ease_radius="15dp"

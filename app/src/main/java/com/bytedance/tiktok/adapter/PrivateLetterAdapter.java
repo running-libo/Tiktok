@@ -37,7 +37,7 @@ public class PrivateLetterAdapter extends BaseRvAdapter<VideoBean.UserBean, Priv
     @NonNull
     @Override
     public PrivateLetterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_private_letter,parent, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.item_private_letter,parent, false);
         return new PrivateLetterViewHolder(view);
     }
 

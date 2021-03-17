@@ -28,9 +28,6 @@ import rx.functions.Action1
  * description 推荐播放页
  */
 class RecommendFragment : BaseFragment() {
-//    @JvmField
-//    @BindView(R.id.recyclerview)
-//    var recyclerView: RecyclerView? = null
     private var adapter: VideoAdapter? = null
     private var viewPagerLayoutManager: ViewPagerLayoutManager? = null
 
@@ -38,9 +35,6 @@ class RecommendFragment : BaseFragment() {
     private var curPlayPos = -1
     private var videoView: FullScreenVideoView? = null
 
-//    @JvmField
-//    @BindView(R.id.refreshlayout)
-//    var refreshLayout: SwipeRefreshLayout? = null
     private var ivCurCover: ImageView? = null
 
     override fun setLayoutId(): Int {
@@ -130,15 +124,18 @@ class RecommendFragment : BaseFragment() {
         ivPlay.alpha = 0.4f
 
         //播放暂停事件
-        likeView.setOnPlayPauseListener {
-            if (videoView!!.isPlaying) {
-                videoView!!.pause()
-                ivPlay.visibility = View.VISIBLE
-            } else {
-                videoView!!.start()
-                ivPlay.visibility = View.GONE
+        likeView.setOnPlayPauseListener(object: LikeView.OnPlayPauseListener {
+            override fun onPlayOrPause() {
+                if (videoView!!.isPlaying) {
+                    videoView!!.pause()
+                    ivPlay.visibility = View.VISIBLE
+                } else {
+                    videoView!!.start()
+                    ivPlay.visibility = View.GONE
+                }
             }
-        }
+
+        })
 
         //评论点赞事件
         likeShareEvent(controllerView)

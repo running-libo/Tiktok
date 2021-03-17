@@ -47,7 +47,7 @@ public class FansAdapter extends BaseRvAdapter<VideoBean.UserBean, FansAdapter.F
     @NonNull
     @Override
     public FansViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_fans, parent, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.item_fans, parent, false);
         return new FansViewHolder(view);
     }
 

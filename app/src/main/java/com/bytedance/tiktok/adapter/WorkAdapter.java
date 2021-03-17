@@ -36,14 +36,14 @@ public class WorkAdapter extends BaseRvAdapter<VideoBean, WorkAdapter.WorkViewHo
 
         holder.itemView.setOnClickListener(v -> {
             PlayListActivity.initPos = position;
-            context.startActivity(new Intent(context, PlayListActivity.class));
+            getContext().startActivity(new Intent(getContext(), PlayListActivity.class));
         });
     }
 
     @NonNull
     @Override
     public WorkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View rooView = LayoutInflater.from(context).inflate(R.layout.item_work, parent, false);
+        View rooView = LayoutInflater.from(getContext()).inflate(R.layout.item_work, parent, false);
         return new WorkViewHolder(rooView);
     }
 

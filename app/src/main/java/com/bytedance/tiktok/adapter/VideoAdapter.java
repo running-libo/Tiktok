@@ -45,7 +45,7 @@ public class VideoAdapter extends BaseRvAdapter<VideoBean, VideoAdapter.VideoVie
     @NonNull
     @Override
     public VideoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_video, parent, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.item_video, parent, false);
         return new VideoViewHolder(view);
     }
 
