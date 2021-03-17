@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.adapter.CommentAdapter
 import com.bytedance.tiktok.bean.CommentBean
 import com.bytedance.tiktok.bean.DataCreate
+import kotlinx.android.synthetic.main.dialog_comment.*
 import java.util.*
 
 /**
@@ -21,13 +18,7 @@ import java.util.*
  * description 评论弹框
  */
 class CommentDialog : BaseBottomSheetDialog() {
-    @JvmField
-    @BindView(R.id.recyclerview)
-    var recyclerView: RecyclerView? = null
 
-    @JvmField
-    @BindView(R.id.tv_title)
-    var tvTitle: TextView? = null
     private var commentAdapter: CommentAdapter? = null
     private val datas = ArrayList<CommentBean>()
     private val likeArray = intArrayOf(4919, 334, 121, 423, 221, 23)
@@ -35,9 +26,12 @@ class CommentDialog : BaseBottomSheetDialog() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.dialog_comment, container)
-        ButterKnife.bind(this, view)
-        init()
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
     }
 
     private fun init() {

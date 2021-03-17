@@ -71,7 +71,7 @@ class ControllerView(context: Context?, attrs: AttributeSet?) : RelativeLayout(c
             return
         }
         when (v.id) {
-            R.id.iv_head -> listener!!.onHeadClick()
+            R.id.ivHead -> listener!!.onHeadClick()
             R.id.rlLike -> {
                 listener!!.onLikeClick()
                 like()

@@ -141,7 +141,7 @@ class PersonalHomeFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.ivReturn -> RxBus.getDefault().post(MainPageChangeEvent(0))
-            R.id.iv_head -> transitionAnim(ivHead, curUserBean!!.head)
+            R.id.ivHead -> transitionAnim(ivHead, curUserBean!!.head)
             R.id.ivBg -> {
             }
             R.id.llFocus -> startActivity(Intent(activity, FocusActivity::class.java))

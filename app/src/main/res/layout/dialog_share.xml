@@ -16,7 +16,7 @@
         android:layout_gravity="center_horizontal"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_private_letter"
+        android:id="@+id/rvPrivateLetter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"/>
@@ -28,7 +28,7 @@
         android:layout_margin="15dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_share"
+        android:id="@+id/rvShare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"/>

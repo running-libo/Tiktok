@@ -5,14 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.adapter.PrivateLetterAdapter
 import com.bytedance.tiktok.adapter.ShareAdapter
 import com.bytedance.tiktok.bean.DataCreate
 import com.bytedance.tiktok.bean.ShareBean
+import kotlinx.android.synthetic.main.dialog_share.*
 import java.util.*
 
 /**
@@ -21,21 +19,19 @@ import java.util.*
  * description 分享弹框
  */
 class ShareDialog : BaseBottomSheetDialog() {
-    @JvmField
-    @BindView(R.id.rv_private_letter)
-    var rvPrivateLetter: RecyclerView? = null
 
-    @JvmField
-    @BindView(R.id.rv_share)
-    var rvShare: RecyclerView? = null
     private var privateLetterAdapter: PrivateLetterAdapter? = null
     private var shareAdapter: ShareAdapter? = null
     private val shareBeans = ArrayList<ShareBean>()
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.dialog_share, container)
-        ButterKnife.bind(this, view)
-        init()
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        init()
     }
 
     private fun init() {
