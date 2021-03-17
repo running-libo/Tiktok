@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 29
@@ -54,10 +55,15 @@ dependencies {
     implementation 'io.reactivex:rxjava:1.1.0'
 
     implementation 'com.airbnb.android:lottie:2.8.0'
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
 //    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
 //    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.0.0'
 //    implementation 'androidx.lifecycle:lifecycle-livedata:2.0.0'
 //    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:3.2.0'
 //    implementation 'me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:3.2.0'
+}
+repositories {
+    mavenCentral()
 }
