@@ -232,9 +232,7 @@ class DataCreate {
     }
 
     companion object {
-        @JvmField
         var datas = ArrayList<VideoBean>()
-        @JvmField
         var userList = ArrayList<UserBean>()
     }
 }
