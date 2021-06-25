@@ -1,13 +1,11 @@
 package com.bytedance.tiktok.activity
 
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
-import butterknife.BindView
-import com.androidkun.xtablayout.XTabLayout
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.base.BaseActivity
 import com.bytedance.tiktok.base.CommPagerAdapter
 import com.bytedance.tiktok.fragment.FansFragment
+import kotlinx.android.synthetic.main.activity_focus.*
 import java.util.*
 
 /**
@@ -16,11 +14,6 @@ import java.util.*
  * description 粉丝关注人页面
  */
 class FocusActivity : BaseActivity() {
-    @BindView(R.id.tablayout)
-    var tabLayout: XTabLayout? = null
-
-    @BindView(R.id.viewpager)
-    var viewPager: ViewPager? = null
 
     private val fragments = ArrayList<Fragment>()
     private var pagerAdapter: CommPagerAdapter? = null
@@ -33,10 +26,10 @@ class FocusActivity : BaseActivity() {
     override fun init() {
         for (i in titles.indices) {
             fragments.add(FansFragment())
-            tabLayout!!.addTab(tabLayout!!.newTab().setText(titles[i]))
+            tablayout!!.addTab(tablayout!!.newTab().setText(titles[i]))
         }
         pagerAdapter = CommPagerAdapter(supportFragmentManager, fragments, titles)
-        viewPager!!.adapter = pagerAdapter
-        tabLayout!!.setupWithViewPager(viewPager)
+        viewpager!!.adapter = pagerAdapter
+        tablayout!!.setupWithViewPager(viewpager)
     }
 }

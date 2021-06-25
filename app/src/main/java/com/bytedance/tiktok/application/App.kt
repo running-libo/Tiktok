@@ -17,7 +17,5 @@ class App : Application() {
         DoraemonKit.install(this, "pId")
 
         BlockCanary.install(this, AppBlockCanaryContext()).start()
-
-        Thread.setDefaultUncaughtExceptionHandler(MyExceptionHandler())
     }
 }
