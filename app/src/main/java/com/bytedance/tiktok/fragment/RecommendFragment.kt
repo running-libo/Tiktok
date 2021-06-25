@@ -49,7 +49,7 @@ class RecommendFragment : BaseFragment() {
         setRefreshEvent()
 
         //监听播放或暂停事件
-        RxBus.getDefault().toObservable(PauseVideoEvent::class.java)
+        val subscribe = RxBus.getDefault().toObservable(PauseVideoEvent::class.java)
                 .subscribe(Action1 { event: PauseVideoEvent ->
                     if (event.isPlayOrPause) {
                         videoView!!.start()
@@ -57,6 +57,7 @@ class RecommendFragment : BaseFragment() {
                         videoView!!.pause()
                     }
                 } as Action1<PauseVideoEvent>)
+//        subscribe.unsubscribe()
     }
 
     override fun onResume() {

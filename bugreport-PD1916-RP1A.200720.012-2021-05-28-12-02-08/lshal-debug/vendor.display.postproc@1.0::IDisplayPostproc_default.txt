@@ -1,0 +1,1 @@
+*** command 'lshal debug -E vendor.display.postproc@1.0::IDisplayPostproc/default' failed: exit code 128

@@ -1,0 +1,1 @@
+*** command 'lshal debug -E vendor.qti.hardware.data.connection@1.0::IDataConnection/slot1' failed: exit code 128

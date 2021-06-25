@@ -1,0 +1,1 @@
+*** command 'lshal debug -E vendor.qti.hardware.bluetooth_sar@1.0::IBluetoothSar/default' failed: exit code 128

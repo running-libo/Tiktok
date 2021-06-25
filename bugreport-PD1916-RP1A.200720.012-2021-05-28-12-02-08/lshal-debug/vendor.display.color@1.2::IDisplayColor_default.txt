@@ -1,0 +1,1 @@
+*** command 'lshal debug -E vendor.display.color@1.2::IDisplayColor/default' failed: exit code 128

@@ -1,0 +1,1 @@
+*** command 'lshal debug -E vendor.qti.hardware.vpp@1.1::IHidlVppService/vppService' failed: exit code 128

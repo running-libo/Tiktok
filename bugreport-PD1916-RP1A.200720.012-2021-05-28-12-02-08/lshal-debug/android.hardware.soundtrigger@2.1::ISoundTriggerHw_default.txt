@@ -1,0 +1,1 @@
+*** command 'lshal debug -E android.hardware.soundtrigger@2.1::ISoundTriggerHw/default' failed: exit code 128

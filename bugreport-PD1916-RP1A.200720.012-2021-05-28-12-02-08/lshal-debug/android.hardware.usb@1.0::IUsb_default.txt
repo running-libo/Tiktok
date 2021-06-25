@@ -1,0 +1,1 @@
+*** command 'lshal debug -E android.hardware.usb@1.0::IUsb/default' failed: exit code 128

@@ -1,0 +1,1 @@
+*** command 'lshal debug -E vendor.qti.hardware.wifidisplaysession@1.0::IWifiDisplaySessionVideoTrack/wifidisplaysessionvideotrack' failed: exit code 128

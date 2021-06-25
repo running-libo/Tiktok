@@ -1,0 +1,1 @@
+*** command 'lshal debug -E android.hardware.health@2.0::IHealth/default' failed: exit code 128

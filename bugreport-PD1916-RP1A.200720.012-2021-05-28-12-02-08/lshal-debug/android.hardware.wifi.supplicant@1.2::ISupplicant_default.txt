@@ -1,0 +1,1 @@
+*** command 'lshal debug -E android.hardware.wifi.supplicant@1.2::ISupplicant/default' failed: exit code 128

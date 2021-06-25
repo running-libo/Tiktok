@@ -1,0 +1,1 @@
+*** command 'lshal debug -E android.hardware.keymaster@4.0::IKeymasterDevice/default' failed: exit code 128

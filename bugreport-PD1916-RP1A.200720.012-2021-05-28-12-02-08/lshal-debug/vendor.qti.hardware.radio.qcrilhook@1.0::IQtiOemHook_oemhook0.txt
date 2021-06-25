@@ -1,0 +1,1 @@
+*** command 'lshal debug -E vendor.qti.hardware.radio.qcrilhook@1.0::IQtiOemHook/oemhook0' failed: exit code 128
