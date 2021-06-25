@@ -11,6 +11,9 @@
 主要效果演示
 ![](https://upload-images.jianshu.io/upload_images/8669504-5f63ca6bf575707f.gif?imageMogr2/auto-orient/strip)
 
+#####安装包：
+![](https://upload-images.jianshu.io/upload_images/8669504-e1be608e286f7dd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300)
+
 仿抖音App做的技术点及特点：
 - 全屏切换播放效果用的是Recycler加PagerSnapHelper控制。
 ![](https://upload-images.jianshu.io/upload_images/8669504-e0830fc715f87cb2.gif?imageMogr2/auto-orient/strip)
