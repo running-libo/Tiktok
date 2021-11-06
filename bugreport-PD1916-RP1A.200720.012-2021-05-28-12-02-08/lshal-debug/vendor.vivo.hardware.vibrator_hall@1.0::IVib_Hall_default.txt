@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.vivo.hardware.vibrator_hall@1.0::IVib_Hall/default' failed: exit code 128

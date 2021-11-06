@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.vivo.hardware.camera3rd.provider@1.0::ICamera3rdProvider/default' failed: exit code 128

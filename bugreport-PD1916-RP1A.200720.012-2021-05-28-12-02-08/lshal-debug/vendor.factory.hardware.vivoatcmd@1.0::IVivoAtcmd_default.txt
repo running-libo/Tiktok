@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.factory.hardware.vivoatcmd@1.0::IVivoAtcmd/default' failed: exit code 128

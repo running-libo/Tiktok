@@ -5,28 +5,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bytedance.tiktok.R
 import com.bytedance.tiktok.adapter.CommentAdapter
 import com.bytedance.tiktok.bean.CommentBean
 import com.bytedance.tiktok.bean.DataCreate
-import kotlinx.android.synthetic.main.dialog_comment.*
+import com.bytedance.tiktok.databinding.DialogCommentBinding
 import java.util.*
 
 /**
- * create by libo
- * create on 2020-05-24
- * description 评论弹框
+ * 评论弹框
  */
 class CommentDialog : BaseBottomSheetDialog() {
 
-    private var commentAdapter: CommentAdapter? = null
+    private var _binding: DialogCommentBinding? = null
+    // This property is only valid between onCreateDialog and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
+    private val commentAdapter: CommentAdapter = CommentAdapter()
     private val datas = ArrayList<CommentBean>()
     private val likeArray = intArrayOf(4919, 334, 121, 423, 221, 23)
     private val commentArray = arrayOf("我就说左脚踩右脚可以上天你们还不信！", "全是评论点赞，没人关注吗", "哈哈哈哈", "像谁，没看出来", "你这西安话真好听")
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(R.layout.dialog_comment, container)
-        return view
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = DialogCommentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,10 +40,15 @@ class CommentDialog : BaseBottomSheetDialog() {
         init()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun init() {
-        recyclerView!!.layoutManager = LinearLayoutManager(context)
-        commentAdapter = CommentAdapter(context, datas)
-        recyclerView!!.adapter = commentAdapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.adapter = commentAdapter
+        commentAdapter.submitList(datas)
         loadData()
     }
 
@@ -49,9 +60,6 @@ class CommentDialog : BaseBottomSheetDialog() {
             commentBean.likeCount = likeArray[(Math.random() * likeArray.size).toInt()]
             datas.add(commentBean)
         }
-        commentAdapter!!.notifyDataSetChanged()
+        commentAdapter.submitList(datas)
     }
-
-    protected override val height: Int
-        protected get() = resources.displayMetrics.heightPixels - 600
 }

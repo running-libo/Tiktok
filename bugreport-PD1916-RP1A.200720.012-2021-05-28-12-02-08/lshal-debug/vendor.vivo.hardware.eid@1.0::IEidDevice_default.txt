@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.vivo.hardware.eid@1.0::IEidDevice/default' failed: exit code 128

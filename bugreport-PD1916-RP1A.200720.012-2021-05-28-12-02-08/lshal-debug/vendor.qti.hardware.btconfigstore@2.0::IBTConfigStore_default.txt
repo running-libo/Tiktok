@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.qti.hardware.btconfigstore@2.0::IBTConfigStore/default' failed: exit code 128

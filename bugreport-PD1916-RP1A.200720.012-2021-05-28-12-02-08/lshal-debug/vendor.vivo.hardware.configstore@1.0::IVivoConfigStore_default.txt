@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.vivo.hardware.configstore@1.0::IVivoConfigStore/default' failed: exit code 128

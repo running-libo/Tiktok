@@ -20,43 +20,43 @@ import java.util.*
  * create on 2020-05-20
  * description 点赞动画view
  */
-class LikeView : RelativeLayout {
+class LikeView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null
+) : RelativeLayout(context, attrs) {
+
+    interface OnPlayPauseListener {
+        fun onPlayOrPause()
+    }
+
+    interface OnLikeListener {
+        fun onLikeListener()
+    }
+
     private var gestureDetector: GestureDetector? = null
 
     /** 图片大小  */
     private val likeViewSize = 330
     private val angles = intArrayOf(-30, 0, 30)
 
-    /** 单击是否有点赞效果  */
-    private val canSingleTabShow = false
-    private var onPlayPauseListener: OnPlayPauseListener? = null
-    private var onLikeListener: OnLikeListener? = null
-
-    constructor(context: Context?) : super(context) {
-        init()
-    }
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
-        init()
-    }
+    var playPauseListener: OnPlayPauseListener? = null
+    var likeListener: OnLikeListener? = null
 
     private fun init() {
         gestureDetector = GestureDetector(object : SimpleOnGestureListener() {
             override fun onDoubleTap(e: MotionEvent): Boolean {
                 addLikeView(e)
-                onLikeListener!!.onLikeListener()
+                likeListener?.onLikeListener()
                 return true
             }
 
             override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
-                if (onPlayPauseListener != null) {
-                    onPlayPauseListener!!.onPlayOrPause()
-                }
+                playPauseListener?.onPlayOrPause()
                 return true
             }
         })
-        setOnTouchListener { v: View?, event: MotionEvent? ->
-            gestureDetector!!.onTouchEvent(event)
+        setOnTouchListener { _: View?, event: MotionEvent? ->
+            gestureDetector?.onTouchEvent(event)
             true
         }
     }
@@ -73,46 +73,30 @@ class LikeView : RelativeLayout {
     }
 
     private fun playAnim(view: View) {
-        val animationSet = AnimationSet(true)
-        val degrees = angles[Random().nextInt(3)]
-        animationSet.addAnimation(AnimUtils.rotateAnim(0, 0, degrees.toFloat()))
-        animationSet.addAnimation(AnimUtils.scaleAnim(100, 2f, 1f, 0))
-        animationSet.addAnimation(AnimUtils.alphaAnim(0f, 1f, 100, 0))
-        animationSet.addAnimation(AnimUtils.scaleAnim(500, 1f, 1.8f, 300))
-        animationSet.addAnimation(AnimUtils.alphaAnim(1f, 0f, 500, 300))
-        animationSet.addAnimation(AnimUtils.translationAnim(500, 0f, 0f, 0f, -400f, 300))
-        animationSet.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation) {}
-            override fun onAnimationEnd(animation: Animation) {
-                Handler().post { removeView(view) }
-            }
+        val animationSet = AnimationSet(true).apply {
+            val degrees = angles[Random().nextInt(3)]
+            addAnimation(AnimUtils.rotateAnim(0, 0, degrees.toFloat()))
+            addAnimation(AnimUtils.scaleAnim(100, 2f, 1f, 0))
+            addAnimation(AnimUtils.alphaAnim(0f, 1f, 100, 0))
+            addAnimation(AnimUtils.scaleAnim(500, 1f, 1.8f, 300))
+            addAnimation(AnimUtils.alphaAnim(1f, 0f, 500, 300))
+            addAnimation(AnimUtils.translationAnim(500, 0f, 0f, 0f, -400f, 300))
+            setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationStart(animation: Animation) {}
+                override fun onAnimationEnd(animation: Animation) {
+                    // TODO: remove this unappreciated code
+                    Handler().post {
+                        removeView(view)
+                    }
+                }
 
-            override fun onAnimationRepeat(animation: Animation) {}
-        })
+                override fun onAnimationRepeat(animation: Animation) {}
+            })
+        }
         view.startAnimation(animationSet)
     }
 
-    interface OnPlayPauseListener {
-        fun onPlayOrPause()
-    }
-
-    /**
-     * 设置单机播放暂停事件
-     * @param onPlayPauseListener
-     */
-    fun setOnPlayPauseListener(onPlayPauseListener: OnPlayPauseListener?) {
-        this.onPlayPauseListener = onPlayPauseListener
-    }
-
-    interface OnLikeListener {
-        fun onLikeListener()
-    }
-
-    /**
-     * 设置双击点赞事件
-     * @param onLikeListener
-     */
-    fun setOnLikeListener(onLikeListener: OnLikeListener?) {
-        this.onLikeListener = onLikeListener
+    init {
+        init()
     }
 }

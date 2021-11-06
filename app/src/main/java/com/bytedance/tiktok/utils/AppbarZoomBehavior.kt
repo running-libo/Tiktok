@@ -46,7 +46,7 @@ class AppbarZoomBehavior(context: Context?, attrs: AttributeSet?) : AppBarLayout
         mAppbarHeight = abl.height
         mImageView = abl.findViewById(R.id.ivBg)
         if (mImageView != null) {
-            mImageViewHeight = mImageView!!.height
+            mImageViewHeight = mImageView?.height ?: 0
         }
     }
 
@@ -85,7 +85,7 @@ class AppbarZoomBehavior(context: Context?, attrs: AttributeSet?) : AppBarLayout
                 consumed[1] = dy
                 zoomHeaderImageView(child, dy)
             } else {
-                if (valueAnimator == null || !valueAnimator!!.isRunning) {
+                if (valueAnimator == null || valueAnimator?.isRunning == false) {
                     super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, type)
                 }
             }

@@ -4,7 +4,25 @@
     <asm skipDebug="false" skipFrames="false" skipCode="false" expandFrames="false" />
     <groovy codeStyle="LEGACY" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_focus.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/dialog_share.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/fragment_current_location.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/fragment_personal_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_recommend.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/fragment_work.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/item_comment.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/item_private_letter.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/item_video.xml" value="0.28229166666666666" />
+        <entry key="app/src/main/res/layout/personal_home_header.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/layout/view_controller.xml" value="0.14895833333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

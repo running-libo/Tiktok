@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.vivo.hardware.vcode@1.0::IVcode/default' failed: exit code 128

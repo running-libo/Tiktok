@@ -1,23 +1,28 @@
 package com.bytedance.tiktok.activity
 
 import android.content.Intent
+import android.os.Bundle
 import android.os.CountDownTimer
-import com.bytedance.tiktok.R
-import com.bytedance.tiktok.base.BaseActivity
+import androidx.appcompat.app.AppCompatActivity
+import com.bytedance.tiktok.databinding.ActivitySplashBinding
+import com.gyf.immersionbar.ImmersionBar
 
 /**
- * create by libo
- * create on 2020/5/19
- * description App启动页面
+ * App启动页面
  */
-class SplashActivity : BaseActivity() {
+class SplashActivity : AppCompatActivity() {
 
-    override fun setLayoutId(): Int {
-        return R.layout.activity_splash
+    private lateinit var binding: ActivitySplashBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        init()
     }
 
-    override fun init() {
-        setFullScreen()
+    private fun init() {
+        ImmersionBar.with(this).init()
         object : CountDownTimer(500, 500) {
             override fun onTick(millisUntilFinished: Long) {}
             override fun onFinish() {

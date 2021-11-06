@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.nxp.nxpnfc@2.0::INxpNfc/default' failed: exit code 128

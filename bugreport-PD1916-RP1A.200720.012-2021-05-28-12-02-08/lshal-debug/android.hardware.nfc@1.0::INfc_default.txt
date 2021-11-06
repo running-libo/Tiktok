@@ -1,1 +1,0 @@
-*** command 'lshal debug -E android.hardware.nfc@1.0::INfc/default' failed: exit code 128

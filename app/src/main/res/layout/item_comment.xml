@@ -12,8 +12,7 @@
         android:layout_width="34dp"
         android:layout_height="34dp"
         app:es_shape_type="round"
-        android:layout_marginLeft="12dp"
-        tools:src="@mipmap/head_six"/>
+        android:layout_marginLeft="12dp" />
 
     <LinearLayout
         android:layout_width="0dp"

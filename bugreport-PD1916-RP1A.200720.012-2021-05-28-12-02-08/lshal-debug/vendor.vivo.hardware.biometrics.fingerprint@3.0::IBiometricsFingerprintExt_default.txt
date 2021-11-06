@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.vivo.hardware.biometrics.fingerprint@3.0::IBiometricsFingerprintExt/default' failed: exit code 128
