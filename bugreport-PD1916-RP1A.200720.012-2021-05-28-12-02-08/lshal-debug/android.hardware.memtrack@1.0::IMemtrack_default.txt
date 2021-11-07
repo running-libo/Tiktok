@@ -1,1 +1,0 @@
-*** command 'lshal debug -E android.hardware.memtrack@1.0::IMemtrack/default' failed: exit code 128

@@ -1,35 +1,38 @@
 package com.bytedance.tiktok.activity
 
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.bytedance.tiktok.R
-import com.bytedance.tiktok.base.BaseActivity
 import com.bytedance.tiktok.base.CommPagerAdapter
+import com.bytedance.tiktok.databinding.ActivityFocusBinding
 import com.bytedance.tiktok.fragment.FansFragment
-import kotlinx.android.synthetic.main.activity_focus.*
 import java.util.*
 
 /**
- * create by libo
- * create on 2020-05-14
- * description 粉丝关注人页面
+ * 粉丝关注人页面
  */
-class FocusActivity : BaseActivity() {
+class FocusActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityFocusBinding
 
     private val fragments = ArrayList<Fragment>()
     private var pagerAdapter: CommPagerAdapter? = null
     private val titles = arrayOf("关注 128", "粉丝 128", "推荐关注")
 
-    override fun setLayoutId(): Int {
-        return R.layout.activity_focus
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityFocusBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        init()
     }
 
-    override fun init() {
+    private fun init() {
         for (i in titles.indices) {
-            fragments.add(FansFragment())
-            tablayout!!.addTab(tablayout!!.newTab().setText(titles[i]))
+            fragments.add(FansFragment.newInstance())
+            binding.tablayout.addTab(binding.tablayout.newTab().setText(titles[i]))
         }
         pagerAdapter = CommPagerAdapter(supportFragmentManager, fragments, titles)
-        viewpager!!.adapter = pagerAdapter
-        tablayout!!.setupWithViewPager(viewpager)
+        binding.viewpager.adapter = pagerAdapter
+        binding.tablayout.setupWithViewPager(binding.viewpager)
     }
 }

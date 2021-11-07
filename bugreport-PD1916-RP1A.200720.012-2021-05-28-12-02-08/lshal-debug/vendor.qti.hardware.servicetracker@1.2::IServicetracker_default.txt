@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.qti.hardware.servicetracker@1.2::IServicetracker/default' failed: exit code 128

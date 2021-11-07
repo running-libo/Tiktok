@@ -1,16 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.didi.dokit'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.bytedance.tiktok"
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 10
-        versionName "2.0"
+        targetSdkVersion 31
+        versionCode 11
+        versionName "2.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -20,90 +18,30 @@ android {
         }
     }
 
-    dataBinding {
-        enabled = true
-    }
-
-    //支持lambda语法
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-}
 
-dokitExt {
-    //通用设置
-    comm {
-        //地图经纬度开关
-        gpsSwitch true
-        //网络开关
-        networkSwitch true
-        //大图开关
-        bigImgSwitch true
-        //webView js 抓包
-        webViewSwitch true
-    }
-
-    slowMethod {
-        //调用栈模式配置 对应gradle.properties中DOKIT_METHOD_STRATEGY=0
-        stackMethod {
-            //默认值为 5ms 小于该值的函数在调用栈中不显示
-            thresholdTime 10
-            //调用栈函数入口 千万不要用我默认的配置 如果有特殊需求修改成项目中自己的入口 假如不需要可以去掉该字段
-            enterMethods = ["com.didichuxing.doraemondemo.MainDebugActivity.test1"]
-            //黑名单 粒度最小到类 暂不支持到方法  千万不要用我默认的配置 如果有特殊需求修改成项目中自己的入口 假如不需要可以去掉该字段
-            methodBlacklist = ["com.facebook.drawee.backends.pipeline.Fresco"]
-        }
-        //普通模式配置 对应gradle.properties中DOKIT_METHOD_STRATEGY=1
-        normalMethod {
-            //默认值为 500ms 小于该值的函数在运行时不会在控制台中被打印
-            thresholdTime 500
-            //需要针对函数插装的包名 千万不要用我默认的配置 如果有特殊需求修改成项目中自己的项目包名 假如不需要可以去掉该字段
-            packageNames = ["com.didichuxing.doraemondemo"]
-            //不需要针对函数插装的包名&类名 千万不要用我默认的配置 如果有特殊需求修改成项目中自己的项目包名 假如不需要可以去掉该字段
-            methodBlacklist = ["com.didichuxing.doraemondemo.dokit"]
-        }
+    buildFeatures {
+        viewBinding true
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-
-    implementation 'com.github.bumptech.glide:glide:4.6.1'
-
-    implementation 'com.jakewharton:butterknife:10.2.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
-
-    implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta05'
-
-    implementation "com.google.android.material:material:1.0.0"
-
-    implementation 'com.android.support:design:28.0.0'
-
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.4.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    implementation "com.google.android.material:material:1.4.0"
     implementation 'com.androidkun:XTabLayout:1.1.4'
-
     implementation 'io.reactivex:rxjava:1.1.0'
-
-    implementation 'com.airbnb.android:lottie:2.8.0'
-    implementation "androidx.core:core-ktx:+"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
-    debugImplementation 'com.didichuxing.doraemonkit:dokitx:3.3.5'
-    releaseImplementation 'com.didichuxing.doraemonkit:dokitx-no-op:3.3.5'
-
+    implementation 'com.airbnb.android:lottie:3.0.0'
     implementation 'com.github.markzhai:blockcanary-android:1.5.0'
-
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
-
-
-
-}
-repositories {
-    mavenCentral()
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 }

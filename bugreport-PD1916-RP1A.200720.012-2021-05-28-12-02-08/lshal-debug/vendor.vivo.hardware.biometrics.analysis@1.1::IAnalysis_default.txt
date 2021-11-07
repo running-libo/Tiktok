@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.vivo.hardware.biometrics.analysis@1.1::IAnalysis/default' failed: exit code 128

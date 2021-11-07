@@ -1,1 +1,0 @@
-*** command 'lshal debug -E android.hardware.bluetooth@1.0::IBluetoothHci/default' failed: exit code 128

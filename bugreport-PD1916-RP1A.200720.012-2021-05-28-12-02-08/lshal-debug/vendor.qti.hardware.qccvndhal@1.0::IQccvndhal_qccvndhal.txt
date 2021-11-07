@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.qti.hardware.qccvndhal@1.0::IQccvndhal/qccvndhal' failed: exit code 128

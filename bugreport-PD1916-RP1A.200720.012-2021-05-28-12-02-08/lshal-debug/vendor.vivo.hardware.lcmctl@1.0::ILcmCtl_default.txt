@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.vivo.hardware.lcmctl@1.0::ILcmCtl/default' failed: exit code 128

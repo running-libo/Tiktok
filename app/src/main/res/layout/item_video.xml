@@ -1,39 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <data>
-
-    </data>
-
-    <RelativeLayout
-        android:id="@+id/rl_container"
-        android:orientation="vertical"
+    <ImageView
+        android:id="@+id/iv_cover"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
 
-        <ImageView
-            android:id="@+id/iv_cover"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"/>
+    <com.bytedance.tiktok.view.LikeView
+        android:id="@+id/likeview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-        <com.bytedance.tiktok.view.LikeView
-            android:id="@+id/likeview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+    <com.bytedance.tiktok.view.ControllerView
+        android:id="@+id/controller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 
-        <com.bytedance.tiktok.view.ControllerView
-            android:id="@+id/controller"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"/>
-
-        <ImageView
-            android:id="@+id/iv_play"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@mipmap/ic_play"
-            android:layout_centerInParent="true"
-            android:visibility="gone"/>
-    </RelativeLayout>
-</layout>
+    <ImageView
+        android:id="@+id/iv_play"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/ic_play"
+        android:visibility="gone" />
+</RelativeLayout>

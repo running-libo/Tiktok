@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.vivo.hardware.omnipotentservice@1.0::IOmnipotentService/default' failed: exit code 128
