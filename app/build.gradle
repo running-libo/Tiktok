@@ -91,7 +91,7 @@ dependencies {
     implementation 'io.reactivex:rxjava:1.1.0'
 
     implementation 'com.airbnb.android:lottie:2.8.0'
-    implementation "androidx.core:core-ktx:+"
+    implementation "androidx.core:core-ktx:1.6.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     debugImplementation 'com.didichuxing.doraemonkit:dokitx:3.3.5'
