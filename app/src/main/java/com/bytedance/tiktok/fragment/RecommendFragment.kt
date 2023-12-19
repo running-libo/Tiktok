@@ -41,8 +41,8 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.recyclerView.adapter = adapter
         DataCreate()
+        binding.recyclerView.adapter = adapter
         adapter.appendList(DataCreate.datas)
         videoView = FullScreenVideoView(activity)
         setViewPagerLayoutManager()

@@ -19,14 +19,14 @@ import java.util.*
  */
 class CommentDialog : BaseBottomSheetDialog() {
 
-    private var commentAdapter: CommentAdapter? = null
+    private var commentAdapter: CommentAdapter = CommentAdapter()
     private val datas = ArrayList<CommentBean>()
     private val likeArray = intArrayOf(4919, 334, 121, 423, 221, 23)
     private val commentArray = arrayOf("我就说左脚踩右脚可以上天你们还不信！", "全是评论点赞，没人关注吗", "哈哈哈哈", "像谁，没看出来", "你这西安话真好听")
     private lateinit var binding: DialogCommentBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(R.layout.dialog_comment, container)
-        return view
+        binding = DialogCommentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,11 +35,10 @@ class CommentDialog : BaseBottomSheetDialog() {
     }
 
     private fun init() {
-        binding = DialogCommentBinding.inflate(LayoutInflater.from(context))
         binding.recyclerView!!.layoutManager = LinearLayoutManager(context)
-        commentAdapter?.appendList(datas)
         binding.recyclerView!!.adapter = commentAdapter
         loadData()
+        commentAdapter.appendList(datas)
     }
 
     private fun loadData() {
@@ -50,7 +49,6 @@ class CommentDialog : BaseBottomSheetDialog() {
             commentBean.likeCount = likeArray[(Math.random() * likeArray.size).toInt()]
             datas.add(commentBean)
         }
-        commentAdapter!!.notifyDataSetChanged()
     }
 
     protected override val height: Int

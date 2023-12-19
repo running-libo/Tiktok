@@ -20,14 +20,14 @@ import java.util.*
  */
 class ShareDialog : BaseBottomSheetDialog() {
 
-    private var privateLetterAdapter: PrivateLetterAdapter? = null
-    private var shareAdapter: ShareAdapter? = null
+    private var privateLetterAdapter: PrivateLetterAdapter = PrivateLetterAdapter()
+    private var shareAdapter: ShareAdapter = ShareAdapter()
     private val shareBeans = ArrayList<ShareBean>()
     private lateinit var binding: DialogShareBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var view = inflater.inflate(R.layout.dialog_share, container)
-        return view
+        binding = DialogShareBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,14 +36,13 @@ class ShareDialog : BaseBottomSheetDialog() {
     }
 
     private fun init() {
-        binding = DialogShareBinding.inflate(LayoutInflater.from(context))
         binding.rvPrivateLetter!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        privateLetterAdapter?.appendList(DataCreate.userList)
+        privateLetterAdapter.appendList(DataCreate.userList)
         binding.rvPrivateLetter!!.adapter = privateLetterAdapter
         binding.rvShare!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        shareAdapter?.appendList(shareBeans)
         binding.rvShare!!.adapter = shareAdapter
         setShareDatas()
+        shareAdapter.appendList(shareBeans)
     }
 
     private fun setShareDatas() {
@@ -53,7 +52,6 @@ class ShareDialog : BaseBottomSheetDialog() {
         shareBeans.add(ShareBean(R.string.icon_qq_space, "QQ空间", R.color.color_qqzone_iconbg))
         shareBeans.add(ShareBean(R.string.icon_weibo, "微博", R.color.color_weibo_iconbg))
         shareBeans.add(ShareBean(R.string.icon_comment, "私信好友", R.color.color_FF0041))
-        shareAdapter!!.notifyDataSetChanged()
     }
 
     protected override val height: Int

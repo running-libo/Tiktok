@@ -20,13 +20,16 @@ import com.bytedance.tiktok.utils.OnVideoControllerListener
  * create on 2020-05-20
  * description
  */
-class ControllerView(context: Context?, attrs: AttributeSet?) : RelativeLayout(context, attrs), View.OnClickListener {
+class ControllerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : RelativeLayout(context, attrs), View.OnClickListener {
     private var listener: OnVideoControllerListener? = null
     private var videoData: VideoBean? = null
-    private lateinit var binding: ViewControllerBinding
+    private var binding: ViewControllerBinding = ViewControllerBinding.inflate(LayoutInflater.from(context), this, true)
+
+    init {
+        init()
+    }
 
     private fun init() {
-        binding = ViewControllerBinding.inflate(LayoutInflater.from(context))
         binding.ivHead!!.setOnClickListener(this)
         binding.ivComment!!.setOnClickListener(this)
         binding.ivShare!!.setOnClickListener(this)
@@ -111,9 +114,5 @@ class ControllerView(context: Context?, attrs: AttributeSet?) : RelativeLayout(c
         rotateAnimation.duration = 8000
         rotateAnimation.interpolator = LinearInterpolator()
         binding.rlRecord!!.startAnimation(rotateAnimation)
-    }
-
-    init {
-        init()
     }
 }

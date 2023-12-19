@@ -22,7 +22,7 @@ class VideoAdapter: BaseAdapter<VideoViewHolder, VideoBean>() {
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         mList[position]?.let {
-            holder?.binding?.controller?.setVideoData(it)
+            holder.binding.controller.setVideoData(it)
             holder?.binding?.ivCover?.setImageResource(it.coverRes)
             holder?.binding?.likeview?.setOnLikeListener(object: OnLikeListener {
                 override fun onLikeListener() {

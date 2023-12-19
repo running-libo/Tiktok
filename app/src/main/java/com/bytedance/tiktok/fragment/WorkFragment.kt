@@ -14,7 +14,7 @@ import com.bytedance.tiktok.databinding.FragmentWorkBinding
  * description 个人作品fragment
  */
 class WorkFragment : BaseBindingFragment<FragmentWorkBinding>({FragmentWorkBinding.inflate(it)}) {
-    private var workAdapter: WorkAdapter? = null
+    private lateinit var workAdapter: WorkAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -23,8 +23,9 @@ class WorkFragment : BaseBindingFragment<FragmentWorkBinding>({FragmentWorkBindi
     }
 
     fun init() {
-        binding.recyclerview!!.layoutManager = GridLayoutManager(activity, 3)
-        binding.recyclerview!!.adapter = workAdapter
-        workAdapter?.appendList(DataCreate.datas)
+        workAdapter = WorkAdapter(requireContext())
+        binding.recyclerview.layoutManager = GridLayoutManager(activity, 3)
+        binding.recyclerview.adapter = workAdapter
+        workAdapter.appendList(DataCreate.datas)
     }
 }
