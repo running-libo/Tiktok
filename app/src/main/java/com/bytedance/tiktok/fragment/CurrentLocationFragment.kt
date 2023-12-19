@@ -22,7 +22,8 @@ class CurrentLocationFragment : BaseFragment() {
 
     override fun init() {
         recyclerView!!.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        adapter = GridVideoAdapter(activity, DataCreate.datas)
+        adapter = GridVideoAdapter(requireContext())
+        adapter?.appendList(DataCreate.datas)
         recyclerView!!.adapter = adapter
         refreshLayout!!.setColorSchemeResources(R.color.color_link)
         refreshLayout!!.setOnRefreshListener {

@@ -3,8 +3,6 @@ package com.bytedance.tiktok.base
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import butterknife.ButterKnife
-import butterknife.Unbinder
 import com.gyf.immersionbar.BarHide
 import com.gyf.immersionbar.ImmersionBar
 
@@ -14,12 +12,10 @@ import com.gyf.immersionbar.ImmersionBar
  * description activity基类
  */
 abstract class BaseActivity : AppCompatActivity() {
-    protected var unbinder: Unbinder? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(setLayoutId())
-        unbinder = ButterKnife.bind(this)
         init()
     }
 
@@ -59,10 +55,5 @@ abstract class BaseActivity : AppCompatActivity() {
      */
     protected fun setFullScreen() {
         ImmersionBar.with(this).init()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        unbinder!!.unbind()
     }
 }

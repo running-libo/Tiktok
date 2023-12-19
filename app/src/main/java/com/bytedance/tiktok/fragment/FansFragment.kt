@@ -1,5 +1,6 @@
 package com.bytedance.tiktok.fragment
 
+import android.provider.ContactsContract.Data
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.adapter.FansAdapter
@@ -16,7 +17,8 @@ class FansFragment : BaseFragment() {
 
     override fun init() {
         recyclerview!!.layoutManager = LinearLayoutManager(context)
-        fansAdapter = FansAdapter(context, DataCreate.userList)
+        fansAdapter = FansAdapter()
+        fansAdapter?.appendList(DataCreate.userList)
         recyclerview!!.adapter = fansAdapter
     }
 }

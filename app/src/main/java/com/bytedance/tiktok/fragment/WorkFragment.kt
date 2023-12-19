@@ -1,8 +1,6 @@
 package com.bytedance.tiktok.fragment
 
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import butterknife.BindView
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.adapter.WorkAdapter
 import com.bytedance.tiktok.base.BaseFragment
@@ -23,7 +21,7 @@ class WorkFragment : BaseFragment() {
 
     override fun init() {
         recyclerview!!.layoutManager = GridLayoutManager(activity, 3)
-        workAdapter = WorkAdapter(activity, DataCreate.datas)
         recyclerview!!.adapter = workAdapter
+        workAdapter?.appendList(DataCreate.datas)
     }
 }

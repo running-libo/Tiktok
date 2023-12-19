@@ -1,30 +1,29 @@
 package com.bytedance.tiktok.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import butterknife.BindView
+import androidx.recyclerview.widget.RecyclerView
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.adapter.FansAdapter.FansViewHolder
-import com.bytedance.tiktok.base.BaseRvAdapter
-import com.bytedance.tiktok.base.BaseRvViewHolder
+import com.bytedance.tiktok.base.BaseAdapter
 import com.bytedance.tiktok.bean.VideoBean.UserBean
 import com.bytedance.tiktok.databinding.ItemFansBinding
-import com.bytedance.tiktok.view.CircleImageView
 
 /**
  * create by libo
  * create on 2020-05-24
  * description
  */
-class FansAdapter(context: Context?, datas: List<UserBean?>?) :
-    BaseRvAdapter<UserBean?, FansViewHolder?>(
-        context!!, (datas as ArrayList<UserBean?>?)!!
-    ) {
-    protected override fun onBindData(holder: FansViewHolder?, userBean: UserBean?, position: Int) {
+class FansAdapter : BaseAdapter<FansViewHolder, UserBean>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FansViewHolder {
+        return FansViewHolder(ItemFansBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    }
+
+    override fun onBindViewHolder(holder: FansViewHolder, position: Int) {
         holder?.binding?.let {
+            var userBean = mList[position]
             it.ivHead!!.setImageResource(userBean!!.head)
             it.tvNickname!!.text = userBean.nickName
             it.tvFocus!!.text = if (userBean.isFocused) "已关注" else "关注"
@@ -41,11 +40,7 @@ class FansAdapter(context: Context?, datas: List<UserBean?>?) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FansViewHolder {
-        return FansViewHolder(ItemFansBinding.inflate(LayoutInflater.from(context), parent, false))
-    }
-
-    inner class FansViewHolder(val binding: ItemFansBinding) : BaseRvViewHolder(binding.root) {
+    inner class FansViewHolder(val binding: ItemFansBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
 }

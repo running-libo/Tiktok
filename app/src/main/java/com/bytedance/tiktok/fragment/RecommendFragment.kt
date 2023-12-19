@@ -63,6 +63,12 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
 //        subscribe.unsubscribe()
     }
 
+    override fun setLayoutId(): Int = 0
+
+    override fun init() {
+
+    }
+
     override fun onResume() {
         super.onResume()
 

@@ -1,23 +1,13 @@
 package com.bytedance.tiktok.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import butterknife.BindView
-import butterknife.ButterKnife
-import com.bytedance.tiktok.R
+import androidx.recyclerview.widget.RecyclerView
 import com.bytedance.tiktok.adapter.VideoAdapter.VideoViewHolder
 import com.bytedance.tiktok.base.BaseAdapter
-import com.bytedance.tiktok.base.BaseRvAdapter
-import com.bytedance.tiktok.base.BaseRvViewHolder
 import com.bytedance.tiktok.bean.VideoBean
 import com.bytedance.tiktok.databinding.ItemVideoBinding
-import com.bytedance.tiktok.view.ControllerView
-import com.bytedance.tiktok.view.LikeView
 import com.bytedance.tiktok.view.LikeView.OnLikeListener
-import java.util.ArrayList
 
 /**
  * create by libo
@@ -45,7 +35,7 @@ class VideoAdapter: BaseAdapter<VideoViewHolder, VideoBean>() {
         }
     }
 
-    inner class VideoViewHolder(val binding: ItemVideoBinding) : BaseRvViewHolder(binding.root) {
+    inner class VideoViewHolder(val binding: ItemVideoBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
 }

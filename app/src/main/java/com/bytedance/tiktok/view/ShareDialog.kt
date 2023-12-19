@@ -36,10 +36,10 @@ class ShareDialog : BaseBottomSheetDialog() {
 
     private fun init() {
         rvPrivateLetter!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        privateLetterAdapter = PrivateLetterAdapter(context, DataCreate.userList)
+        privateLetterAdapter?.appendList(DataCreate.userList)
         rvPrivateLetter!!.adapter = privateLetterAdapter
         rvShare!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        shareAdapter = ShareAdapter(context, shareBeans)
+        shareAdapter?.appendList(shareBeans)
         rvShare!!.adapter = shareAdapter
         setShareDatas()
     }
