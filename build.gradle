@@ -1,7 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.6.21'
+    ext {
+        kotlin_version = '1.6.21'
+        coroutines_version = "1.6.0"
+        dagger_hilt_version = "2.42"
+    }
     repositories {
         google()
         jcenter()
@@ -21,6 +25,7 @@ plugins {
     id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
 }
 
+apply from: 'config.gradle'
 
 task clean(type: Delete) {
     delete rootProject.buildDir
