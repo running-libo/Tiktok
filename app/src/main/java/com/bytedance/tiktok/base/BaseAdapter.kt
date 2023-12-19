@@ -30,6 +30,10 @@ abstract class BaseAdapter <VH : RecyclerView.ViewHolder?, T> : RecyclerView.Ada
         notifyDataSetChanged()
     }
 
+    fun getDatas(): ArrayList<T> {
+        return mList
+    }
+
     override fun getItemCount() = mList.size
 
     interface OnItemClickListener {

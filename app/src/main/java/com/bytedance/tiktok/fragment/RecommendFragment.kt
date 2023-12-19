@@ -165,9 +165,8 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
      * 自动播放视频
      */
     private fun autoPlayVideo(position: Int, ivCover: ImageView) {
-        val bgVideoPath = "android.resource://" + activity?.packageName + "/" + DataCreate.datas[position]?.videoRes
-        videoView!!.setVideoPath(bgVideoPath)
-        videoView!!.start()
+        videoView?.setVideoPath(adapter.getDatas()[position].videoRes)
+        videoView?.start()
         videoView!!.setOnPreparedListener { mp: MediaPlayer ->
             mp.isLooping = true
 

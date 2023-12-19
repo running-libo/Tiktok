@@ -9,7 +9,7 @@ class VideoBean {
     var videoId = 0
 
     /** 视频播放资源  */
-    var videoRes = 0
+    var videoRes = ""
 
     /** 封面图片资源  */
     var coverRes = 0
