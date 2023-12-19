@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    compileSdk 34
+    compileSdk 33
     defaultConfig {
         applicationId "com.bytedance.tiktok"
         minSdk 23
-        targetSdk 34
+        targetSdk 29
         versionCode 10
         versionName "2.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

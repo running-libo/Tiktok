@@ -11,6 +11,8 @@ import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
 import com.bytedance.tiktok.bean.VideoBean;
 import com.bytedance.tiktok.view.CircleImageView;
+
+import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
 
@@ -22,7 +24,7 @@ import butterknife.BindView;
 public class FansAdapter extends BaseRvAdapter<VideoBean.UserBean, FansAdapter.FansViewHolder> {
 
     public FansAdapter(Context context, List<VideoBean.UserBean> datas) {
-        super(context, datas);
+        super(context, (ArrayList<VideoBean.UserBean>) datas);
     }
 
     @Override

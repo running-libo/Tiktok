@@ -11,7 +11,7 @@ import java.util.*
  */
 class DataCreate {
 
-    fun initData() {
+    init {
 
         val videoBeanOne = VideoBean()
         videoBeanOne.coverRes = R.mipmap.cover1

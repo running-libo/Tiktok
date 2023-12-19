@@ -11,6 +11,8 @@ import com.bytedance.tiktok.R;
 import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
 import com.bytedance.tiktok.bean.ShareBean;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -23,7 +25,7 @@ import butterknife.BindView;
 public class ShareAdapter extends BaseRvAdapter<ShareBean, ShareAdapter.ShareViewHolder> {
 
     public ShareAdapter(Context context, List<ShareBean> datas) {
-        super(context, datas);
+        super(context, (ArrayList<ShareBean>) datas);
     }
 
     @Override

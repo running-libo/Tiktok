@@ -1,8 +1,8 @@
 package com.bytedance.tiktok.base
 
 import android.content.Context
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import java.util.ArrayList
 
 /**
  * create by libo
@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
  * description RecyclerAdapter基类
  * tip多套布局T传Object类型，其他直接传具体类型
  */
-abstract class BaseRvAdapter<T, VH : BaseRvViewHolder?>(val context: Context, protected var mDatas: MutableList<T>) : RecyclerView.Adapter<VH>() {
+abstract class BaseRvAdapter<T, VH : BaseRvViewHolder?>(val context: Context, protected var mDatas: ArrayList<T>) : RecyclerView.Adapter<VH>() {
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        onBindData(holder, mDatas!![position], position)
+        onBindData(holder, mDatas[position], position)
     }
 
     override fun getItemCount(): Int {

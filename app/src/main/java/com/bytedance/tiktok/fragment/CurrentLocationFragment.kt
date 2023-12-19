@@ -21,7 +21,6 @@ class CurrentLocationFragment : BaseFragment() {
     }
 
     override fun init() {
-        DataCreate().initData()
         recyclerView!!.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         adapter = GridVideoAdapter(activity, DataCreate.datas)
         recyclerView!!.adapter = adapter

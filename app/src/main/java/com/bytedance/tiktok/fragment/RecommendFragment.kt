@@ -1,7 +1,9 @@
 package com.bytedance.tiktok.fragment
 
 import android.media.MediaPlayer
+import android.os.Bundle
 import android.os.CountDownTimer
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,11 +11,13 @@ import com.bytedance.tiktok.R
 import com.bytedance.tiktok.activity.MainActivity
 import com.bytedance.tiktok.activity.PlayListActivity
 import com.bytedance.tiktok.adapter.VideoAdapter
+import com.bytedance.tiktok.base.BaseBindingFragment
 import com.bytedance.tiktok.base.BaseFragment
 import com.bytedance.tiktok.bean.CurUserBean
 import com.bytedance.tiktok.bean.DataCreate
 import com.bytedance.tiktok.bean.MainPageChangeEvent
 import com.bytedance.tiktok.bean.PauseVideoEvent
+import com.bytedance.tiktok.databinding.FragmentRecommendBinding
 import com.bytedance.tiktok.utils.OnVideoControllerListener
 import com.bytedance.tiktok.utils.RxBus
 import com.bytedance.tiktok.view.*
@@ -27,8 +31,8 @@ import rx.functions.Action1
  * create on 2020-05-19
  * description 推荐播放页
  */
-class RecommendFragment : BaseFragment() {
-    private var adapter: VideoAdapter? = null
+class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({FragmentRecommendBinding.inflate(it)}) {
+    private var adapter: VideoAdapter = VideoAdapter()
     private var viewPagerLayoutManager: ViewPagerLayoutManager? = null
 
     /** 当前播放视频位置  */
@@ -37,26 +41,25 @@ class RecommendFragment : BaseFragment() {
 
     private var ivCurCover: ImageView? = null
 
-    override fun setLayoutId(): Int {
-        return R.layout.fragment_recommend
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun init() {
-        adapter = VideoAdapter(activity, DataCreate.datas)
-        recyclerView!!.adapter = adapter
+        binding.recyclerView.adapter = adapter
+        DataCreate()
+        adapter.appendList(DataCreate.datas)
         videoView = FullScreenVideoView(activity)
         setViewPagerLayoutManager()
         setRefreshEvent()
 
         //监听播放或暂停事件
         val subscribe = RxBus.getDefault().toObservable(PauseVideoEvent::class.java)
-                .subscribe(Action1 { event: PauseVideoEvent ->
-                    if (event.isPlayOrPause) {
-                        videoView!!.start()
-                    } else {
-                        videoView!!.pause()
-                    }
-                } as Action1<PauseVideoEvent>)
+            .subscribe(Action1 { event: PauseVideoEvent ->
+                if (event.isPlayOrPause) {
+                    videoView!!.start()
+                } else {
+                    videoView!!.pause()
+                }
+            } as Action1<PauseVideoEvent>)
 //        subscribe.unsubscribe()
     }
 
@@ -81,8 +84,8 @@ class RecommendFragment : BaseFragment() {
 
     private fun setViewPagerLayoutManager() {
         viewPagerLayoutManager = ViewPagerLayoutManager(activity)
-        recyclerView!!.layoutManager = viewPagerLayoutManager
-        recyclerView!!.scrollToPosition(PlayListActivity.initPos)
+        binding.recyclerView.layoutManager = viewPagerLayoutManager
+        binding.recyclerView.scrollToPosition(PlayListActivity.initPos)
         viewPagerLayoutManager!!.setOnViewPagerListener(object : OnViewPagerListener {
             override fun onInitComplete() {
                 playCurVideo(PlayListActivity.initPos)
@@ -101,8 +104,8 @@ class RecommendFragment : BaseFragment() {
     }
 
     private fun setRefreshEvent() {
-        refreshLayout!!.setColorSchemeResources(R.color.color_link)
-        refreshLayout!!.setOnRefreshListener {
+        binding.refreshLayout.setColorSchemeResources(R.color.color_link)
+        binding.refreshLayout.setOnRefreshListener {
             object : CountDownTimer(1000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {}
                 override fun onFinish() {
@@ -142,7 +145,7 @@ class RecommendFragment : BaseFragment() {
         likeShareEvent(controllerView)
 
         //切换播放视频的作者主页数据
-        RxBus.getDefault().post(CurUserBean(DataCreate.datas[position].userBean!!))
+        RxBus.getDefault().post(CurUserBean(DataCreate.datas[position]?.userBean!!))
         curPlayPos = position
 
         //切换播放器位置
@@ -165,7 +168,7 @@ class RecommendFragment : BaseFragment() {
      * 自动播放视频
      */
     private fun autoPlayVideo(position: Int, ivCover: ImageView) {
-        val bgVideoPath = "android.resource://" + activity!!.packageName + "/" + DataCreate.datas[position].videoRes
+        val bgVideoPath = "android.resource://" + activity?.packageName + "/" + DataCreate.datas[position]?.videoRes
         videoView!!.setVideoPath(bgVideoPath)
         videoView!!.start()
         videoView!!.setOnPreparedListener { mp: MediaPlayer ->

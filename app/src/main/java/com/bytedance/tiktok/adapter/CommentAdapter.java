@@ -12,6 +12,8 @@ import com.bytedance.tiktok.base.BaseRvViewHolder;
 import com.bytedance.tiktok.bean.CommentBean;
 import com.bytedance.tiktok.utils.NumUtils;
 import com.bytedance.tiktok.view.CircleImageView;
+
+import java.util.ArrayList;
 import java.util.List;
 import butterknife.BindView;
 
@@ -23,7 +25,7 @@ import butterknife.BindView;
 public class CommentAdapter extends BaseRvAdapter<CommentBean, CommentAdapter.CommentViewHolder> {
 
     public CommentAdapter(Context context, List<CommentBean> datas) {
-        super(context, datas);
+        super(context, (ArrayList<CommentBean>) datas);
     }
 
     @Override

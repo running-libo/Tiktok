@@ -13,6 +13,7 @@ import com.bytedance.tiktok.base.BaseRvAdapter;
 import com.bytedance.tiktok.base.BaseRvViewHolder;
 import com.bytedance.tiktok.bean.VideoBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -25,7 +26,7 @@ import butterknife.BindView;
 public class PrivateLetterAdapter extends BaseRvAdapter<VideoBean.UserBean, PrivateLetterAdapter.PrivateLetterViewHolder> {
 
     public PrivateLetterAdapter(Context context, List<VideoBean.UserBean> datas) {
-        super(context, datas);
+        super(context, (ArrayList<VideoBean.UserBean>) datas);
     }
 
     @Override
