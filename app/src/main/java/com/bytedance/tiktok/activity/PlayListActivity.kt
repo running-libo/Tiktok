@@ -1,7 +1,8 @@
 package com.bytedance.tiktok.activity
 
 import com.bytedance.tiktok.R
-import com.bytedance.tiktok.base.BaseActivity
+import com.bytedance.tiktok.base.BaseBindingActivity
+import com.bytedance.tiktok.databinding.ActivityPlayListBinding
 import com.bytedance.tiktok.fragment.RecommendFragment
 
 /**
@@ -9,11 +10,7 @@ import com.bytedance.tiktok.fragment.RecommendFragment
  * create on 2020-05-24
  * description 视频全屏播放页
  */
-class PlayListActivity : BaseActivity() {
-
-    override fun setLayoutId(): Int {
-        return R.layout.activity_play_list
-    }
+class PlayListActivity : BaseBindingActivity<ActivityPlayListBinding>({ActivityPlayListBinding.inflate(it)}) {
 
     override fun init() {
         supportFragmentManager.beginTransaction().add(R.id.framelayout, RecommendFragment()).commit()

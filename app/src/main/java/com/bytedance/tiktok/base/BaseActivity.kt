@@ -15,11 +15,9 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(setLayoutId())
         init()
     }
 
-    protected abstract fun setLayoutId(): Int
     protected abstract fun init()
 
     /**

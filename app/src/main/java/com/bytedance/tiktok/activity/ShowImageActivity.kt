@@ -1,19 +1,14 @@
 package com.bytedance.tiktok.activity
 
 import android.view.View
-import com.bytedance.tiktok.R
-import com.bytedance.tiktok.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_show_image.*
+import com.bytedance.tiktok.base.BaseBindingActivity
+import com.bytedance.tiktok.databinding.ActivityShowImageBinding
 
-class ShowImageActivity : BaseActivity() {
-
-    override fun setLayoutId(): Int {
-        return R.layout.activity_show_image
-    }
+class ShowImageActivity : BaseBindingActivity<ActivityShowImageBinding>({ActivityShowImageBinding.inflate(it)}) {
 
     override fun init() {
-        ivHead!!.setOnClickListener { v: View? -> finish() }
+        binding.ivHead.setOnClickListener { v: View? -> finish() }
         val headRes = intent.getIntExtra("res", 0)
-        ivHead!!.setImageResource(headRes)
+        binding.ivHead.setImageResource(headRes)
     }
 }

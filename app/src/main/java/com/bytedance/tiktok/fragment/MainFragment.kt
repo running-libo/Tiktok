@@ -1,13 +1,14 @@
 package com.bytedance.tiktok.fragment
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
-import com.bytedance.tiktok.R
-import com.bytedance.tiktok.base.BaseFragment
+import com.bytedance.tiktok.base.BaseBindingFragment
 import com.bytedance.tiktok.base.CommPagerAdapter
 import com.bytedance.tiktok.bean.PauseVideoEvent
+import com.bytedance.tiktok.databinding.FragmentMainBinding
 import com.bytedance.tiktok.utils.RxBus
-import kotlinx.android.synthetic.main.fragment_main.*
 import java.util.*
 
 /**
@@ -15,18 +16,16 @@ import java.util.*
  * create on 2020-05-19
  * description 主页fragment
  */
-class MainFragment : BaseFragment() {
+class MainFragment : BaseBindingFragment<FragmentMainBinding>({FragmentMainBinding.inflate(it)}) {
     private var currentLocationFragment: CurrentLocationFragment? = null
     private var recommendFragment: RecommendFragment? = null
 
     private val fragments = ArrayList<Fragment>()
     private var pagerAdapter: CommPagerAdapter? = null
 
-    override fun setLayoutId(): Int {
-        return R.layout.fragment_main
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun init() {
         setFragments()
         setMainMenu()
     }
@@ -36,13 +35,13 @@ class MainFragment : BaseFragment() {
         recommendFragment = RecommendFragment()
         fragments.add(currentLocationFragment!!)
         fragments.add(recommendFragment!!)
-        tabTitle!!.addTab(tabTitle!!.newTab().setText("海淀"))
-        tabTitle!!.addTab(tabTitle!!.newTab().setText("推荐"))
+        binding.tabTitle!!.addTab(binding.tabTitle!!.newTab().setText("海淀"))
+        binding.tabTitle!!.addTab(binding.tabTitle!!.newTab().setText("推荐"))
         pagerAdapter = CommPagerAdapter(childFragmentManager, fragments, arrayOf("海淀", "推荐"))
-        viewPager!!.adapter = pagerAdapter
-        tabTitle!!.setupWithViewPager(viewPager)
-        tabTitle!!.getTabAt(1)!!.select()
-        viewPager!!.addOnPageChangeListener(object : OnPageChangeListener {
+        binding.viewPager!!.adapter = pagerAdapter
+        binding.tabTitle!!.setupWithViewPager(binding.viewPager)
+        binding.tabTitle!!.getTabAt(1)!!.select()
+        binding.viewPager!!.addOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
             override fun onPageSelected(position: Int) {
                 curPage = position
@@ -60,11 +59,13 @@ class MainFragment : BaseFragment() {
     }
 
     private fun setMainMenu() {
-        tabMainMenu!!.addTab(tabMainMenu!!.newTab().setText("首页"))
-        tabMainMenu!!.addTab(tabMainMenu!!.newTab().setText("好友"))
-        tabMainMenu!!.addTab(tabMainMenu!!.newTab().setText(""))
-        tabMainMenu!!.addTab(tabMainMenu!!.newTab().setText("消息"))
-        tabMainMenu!!.addTab(tabMainMenu!!.newTab().setText("我"))
+        with(binding.tabMainMenu) {
+            addTab(newTab().setText("首页"))
+            addTab(newTab().setText("好友"))
+            addTab(newTab().setText(""))
+            addTab(newTab().setText("消息"))
+            addTab(newTab().setText("我"))
+        }
     }
 
     companion object {

@@ -8,13 +8,12 @@ import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
 import android.view.animation.RotateAnimation
 import android.widget.RelativeLayout
-import butterknife.ButterKnife
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.bean.VideoBean
+import com.bytedance.tiktok.databinding.ViewControllerBinding
 import com.bytedance.tiktok.utils.AutoLinkHerfManager
 import com.bytedance.tiktok.utils.NumUtils
 import com.bytedance.tiktok.utils.OnVideoControllerListener
-import kotlinx.android.synthetic.main.view_controller.view.*
 
 /**
  * create by libo
@@ -24,41 +23,41 @@ import kotlinx.android.synthetic.main.view_controller.view.*
 class ControllerView(context: Context?, attrs: AttributeSet?) : RelativeLayout(context, attrs), View.OnClickListener {
     private var listener: OnVideoControllerListener? = null
     private var videoData: VideoBean? = null
+    private lateinit var binding: ViewControllerBinding
 
     private fun init() {
-        val rootView = LayoutInflater.from(context).inflate(R.layout.view_controller, this)
-        ButterKnife.bind(this, rootView)
-        ivHead!!.setOnClickListener(this)
-        ivComment!!.setOnClickListener(this)
-        ivShare!!.setOnClickListener(this)
-        rlLike!!.setOnClickListener(this)
-        ivFocus!!.setOnClickListener(this)
+        binding = ViewControllerBinding.inflate(LayoutInflater.from(context))
+        binding.ivHead!!.setOnClickListener(this)
+        binding.ivComment!!.setOnClickListener(this)
+        binding.ivShare!!.setOnClickListener(this)
+        binding.rlLike!!.setOnClickListener(this)
+        binding.ivFocus!!.setOnClickListener(this)
         setRotateAnim()
     }
 
     fun setVideoData(videoData: VideoBean) {
         this.videoData = videoData
-        ivHead!!.setImageResource(videoData.userBean!!.head)
-        tvNickname!!.text = "@" + videoData.userBean!!.nickName
-        AutoLinkHerfManager.setContent(videoData.content, autoLinkTextView)
-        ivHeadAnim!!.setImageResource(videoData.userBean!!.head)
-        tvLikecount!!.text = NumUtils.numberFilter(videoData.likeCount)
-        tvCommentcount!!.text = NumUtils.numberFilter(videoData.commentCount)
-        tvSharecount!!.text = NumUtils.numberFilter(videoData.shareCount)
-        animationView!!.setAnimation("like.json")
+        binding.ivHead!!.setImageResource(videoData.userBean!!.head)
+        binding.tvNickname!!.text = "@" + videoData.userBean!!.nickName
+        AutoLinkHerfManager.setContent(videoData.content, binding.autoLinkTextView)
+        binding.ivHeadAnim!!.setImageResource(videoData.userBean!!.head)
+        binding.tvLikecount!!.text = NumUtils.numberFilter(videoData.likeCount)
+        binding.tvCommentcount!!.text = NumUtils.numberFilter(videoData.commentCount)
+        binding.tvSharecount!!.text = NumUtils.numberFilter(videoData.shareCount)
+        binding.animationView!!.setAnimation("like.json")
 
         //点赞状态
         if (videoData.isLiked) {
-            ivLike!!.setTextColor(resources.getColor(R.color.color_FF0041))
+            binding.ivLike!!.setTextColor(resources.getColor(R.color.color_FF0041))
         } else {
-            ivLike!!.setTextColor(resources.getColor(R.color.white))
+            binding.ivLike!!.setTextColor(resources.getColor(R.color.white))
         }
 
         //关注状态
         if (videoData.isFocused) {
-            ivFocus!!.visibility = GONE
+            binding.ivFocus!!.visibility = GONE
         } else {
-            ivFocus!!.visibility = VISIBLE
+            binding.ivFocus!!.visibility = VISIBLE
         }
     }
 
@@ -80,7 +79,7 @@ class ControllerView(context: Context?, attrs: AttributeSet?) : RelativeLayout(c
             R.id.ivShare -> listener!!.onShareClick()
             R.id.ivFocus -> if (!videoData!!.isFocused) {
                 videoData!!.isLiked = true
-                ivFocus!!.visibility = GONE
+                binding.ivFocus!!.visibility = GONE
             }
         }
     }
@@ -91,13 +90,13 @@ class ControllerView(context: Context?, attrs: AttributeSet?) : RelativeLayout(c
     fun like() {
         if (!videoData!!.isLiked) {
             //点赞
-            animationView!!.visibility = VISIBLE
-            animationView!!.playAnimation()
-            ivLike!!.setTextColor(resources.getColor(R.color.color_FF0041))
+            binding.animationView!!.visibility = VISIBLE
+            binding.animationView!!.playAnimation()
+            binding.ivLike!!.setTextColor(resources.getColor(R.color.color_FF0041))
         } else {
             //取消点赞
-            animationView!!.visibility = INVISIBLE
-            ivLike!!.setTextColor(resources.getColor(R.color.white))
+            binding.animationView!!.visibility = INVISIBLE
+            binding.ivLike!!.setTextColor(resources.getColor(R.color.white))
         }
         videoData!!.isLiked = !videoData!!.isLiked
     }
@@ -111,7 +110,7 @@ class ControllerView(context: Context?, attrs: AttributeSet?) : RelativeLayout(c
         rotateAnimation.repeatCount = Animation.INFINITE
         rotateAnimation.duration = 8000
         rotateAnimation.interpolator = LinearInterpolator()
-        rlRecord!!.startAnimation(rotateAnimation)
+        binding.rlRecord!!.startAnimation(rotateAnimation)
     }
 
     init {

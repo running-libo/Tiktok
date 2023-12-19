@@ -36,7 +36,8 @@
                         android:layout_height="wrap_content"
                         android:scaleType="centerCrop"/>
 
-                    <include layout="@layout/personal_home_header"/>
+                    <include layout="@layout/personal_home_header"
+                        android:id="@+id/home_header"/>
                 </RelativeLayout>
 
                 <androidx.appcompat.widget.Toolbar

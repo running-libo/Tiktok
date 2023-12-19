@@ -10,7 +10,7 @@ import com.bytedance.tiktok.adapter.PrivateLetterAdapter
 import com.bytedance.tiktok.adapter.ShareAdapter
 import com.bytedance.tiktok.bean.DataCreate
 import com.bytedance.tiktok.bean.ShareBean
-import kotlinx.android.synthetic.main.dialog_share.*
+import com.bytedance.tiktok.databinding.DialogShareBinding
 import java.util.*
 
 /**
@@ -23,6 +23,7 @@ class ShareDialog : BaseBottomSheetDialog() {
     private var privateLetterAdapter: PrivateLetterAdapter? = null
     private var shareAdapter: ShareAdapter? = null
     private val shareBeans = ArrayList<ShareBean>()
+    private lateinit var binding: DialogShareBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = inflater.inflate(R.layout.dialog_share, container)
@@ -35,12 +36,13 @@ class ShareDialog : BaseBottomSheetDialog() {
     }
 
     private fun init() {
-        rvPrivateLetter!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding = DialogShareBinding.inflate(LayoutInflater.from(context))
+        binding.rvPrivateLetter!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         privateLetterAdapter?.appendList(DataCreate.userList)
-        rvPrivateLetter!!.adapter = privateLetterAdapter
-        rvShare!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.rvPrivateLetter!!.adapter = privateLetterAdapter
+        binding.rvShare!!.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         shareAdapter?.appendList(shareBeans)
-        rvShare!!.adapter = shareAdapter
+        binding.rvShare!!.adapter = shareAdapter
         setShareDatas()
     }
 
@@ -55,5 +57,5 @@ class ShareDialog : BaseBottomSheetDialog() {
     }
 
     protected override val height: Int
-        protected get() = dp2px(context!!, 355f)
+        protected get() = dp2px(requireContext(), 355f)
 }

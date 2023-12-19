@@ -3,7 +3,6 @@ package com.bytedance.tiktok.fragment
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -12,7 +11,6 @@ import com.bytedance.tiktok.activity.MainActivity
 import com.bytedance.tiktok.activity.PlayListActivity
 import com.bytedance.tiktok.adapter.VideoAdapter
 import com.bytedance.tiktok.base.BaseBindingFragment
-import com.bytedance.tiktok.base.BaseFragment
 import com.bytedance.tiktok.bean.CurUserBean
 import com.bytedance.tiktok.bean.DataCreate
 import com.bytedance.tiktok.bean.MainPageChangeEvent
@@ -23,7 +21,6 @@ import com.bytedance.tiktok.utils.RxBus
 import com.bytedance.tiktok.view.*
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.ViewPagerLayoutManager
-import kotlinx.android.synthetic.main.fragment_recommend.*
 import rx.functions.Action1
 
 /**
@@ -61,12 +58,6 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
                 }
             } as Action1<PauseVideoEvent>)
 //        subscribe.unsubscribe()
-    }
-
-    override fun setLayoutId(): Int = 0
-
-    override fun init() {
-
     }
 
     override fun onResume() {
@@ -115,7 +106,7 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
             object : CountDownTimer(1000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {}
                 override fun onFinish() {
-                    refreshLayout!!.isRefreshing = false
+                    binding.refreshLayout!!.isRefreshing = false
                 }
             }.start()
         }
