@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.vivo.hardware.sensorfactory@1.0::ISensorFactory/default' failed: exit code 128

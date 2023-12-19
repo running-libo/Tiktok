@@ -6,7 +6,6 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.base.BaseActivity
 import com.bytedance.tiktok.base.CommPagerAdapter
-import com.bytedance.tiktok.bean.DataCreate
 import com.bytedance.tiktok.bean.MainPageChangeEvent
 import com.bytedance.tiktok.bean.PauseVideoEvent
 import com.bytedance.tiktok.fragment.MainFragment
@@ -43,7 +42,6 @@ class MainActivity : BaseActivity() {
         } catch(e: Exception) {
             e.printStackTrace()
         }
-        DataCreate()
 
         fragments.add(mainFragment)
         fragments.add(personalHomeFragment)

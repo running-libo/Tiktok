@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.qti.hardware.radio.uim_remote_client@1.0::IUimRemoteServiceClient/uimRemoteClient1' failed: exit code 128

@@ -1,1 +1,0 @@
-*** command 'lshal debug -E android.hardware.secure_element@1.1::ISecureElement/SIM2' failed: exit code 128

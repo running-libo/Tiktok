@@ -1,1 +1,0 @@
-*** command 'lshal debug -E vendor.vivo.hardware.capacity_key@1.0::ICapacityKey/default' failed: exit code 128
