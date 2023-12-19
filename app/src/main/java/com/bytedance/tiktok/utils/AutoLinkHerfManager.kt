@@ -26,6 +26,7 @@ object AutoLinkHerfManager {
             when (autoLinkMode) {
                 AutoLinkMode.MODE_HASHTAG -> Log.i("minfo", "话题 $matchedText")
                 AutoLinkMode.MODE_MENTION -> Log.i("minfo", "at $matchedText")
+                else -> {}
             }
         }
     }

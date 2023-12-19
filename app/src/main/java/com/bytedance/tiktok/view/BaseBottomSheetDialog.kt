@@ -25,7 +25,7 @@ open class BaseBottomSheetDialog : BottomSheetDialogFragment() {
             val layoutParams = bottomSheet!!.layoutParams as CoordinatorLayout.LayoutParams
             layoutParams.height = height
             bottomSheet!!.layoutParams = layoutParams
-            behavior = BottomSheetBehavior.from(bottomSheet)
+            behavior = BottomSheetBehavior.from(bottomSheet!!)
             behavior?.peekHeight = height
             // 初始为展开状态
             behavior?.state = BottomSheetBehavior.STATE_EXPANDED

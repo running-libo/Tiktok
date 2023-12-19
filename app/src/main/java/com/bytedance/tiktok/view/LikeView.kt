@@ -55,7 +55,7 @@ class LikeView : RelativeLayout {
                 return true
             }
         })
-        setOnTouchListener { v: View?, event: MotionEvent? ->
+        setOnTouchListener { v: View?, event: MotionEvent ->
             gestureDetector!!.onTouchEvent(event)
             true
         }

@@ -11,8 +11,8 @@ import androidx.appcompat.widget.AppCompatTextView
  * description 用于加载iconfont的TextView
  */
 class IconFontTextView : AppCompatTextView {
-    constructor(context: Context?) : super(context) {}
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {}
+    constructor(context: Context) : super(context) {}
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {}
 
     companion object {
         /** 所有IconFontTextView公用typeface  */

@@ -1,2 +1,22 @@
+pluginManagement {
+    repositories {
+        maven{ url 'https://maven.aliyun.com/nexus/content/groups/public/'}
+        maven{ url 'https://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }  //RxPermission库所需maven仓库
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven{ url 'https://maven.aliyun.com/nexus/content/groups/public/'}
+        maven{ url 'https://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        google()
+        mavenCentral()
+    }
+}
+
 include ':app'
 rootProject.name='Tiktok'
