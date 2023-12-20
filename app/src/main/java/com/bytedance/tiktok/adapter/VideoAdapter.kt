@@ -1,6 +1,8 @@
 package com.bytedance.tiktok.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bytedance.tiktok.adapter.VideoAdapter.VideoViewHolder
@@ -14,7 +16,7 @@ import com.bytedance.tiktok.view.LikeView.OnLikeListener
  * create on 2020-05-20
  * description
  */
-class VideoAdapter: BaseAdapter<VideoViewHolder, VideoBean>() {
+class VideoAdapter(val context: Context, val recyclerView: RecyclerView): BaseAdapter<VideoViewHolder, VideoBean>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         return VideoViewHolder(ItemVideoBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -32,6 +34,19 @@ class VideoAdapter: BaseAdapter<VideoViewHolder, VideoBean>() {
 
                 }
             })
+            holder.binding.ivPlay.alpha = 0.4f
+        }
+    }
+
+    /**
+     * 通过position获取当前item.rootview
+     */
+    fun getRootViewAt(position: Int): View? {
+        val viewHolder = recyclerView.findViewHolderForAdapterPosition(position)
+        return if (viewHolder != null && viewHolder is VideoViewHolder) {
+            viewHolder.itemView
+        } else {
+            null
         }
     }
 

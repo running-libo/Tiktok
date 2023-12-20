@@ -5,7 +5,11 @@ import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import com.bytedance.tiktok.activity.MainActivity
 import com.bytedance.tiktok.databinding.ViewPlayviewBinding
+import com.bytedance.tiktok.fragment.MainFragment
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -19,7 +23,8 @@ import com.google.android.exoplayer2.upstream.cache.SimpleCache
  * create on 2018/12/20
  * description 播放器VideoPlayer
  */
-class VideoPlayer @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : FrameLayout(context, attrs), Iplayer {
+class VideoPlayer @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) :
+    FrameLayout(context, attrs), Iplayer , DefaultLifecycleObserver {
 
     private val trackSelector: TrackSelector = DefaultTrackSelector(context)
     private val mPlayer : SimpleExoPlayer by lazy {
@@ -37,6 +42,33 @@ class VideoPlayer @JvmOverloads constructor(context: Context, attrs: AttributeSe
     init {
         initPlayer()
         initCache()
+    }
+
+    override fun onResume(owner: LifecycleOwner) {
+        super.onResume(owner)
+
+        //返回时，推荐页面可见，则继续播放视频
+        if (MainActivity.curMainPage == 0 && MainFragment.Companion.curPage == 1) {
+            play()
+        }
+    }
+
+    override fun onPause(owner: LifecycleOwner) {
+        super.onPause(owner)
+
+        pause()
+    }
+
+    override fun onStop(owner: LifecycleOwner) {
+        super.onStop(owner)
+
+        stop()
+    }
+
+    override fun onDestroy(owner: LifecycleOwner) {
+        super.onDestroy(owner)
+
+        release()
     }
 
     private fun initPlayer() {

@@ -1,7 +1,6 @@
 package com.bytedance.tiktok.activity
 
 import androidx.fragment.app.Fragment
-import com.bytedance.tiktok.R
 import com.bytedance.tiktok.base.BaseBindingActivity
 import com.bytedance.tiktok.base.CommPagerAdapter
 import com.bytedance.tiktok.databinding.ActivityFocusBinding
@@ -27,5 +26,7 @@ class FocusActivity : BaseBindingActivity<ActivityFocusBinding>({ActivityFocusBi
         pagerAdapter = CommPagerAdapter(supportFragmentManager, fragments, titles)
         binding.viewpager.adapter = pagerAdapter
         binding.tablayout.setupWithViewPager(binding.viewpager)
+
+        binding.ivBack.setOnClickListener { finish() }
     }
 }

@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout.LayoutParams
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.bytedance.tiktok.R
-import com.bytedance.tiktok.activity.MainActivity
-import com.bytedance.tiktok.activity.PlayListActivity
 import com.bytedance.tiktok.adapter.VideoAdapter
 import com.bytedance.tiktok.base.BaseBindingFragment
 import com.bytedance.tiktok.bean.CurUserBean
@@ -23,10 +24,9 @@ import com.bytedance.tiktok.view.ControllerView
 import com.bytedance.tiktok.player.VideoPlayer
 import com.bytedance.tiktok.view.LikeView
 import com.bytedance.tiktok.view.ShareDialog
-import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener
-import com.bytedance.tiktok.view.viewpagerlayoutmanager.ViewPagerLayoutManager
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.Player
+import rx.Subscription
 import rx.functions.Action1
 
 
@@ -36,29 +36,42 @@ import rx.functions.Action1
  * description 推荐播放页
  */
 class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({FragmentRecommendBinding.inflate(it)}) {
-    private var adapter: VideoAdapter = VideoAdapter()
-    private var viewPagerLayoutManager: ViewPagerLayoutManager? = null
+    private var adapter: VideoAdapter?= null
 
     /** 当前播放视频位置  */
     private var curPlayPos = -1
-    private var videoView: VideoPlayer? = null
+    private lateinit var videoView: VideoPlayer
 
     private var ivCurCover: ImageView? = null
+    private var subscribe: Subscription?= null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         DataCreate()
-        binding.recyclerView.adapter = adapter
-        adapter.appendList(DataCreate.datas)
-        var params = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-        videoView = VideoPlayer(requireActivity())
-        videoView?.layoutParams = params
+        initRecyclerView()
+        initVideoPlayer()
         setViewPagerLayoutManager()
         setRefreshEvent()
+        observeEvent()
+    }
 
+    private fun initRecyclerView() {
+        adapter  = VideoAdapter(requireContext(), binding.recyclerView.getChildAt(0) as RecyclerView)
+        binding.recyclerView.adapter = adapter
+        adapter?.appendList(DataCreate.datas)
+    }
+
+    private fun initVideoPlayer() {
+        var params = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+        videoView = VideoPlayer(requireActivity())
+        videoView.layoutParams = params
+        lifecycle.addObserver(videoView)
+    }
+
+    private fun observeEvent() {
         //监听播放或暂停事件
-        val subscribe = RxBus.getDefault().toObservable(PauseVideoEvent::class.java)
+        subscribe = RxBus.getDefault().toObservable(PauseVideoEvent::class.java)
             .subscribe(Action1 { event: PauseVideoEvent ->
                 if (event.isPlayOrPause) {
                     videoView!!.play()
@@ -66,50 +79,26 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
                     videoView!!.pause()
                 }
             } as Action1<PauseVideoEvent>)
-//        subscribe.unsubscribe()
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        //返回时，推荐页面可见，则继续播放视频
-        if (MainActivity.curMainPage == 0 && MainFragment.Companion.curPage == 1) {
-            videoView?.play()
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        videoView?.pause()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        videoView?.stop()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        videoView?.release()
+        subscribe?.unsubscribe()
+        binding.recyclerView.unregisterOnPageChangeCallback(pageChangeCallback)
     }
 
     private fun setViewPagerLayoutManager() {
-        viewPagerLayoutManager = ViewPagerLayoutManager(activity)
-        binding.recyclerView.layoutManager = viewPagerLayoutManager
-        binding.recyclerView.scrollToPosition(PlayListActivity.initPos)
-        viewPagerLayoutManager!!.setOnViewPagerListener(object : OnViewPagerListener {
-            override fun onInitComplete() {
-                playCurVideo(PlayListActivity.initPos)
-            }
+        with(binding.recyclerView) {
+            orientation = ViewPager2.ORIENTATION_VERTICAL
+            offscreenPageLimit = 1
+            registerOnPageChangeCallback(pageChangeCallback)
+        }
+    }
 
-            override fun onPageRelease(isNext: Boolean, position: Int) {
-                ivCurCover?.visibility = View.VISIBLE
-            }
-
-            override fun onPageSelected(position: Int, isBottom: Boolean) {
-                playCurVideo(position)
-            }
-        })
+    private val pageChangeCallback = object: OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            playCurVideo(position)
+        }
     }
 
     private fun setRefreshEvent() {
@@ -128,13 +117,12 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
         if (position == curPlayPos) {
             return
         }
-        val itemView = viewPagerLayoutManager!!.findViewByPosition(position) ?: return
-        val rootView = itemView.findViewById<ViewGroup>(R.id.rl_container)
+        val itemView = adapter!!.getRootViewAt(position)
+        val rootView = itemView!!.findViewById<ViewGroup>(R.id.rl_container)
         val likeView: LikeView = rootView.findViewById(R.id.likeview)
         val controllerView: ControllerView = rootView.findViewById(R.id.controller)
         val ivPlay = rootView.findViewById<ImageView>(R.id.iv_play)
         val ivCover = rootView.findViewById<ImageView>(R.id.iv_cover)
-        ivPlay.alpha = 0.4f
 
         //播放暂停事件
         likeView.setOnPlayPauseListener(object: LikeView.OnPlayPauseListener {
@@ -166,7 +154,7 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
      * 移除videoview父view
      */
     private fun dettachParentView(rootView: ViewGroup) {
-        //1.添加videoview到当前需要播放的item中,添加进item之前，保证ijkVideoView没有父view
+        //1.添加videoView到当前需要播放的item中,添加进item之前，保证videoView没有父view
         videoView?.parent?.let {
             (it as ViewGroup).removeView(videoView)
         }
@@ -178,7 +166,7 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
      * 自动播放视频
      */
     private fun autoPlayVideo(position: Int, ivCover: ImageView) {
-        videoView?.playVideo(adapter.getDatas()[position].videoRes)
+        videoView?.playVideo(adapter!!.getDatas()[position].videoRes)
         videoView?.getplayer()?.addListener(object: Player.Listener {
             override fun onPlaybackStateChanged(state: Int) {
                 // 播放状态发生变化时的回调

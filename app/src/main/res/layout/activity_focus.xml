@@ -13,6 +13,7 @@
         android:layout_height="48dp">
 
         <ImageView
+            android:id="@+id/iv_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/return_white"
