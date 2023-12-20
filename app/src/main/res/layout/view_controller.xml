@@ -25,7 +25,7 @@
             android:textSize="16sp"
             android:textColor="@color/white"/>
 
-        <com.bytedance.tiktok.utils.autolinktextview.AutoLinkTextView
+        <com.bytedance.tiktok.view.autolinktextview.AutoLinkTextView
             android:id="@+id/autoLinkTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

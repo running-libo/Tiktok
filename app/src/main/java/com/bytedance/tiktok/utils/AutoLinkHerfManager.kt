@@ -3,8 +3,8 @@ package com.bytedance.tiktok.utils
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
-import com.bytedance.tiktok.utils.autolinktextview.AutoLinkMode
-import com.bytedance.tiktok.utils.autolinktextview.AutoLinkTextView
+import com.bytedance.tiktok.view.autolinktextview.AutoLinkMode
+import com.bytedance.tiktok.view.autolinktextview.AutoLinkTextView
 
 /**
  * create by libo

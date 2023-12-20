@@ -1,11 +1,11 @@
 package com.bytedance.tiktok.fragment
 
-import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.RelativeLayout.LayoutParams
 import com.bytedance.tiktok.R
 import com.bytedance.tiktok.activity.MainActivity
 import com.bytedance.tiktok.activity.PlayListActivity
@@ -18,10 +18,17 @@ import com.bytedance.tiktok.bean.PauseVideoEvent
 import com.bytedance.tiktok.databinding.FragmentRecommendBinding
 import com.bytedance.tiktok.utils.OnVideoControllerListener
 import com.bytedance.tiktok.utils.RxBus
-import com.bytedance.tiktok.view.*
+import com.bytedance.tiktok.view.CommentDialog
+import com.bytedance.tiktok.view.ControllerView
+import com.bytedance.tiktok.view.VideoPlayer
+import com.bytedance.tiktok.view.LikeView
+import com.bytedance.tiktok.view.ShareDialog
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.ViewPagerLayoutManager
+import com.google.android.exoplayer2.ExoPlaybackException
+import com.google.android.exoplayer2.Player
 import rx.functions.Action1
+
 
 /**
  * create by libo
@@ -34,7 +41,7 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
 
     /** 当前播放视频位置  */
     private var curPlayPos = -1
-    private var videoView: FullScreenVideoView? = null
+    private var videoView: VideoPlayer? = null
 
     private var ivCurCover: ImageView? = null
 
@@ -44,7 +51,9 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
         DataCreate()
         binding.recyclerView.adapter = adapter
         adapter.appendList(DataCreate.datas)
-        videoView = FullScreenVideoView(activity)
+        var params = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+        videoView = VideoPlayer(requireActivity())
+        videoView?.layoutParams = params
         setViewPagerLayoutManager()
         setRefreshEvent()
 
@@ -52,7 +61,7 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
         val subscribe = RxBus.getDefault().toObservable(PauseVideoEvent::class.java)
             .subscribe(Action1 { event: PauseVideoEvent ->
                 if (event.isPlayOrPause) {
-                    videoView!!.start()
+                    videoView!!.play()
                 } else {
                     videoView!!.pause()
                 }
@@ -65,18 +74,23 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
 
         //返回时，推荐页面可见，则继续播放视频
         if (MainActivity.curMainPage == 0 && MainFragment.Companion.curPage == 1) {
-            videoView!!.start()
+            videoView?.play()
         }
     }
 
     override fun onPause() {
         super.onPause()
-        videoView!!.pause()
+        videoView?.pause()
     }
 
     override fun onStop() {
         super.onStop()
-        videoView!!.stopPlayback()
+        videoView?.stop()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        videoView?.releasePlayer()
     }
 
     private fun setViewPagerLayoutManager() {
@@ -127,11 +141,11 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
         //播放暂停事件
         likeView.setOnPlayPauseListener(object: LikeView.OnPlayPauseListener {
             override fun onPlayOrPause() {
-                if (videoView!!.isPlaying) {
-                    videoView!!.pause()
+                if (videoView!!.isPlaying()) {
+                    videoView?.pause()
                     ivPlay.visibility = View.VISIBLE
                 } else {
-                    videoView!!.start()
+                    videoView?.play()
                     ivPlay.visibility = View.GONE
                 }
             }
@@ -158,6 +172,7 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
         videoView?.parent?.let {
             (it as ViewGroup).removeView(videoView)
         }
+
         rootView.addView(videoView, 0)
     }
 
@@ -165,20 +180,31 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
      * 自动播放视频
      */
     private fun autoPlayVideo(position: Int, ivCover: ImageView) {
-        videoView?.setVideoPath(adapter.getDatas()[position].videoRes)
-        videoView?.start()
-        videoView!!.setOnPreparedListener { mp: MediaPlayer ->
-            mp.isLooping = true
-
-            //延迟取消封面，避免加载视频黑屏
-            object : CountDownTimer(200, 200) {
-                override fun onTick(millisUntilFinished: Long) {}
-                override fun onFinish() {
-                    ivCover.visibility = View.GONE
-                    ivCurCover = ivCover
+        videoView?.playVideo(adapter.getDatas()[position].videoRes)
+        videoView?.getplayer()?.addListener(object: Player.Listener {
+            override fun onPlaybackStateChanged(state: Int) {
+                // 播放状态发生变化时的回调
+                // 播放状态包括：Player.STATE_IDLE、Player.STATE_BUFFERING、Player.STATE_READY、Player.STATE_ENDED
+                if (state == Player.STATE_READY) {
+                    //开始播放，做延迟取消封面，避免加载视频黑屏
+                    object : CountDownTimer(100, 100) {
+                        override fun onTick(millisUntilFinished: Long) {}
+                        override fun onFinish() {
+                            ivCover.visibility = View.GONE
+                            ivCurCover = ivCover
+                        }
+                    }.start()
                 }
-            }.start()
-        }
+            }
+
+            fun onPlayerError(error: ExoPlaybackException?) {
+                // 播放发生错误时的回调
+            }
+
+            override fun onIsPlayingChanged(isPlaying: Boolean) {
+                // 播放状态变为播放或暂停时的回调
+            }
+        })
     }
 
     /**

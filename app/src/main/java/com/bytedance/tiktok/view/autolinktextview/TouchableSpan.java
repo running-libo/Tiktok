@@ -1,4 +1,4 @@
-package com.bytedance.tiktok.utils.autolinktextview;
+package com.bytedance.tiktok.view.autolinktextview;
 
 import android.graphics.Color;
 import android.text.TextPaint;
