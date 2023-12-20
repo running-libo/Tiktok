@@ -38,6 +38,7 @@ class VideoPlayer @JvmOverloads constructor(context: Context, attrs: AttributeSe
 //            ExoDownloadTool.getInstance(context).buildVideoCacheFactory()
 //        )
         binding.playerview.player = mPlayer
+        binding.playerview.useController = false
         mPlayer.playWhenReady = true
         mPlayer.repeatMode = Player.REPEAT_MODE_ALL
     }

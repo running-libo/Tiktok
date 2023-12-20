@@ -103,9 +103,7 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
             }
 
             override fun onPageRelease(isNext: Boolean, position: Int) {
-                if (ivCurCover != null) {
-                    ivCurCover!!.visibility = View.VISIBLE
-                }
+                ivCurCover?.visibility = View.VISIBLE
             }
 
             override fun onPageSelected(position: Int, isBottom: Boolean) {
@@ -186,14 +184,8 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
                 // 播放状态发生变化时的回调
                 // 播放状态包括：Player.STATE_IDLE、Player.STATE_BUFFERING、Player.STATE_READY、Player.STATE_ENDED
                 if (state == Player.STATE_READY) {
-                    //开始播放，做延迟取消封面，避免加载视频黑屏
-                    object : CountDownTimer(100, 100) {
-                        override fun onTick(millisUntilFinished: Long) {}
-                        override fun onFinish() {
-                            ivCover.visibility = View.GONE
-                            ivCurCover = ivCover
-                        }
-                    }.start()
+                    ivCover.visibility = View.GONE
+                    ivCurCover = ivCover
                 }
             }
 
