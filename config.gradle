@@ -15,7 +15,8 @@ ext {
             coil: '1.4.0',
             leakcanary: '2.7',
             navigation: '2.3.2',
-            lottile: '2.8.0'
+            lottile: '2.8.0',
+            exoplayer: '2.17.0'
     ]
 
     androidxDeps = [
@@ -73,6 +74,15 @@ ext {
             viewpager2: "androidx.viewpager2:viewpager2:${dependVersion.viewpager2}"
     ]
 
+    exoplayer = [
+             exoplayer: "com.google.android.exoplayer:exoplayer:${dependVersion.exoplayer}",
+             core: "com.google.android.exoplayer:exoplayer-core:${dependVersion.exoplayer}",
+             dash: "com.google.android.exoplayer:exoplayer-dash:${dependVersion.exoplayer}",
+             hls: "com.google.android.exoplayer:exoplayer-hls:${dependVersion.exoplayer}", //如果要播放 m3u8 ，添加exoplayer-hls
+             ui: "com.google.android.exoplayer:exoplayer-ui:${dependVersion.exoplayer}",
+             trmp: "com.google.android.exoplayer:extension-rtmp:${dependVersion.exoplayer}"
+    ]
+
     coil = [
             coil: "io.coil-kt:coil:${dependVersion.coil}"
     ]
@@ -87,5 +97,5 @@ ext {
     coroutineslibs = coroutines.values()
     squareuplibs = squareup.values()
     navigationlibs = navigation.values()
-
+    exoplayerLibs = exoplayer.values()
 }
