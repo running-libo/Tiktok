@@ -166,14 +166,14 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
      * 自动播放视频
      */
     private fun autoPlayVideo(position: Int, ivCover: ImageView) {
-        videoView?.playVideo(adapter!!.getDatas()[position].videoRes)
-        videoView?.getplayer()?.addListener(object: Player.Listener {
+        videoView.playVideo(adapter!!.getDatas()[position].mediaSource!!)
+
+        videoView.getplayer()?.addListener(object: Player.Listener {
             override fun onPlaybackStateChanged(state: Int) {
                 // 播放状态发生变化时的回调
                 // 播放状态包括：Player.STATE_IDLE、Player.STATE_BUFFERING、Player.STATE_READY、Player.STATE_ENDED
                 if (state == Player.STATE_READY) {
-                    ivCover.visibility = View.GONE
-                    ivCurCover = ivCover
+
                 }
             }
 
@@ -183,6 +183,12 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
 
             override fun onIsPlayingChanged(isPlaying: Boolean) {
                 // 播放状态变为播放或暂停时的回调
+            }
+
+            override fun onRenderedFirstFrame() {
+                //第一帧已渲染，隐藏封面
+                ivCover.visibility = View.GONE
+                ivCurCover = ivCover
             }
         })
     }

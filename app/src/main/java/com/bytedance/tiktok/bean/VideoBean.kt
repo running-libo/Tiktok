@@ -1,5 +1,7 @@
 package com.bytedance.tiktok.bean
 
+import com.google.android.exoplayer2.source.BaseMediaSource
+
 /**
  * create by libo
  * create on 2020-06-03
@@ -38,6 +40,9 @@ class VideoBean {
 
     /** 转发数  */
     var shareCount = 0
+
+    /** 本地文件缓存资源 */
+    var mediaSource: BaseMediaSource?= null
 
     class UserBean {
         var uid = 0

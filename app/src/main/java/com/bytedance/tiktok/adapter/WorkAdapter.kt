@@ -22,7 +22,7 @@ import com.bytedance.tiktok.utils.NumUtils.numberFilter
 class WorkAdapter(val context: Context) : BaseAdapter<WorkViewHolder, VideoBean>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkViewHolder {
-        return WorkViewHolder(ItemWorkBinding.inflate(LayoutInflater.from(context)))
+        return WorkViewHolder(ItemWorkBinding.inflate(LayoutInflater.from(context), parent, false))
     }
 
     override fun onBindViewHolder(holder: WorkViewHolder, @SuppressLint("RecyclerView") position: Int) {
