@@ -1,4 +1,4 @@
-package com.bytedance.tiktok.view
+package com.bytedance.tiktok.player
 
 import android.content.Context
 import android.text.TextUtils
@@ -9,15 +9,17 @@ import com.bytedance.tiktok.databinding.ViewPlayviewBinding
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.source.hls.DefaultHlsDataSourceFactory
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.trackselection.TrackSelector
+import com.google.android.exoplayer2.upstream.cache.SimpleCache
 
 /**
  * create by libo
  * create on 2018/12/20
  * description 播放器VideoPlayer
  */
-class VideoPlayer @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : FrameLayout(context, attrs) {
+class VideoPlayer @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null) : FrameLayout(context, attrs), Iplayer {
 
     private val trackSelector: TrackSelector = DefaultTrackSelector(context)
     private val mPlayer : SimpleExoPlayer by lazy {
@@ -27,9 +29,14 @@ class VideoPlayer @JvmOverloads constructor(context: Context, attrs: AttributeSe
                 .build()
     }
     private var binding: ViewPlayviewBinding = ViewPlayviewBinding.inflate(LayoutInflater.from(context), this, true)
+//
+//    private val simpleCache: SimpleCache by lazy {
+//        SimpleCache(context.cacheDir, LastRe, ExoDatabaseProvider())
+//    }
 
     init {
         initPlayer()
+        initCache()
     }
 
     private fun initPlayer() {
@@ -43,7 +50,11 @@ class VideoPlayer @JvmOverloads constructor(context: Context, attrs: AttributeSe
         mPlayer.repeatMode = Player.REPEAT_MODE_ALL
     }
 
-    fun playVideo(url: String) {
+    private fun initCache() {
+//        DefaultHlsDataSourceFactory(DefaultHttpDataSourceFactory())
+    }
+
+    override fun playVideo(url: String) {
         if (TextUtils.isEmpty(url)) {
             return
         }
@@ -53,27 +64,27 @@ class VideoPlayer @JvmOverloads constructor(context: Context, attrs: AttributeSe
         mPlayer.play()
     }
 
-    fun getplayer(): SimpleExoPlayer? {
+    override fun getplayer(): SimpleExoPlayer {
         return mPlayer
     }
 
-    fun pause() {
+    override fun pause() {
         mPlayer.pause()
     }
 
-    fun play() {
+    override fun play() {
         mPlayer.play()
     }
 
-    fun stop() {
+    override fun stop() {
         mPlayer.stop()
     }
 
-    fun releasePlayer() {
+    override fun release() {
         mPlayer?.let {
             it.release()
         }
     }
 
-    fun isPlaying(): Boolean = mPlayer.isPlaying
+    override fun isPlaying(): Boolean = mPlayer.isPlaying
 }

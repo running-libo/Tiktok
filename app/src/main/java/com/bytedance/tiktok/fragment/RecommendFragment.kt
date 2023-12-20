@@ -20,7 +20,7 @@ import com.bytedance.tiktok.utils.OnVideoControllerListener
 import com.bytedance.tiktok.utils.RxBus
 import com.bytedance.tiktok.view.CommentDialog
 import com.bytedance.tiktok.view.ControllerView
-import com.bytedance.tiktok.view.VideoPlayer
+import com.bytedance.tiktok.player.VideoPlayer
 import com.bytedance.tiktok.view.LikeView
 import com.bytedance.tiktok.view.ShareDialog
 import com.bytedance.tiktok.view.viewpagerlayoutmanager.OnViewPagerListener
@@ -90,7 +90,7 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
 
     override fun onDestroy() {
         super.onDestroy()
-        videoView?.releasePlayer()
+        videoView?.release()
     }
 
     private fun setViewPagerLayoutManager() {
