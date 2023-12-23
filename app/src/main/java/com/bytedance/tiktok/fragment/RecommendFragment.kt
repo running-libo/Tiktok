@@ -84,7 +84,6 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
     override fun onDestroy() {
         super.onDestroy()
         subscribe?.unsubscribe()
-        binding.recyclerView.unregisterOnPageChangeCallback(pageChangeCallback)
     }
 
     private fun setViewPagerLayoutManager() {
