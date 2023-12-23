@@ -8,6 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Launch_Theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="background">@color/color_bg_theme</item>
+    </style>
+
     <style name="MyDialog" parent="AlertDialog.AppCompat">
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowFrame">@null</item>
