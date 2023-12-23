@@ -24,12 +24,13 @@ class CurrentLocationFragment : BaseBindingFragment<FragmentCurrentLocationBindi
     }
 
     fun init() {
-        binding.recyclerView!!.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+        binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         adapter = GridVideoAdapter(requireContext())
         adapter?.appendList(DataCreate.datas)
-        binding.recyclerView!!.adapter = adapter
-        binding.refreshLayout!!.setColorSchemeResources(R.color.color_link)
-        binding.refreshLayout!!.setOnRefreshListener {
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.setHasFixedSize(true)
+        binding.refreshLayout.setColorSchemeResources(R.color.color_link)
+        binding.refreshLayout.setOnRefreshListener {
             object : CountDownTimer(1000, 1000) {
                 override fun onTick(millisUntilFinished: Long) {}
                 override fun onFinish() {
