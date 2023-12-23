@@ -16,8 +16,14 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            minifyEnabled true
+            shrinkResources true //强力删除无用资源，不打包进apk，需配合minifyEnabled一起使用
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -44,7 +50,9 @@ dependencies {
     implementation rootProject.ext.tablayout.tablayout
     implementation rootProject.ext.rxjava.rxjava
     implementation rootProject.ext.lottile.lottile
+    implementation rootProject.ext.coil.coil
     implementation rootProject.ext.exoplayerLibs
     debugImplementation rootProject.ext.leakcanary.leakcanary
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
 }
 
