@@ -34,12 +34,6 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>({ActivityMainBindi
 
     override fun init() {
 
-        try {
-            Thread.sleep(2000)
-        } catch(e: Exception) {
-            e.printStackTrace()
-        }
-
         fragments.add(mainFragment)
         fragments.add(personalHomeFragment)
         pagerAdapter = CommPagerAdapter(supportFragmentManager, fragments, arrayOf("", ""))

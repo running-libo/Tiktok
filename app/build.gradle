@@ -5,6 +5,8 @@ plugins {
     id 'kotlin-android'
 }
 
+//apply from: 'and_res_guard.gradle'
+
 android {
     compileSdk rootProject.ext.android.compileSdk
     defaultConfig {
@@ -50,9 +52,8 @@ dependencies {
     implementation rootProject.ext.tablayout.tablayout
     implementation rootProject.ext.rxjava.rxjava
     implementation rootProject.ext.lottile.lottile
-    implementation rootProject.ext.coil.coil
+    implementation rootProject.ext.glide.glide
     implementation rootProject.ext.exoplayerLibs
     debugImplementation rootProject.ext.leakcanary.leakcanary
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
 }
 

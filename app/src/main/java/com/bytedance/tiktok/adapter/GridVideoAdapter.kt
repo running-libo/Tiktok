@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.bytedance.tiktok.activity.PlayListActivity
 import com.bytedance.tiktok.adapter.GridVideoAdapter.GridVideoViewHolder
 import com.bytedance.tiktok.base.BaseAdapter
@@ -27,7 +29,11 @@ class GridVideoAdapter(val context: Context) : BaseAdapter<GridVideoViewHolder, 
     override fun onBindViewHolder(holder: GridVideoViewHolder, @SuppressLint("RecyclerView") position: Int) {
         mList[holder.adapterPosition]?.let {
 
-            holder?.binding?.ivCover!!.setBackgroundResource(it.coverRes)
+            Glide.with(context)
+                .asBitmap()
+                .load(it.videoRes)
+                .apply(RequestOptions.frameOf(0))  // 从第一帧开始
+                .into(holder.binding.ivCover)
             holder?.binding?.tvContent?.text = it.content
             holder?.binding?.tvDistance!!.text = it.distance.toString() + " km"
             holder?.binding?.ivHead!!.setImageResource(it.userBean!!.head)

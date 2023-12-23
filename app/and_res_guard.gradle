@@ -1,0 +1,24 @@
+apply plugin: 'AndResGuard'
+
+andResGuard {
+    mappingFile = null
+    use7zip = true
+    useSign = true
+    keepRoot = false
+    compressFilePattern = [
+            "*.png",
+            "*.jpg",
+            "*.jpeg",
+            "*.gif",
+            "resources.arsc"
+    ]
+    whiteList = [
+            // your icon
+
+    ]
+
+    sevenzip {
+        artifact = 'com.tencent.mm:SevenZip:1.2.10'
+        //path = "/usr/local/bin/7za"
+    }
+}
