@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.bytedance.tiktok.R
+import com.bytedance.tiktok.activity.PlayListActivity
 import com.bytedance.tiktok.adapter.VideoAdapter
 import com.bytedance.tiktok.base.BaseBindingFragment
 import com.bytedance.tiktok.bean.CurUserBean
@@ -91,6 +92,7 @@ class RecommendFragment : BaseBindingFragment<FragmentRecommendBinding>({Fragmen
             orientation = ViewPager2.ORIENTATION_VERTICAL
             offscreenPageLimit = 1
             registerOnPageChangeCallback(pageChangeCallback)
+            (binding.recyclerView.getChildAt(0) as RecyclerView).scrollToPosition(PlayListActivity.initPos)
         }
     }
 

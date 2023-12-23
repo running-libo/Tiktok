@@ -17,7 +17,6 @@ class PlayListActivity : BaseBindingActivity<ActivityPlayListBinding>({ActivityP
     }
 
     companion object {
-        @JvmField
         var initPos = 0
     }
 }

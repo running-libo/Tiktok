@@ -59,7 +59,7 @@ class VideoAdapter(val context: Context, val recyclerView: RecyclerView): BaseAd
      */
     val cache: SimpleCache by lazy {
         //构建缓存文件
-        val cacheFile = context.cacheDir.resolve("tiktok_cache_file")
+        val cacheFile = context.cacheDir.resolve("tiktok_cache_file$this.hashCode()")
         //构建simpleCache缓存实例
         SimpleCache(cacheFile, LeastRecentlyUsedCacheEvictor(VideoPlayer.MAX_CACHE_BYTE), StandaloneDatabaseProvider(context))
     }
