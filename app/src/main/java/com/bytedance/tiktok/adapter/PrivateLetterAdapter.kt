@@ -13,7 +13,7 @@ import com.bytedance.tiktok.databinding.ItemPrivateLetterBinding
  * create on 2020-05-25
  * description
  */
-class PrivateLetterAdapter : BaseAdapter<PrivateLetterViewHolder, UserBean>() {
+class PrivateLetterAdapter : BaseAdapter<PrivateLetterViewHolder, UserBean>(FansDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PrivateLetterViewHolder {
         return PrivateLetterViewHolder(ItemPrivateLetterBinding.inflate(LayoutInflater.from(parent.context), parent, false))

@@ -20,7 +20,7 @@ import com.bytedance.tiktok.databinding.ItemGridvideoBinding
  * create on 2020-05-20
  * description
  */
-class GridVideoAdapter(val context: Context) : BaseAdapter<GridVideoViewHolder, VideoBean>() {
+class GridVideoAdapter(val context: Context) : BaseAdapter<GridVideoViewHolder, VideoBean>(VideoDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridVideoViewHolder {
         return GridVideoViewHolder(ItemGridvideoBinding.inflate(LayoutInflater.from(parent.context)))

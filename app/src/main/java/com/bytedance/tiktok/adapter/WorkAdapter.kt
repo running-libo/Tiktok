@@ -6,6 +6,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -21,7 +22,7 @@ import com.bytedance.tiktok.utils.NumUtils.numberFilter
  * create on 2020-05-21
  * description
  */
-class WorkAdapter(val context: Context) : BaseAdapter<WorkViewHolder, VideoBean>() {
+class WorkAdapter(val context: Context) : BaseAdapter<WorkViewHolder, VideoBean>(WorkDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WorkViewHolder {
         return WorkViewHolder(ItemWorkBinding.inflate(LayoutInflater.from(context), parent, false))
@@ -44,4 +45,15 @@ class WorkAdapter(val context: Context) : BaseAdapter<WorkViewHolder, VideoBean>
     inner class WorkViewHolder(val binding: ItemWorkBinding) : RecyclerView.ViewHolder(binding.root) {
 
     }
+}
+
+class WorkDiff: DiffUtil.ItemCallback<VideoBean>() {
+    override fun areItemsTheSame(oldItem: VideoBean, newItem: VideoBean): Boolean {
+        return (oldItem.userBean!!.uid == newItem.userBean!!.uid)
+    }
+
+    override fun areContentsTheSame(oldItem: VideoBean, newItem: VideoBean): Boolean {
+        return (oldItem.videoRes == newItem.videoRes && oldItem.userBean!!.uid == newItem.userBean!!.uid)
+    }
+
 }
