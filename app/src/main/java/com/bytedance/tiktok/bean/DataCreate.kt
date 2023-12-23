@@ -12,9 +12,7 @@ import java.util.*
 class DataCreate {
 
     init {
-
         val videoBeanOne = VideoBean()
-        videoBeanOne.coverRes = R.mipmap.cover1
         videoBeanOne.content = "#街坊 #颜值打分 给自己颜值打100分的女生集合"
         videoBeanOne.videoRes = "https://wave.video/embed/6581e9eedd95d26a606f6c87/6581e9eedd95d26a606f6c85.mp4"
         videoBeanOne.distance = 7.9f
@@ -39,7 +37,6 @@ class DataCreate {
         videoBeanOne.userBean = userBeanOne
 
         val videoBeanTwo = VideoBean()
-        videoBeanTwo.coverRes = R.mipmap.cover2
         videoBeanTwo.content = "400 户摊主开进济南环联夜市，你们要的烟火气终于来了！"
         videoBeanTwo.videoRes = "https://wave.video/embed/6581ea54848d5e0842fbfa17/6581ea5b75b04937fe24d841.mp4"
         videoBeanTwo.distance = 19.7f
@@ -64,7 +61,6 @@ class DataCreate {
         videoBeanTwo.userBean = userBeanTwo
 
         val videoBeanThree = VideoBean()
-        videoBeanThree.coverRes = R.mipmap.cover3
         videoBeanThree.content = "科比生涯霸气庆祝动作，最后动作诠释了一生荣耀 #科比 @路人王篮球 "
         videoBeanThree.videoRes = "https://wave.video/embed/6581ea6344d90b30892873d9/6581ea6a75b04937fe24d903.mp4"
         videoBeanThree.distance = 15.9f
@@ -89,7 +85,6 @@ class DataCreate {
         videoBeanThree.userBean = userBeanThree
 
         val videoBeanFour = VideoBean()
-        videoBeanFour.coverRes = R.mipmap.cover4
         videoBeanFour.content = "美好的一天，从发现美开始 #莉莉柯林斯 "
         videoBeanFour.videoRes = "https://wave.video/embed/6581ea7e00de0e0d40e8e8ce/6581ea86dd95d26a606f7110.mp4"
         videoBeanFour.distance = 25.2f
@@ -114,7 +109,6 @@ class DataCreate {
         videoBeanFour.userBean = userBeanFour
 
         val videoBeanFive = VideoBean()
-        videoBeanFive.coverRes = R.mipmap.cover5
         videoBeanFive.content = "有梦就去追吧，我说到做到。 #网球  #网球小威 "
         videoBeanFive.videoRes = "https://wave.video/embed/6581eae4848d5e0842fbffad/6581eaebdd95d26a606f74bc.mp4"
         videoBeanFive.distance = 9.2f
@@ -139,7 +133,6 @@ class DataCreate {
         videoBeanFive.userBean = userBeanFive
 
         val videoBeanSix = VideoBean()
-        videoBeanSix.coverRes = R.mipmap.cover6
         videoBeanSix.content = "能力越大，责任越大，英雄可能会迟到，但永远不会缺席  #蜘蛛侠 "
         videoBeanSix.videoRes = "https://wave.video/embed/6581eaf844d90b3089287941/6581eafe00de0e0d40e8ed1d.mp4"
         videoBeanSix.distance = 16.4f
@@ -164,7 +157,6 @@ class DataCreate {
         videoBeanSix.userBean = userBeanSix
 
         val videoBeanSeven = VideoBean()
-        videoBeanSeven.coverRes = R.mipmap.cover7
         videoBeanSeven.content = "真的拍不出来你的神颜！现场看大屏帅疯！#陈情令南京演唱会 #王一博 😭"
         videoBeanSeven.videoRes = "https://wave.video/embed/6581eb08dd95d26a606f7599/6581eb0e848d5e0842fc00c5.mp4"
         videoBeanSeven.distance = 16.4f
@@ -189,7 +181,6 @@ class DataCreate {
         videoBeanSeven.userBean = userBeanSeven
 
         val videoBeanEight = VideoBean()
-        videoBeanEight.coverRes = R.mipmap.cover8
         videoBeanEight.content = "逆序只是想告诉大家，学了舞蹈的她气质开了挂！"
         videoBeanEight.videoRes = "https://wave.video/embed/6581eb1700de0e0d40e8edf6/6581eb1e75b04937fe24de74.mp4"
         videoBeanEight.distance = 8.4f

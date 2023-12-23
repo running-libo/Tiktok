@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.bytedance.tiktok.activity.PlayListActivity
 import com.bytedance.tiktok.adapter.WorkAdapter.WorkViewHolder
 import com.bytedance.tiktok.base.BaseAdapter
@@ -27,7 +29,11 @@ class WorkAdapter(val context: Context) : BaseAdapter<WorkViewHolder, VideoBean>
 
     override fun onBindViewHolder(holder: WorkViewHolder, @SuppressLint("RecyclerView") position: Int) {
         var videoBean = mList[position]
-        holder?.binding?.ivCover!!.setImageResource(videoBean!!.coverRes)
+        Glide.with(context)
+            .asBitmap()
+            .load(videoBean.coverRes)
+            .apply(RequestOptions.frameOf(0))  // 从第一帧开始
+            .into(holder.binding.ivCover)
         holder?.binding?.tvLikecount!!.text = numberFilter(videoBean.likeCount)
         holder?.binding.root.setOnClickListener { v: View? ->
             PlayListActivity.initPos = position

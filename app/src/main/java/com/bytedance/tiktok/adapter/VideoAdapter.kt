@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.bytedance.tiktok.adapter.VideoAdapter.VideoViewHolder
 import com.bytedance.tiktok.base.BaseAdapter
 import com.bytedance.tiktok.bean.VideoBean
@@ -18,6 +20,7 @@ import com.google.android.exoplayer2.upstream.DefaultDataSource
 import com.google.android.exoplayer2.upstream.cache.CacheDataSource
 import com.google.android.exoplayer2.upstream.cache.LeastRecentlyUsedCacheEvictor
 import com.google.android.exoplayer2.upstream.cache.SimpleCache
+
 
 /**
  * create by libo
@@ -33,7 +36,11 @@ class VideoAdapter(val context: Context, val recyclerView: RecyclerView): BaseAd
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         mList[position]?.let {
             holder.binding.controller.setVideoData(it)
-            holder?.binding?.ivCover?.setImageResource(it.coverRes)
+            Glide.with(context)
+                .asBitmap()
+                .load(it.videoRes)
+                .apply(RequestOptions.frameOf(0))  // 从第一帧开始
+                .into(holder.binding.ivCover)
             holder?.binding?.likeview?.setOnLikeListener(object : OnLikeListener {
                 override fun onLikeListener() {
                     if (!it.isLiked) {  //未点赞，会有点赞效果，否则无
