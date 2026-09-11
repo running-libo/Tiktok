@@ -60,7 +60,8 @@
 
 3.核心功能
 抖音的对嘴表演模式创造性的解决了这个问题，通过音频台词，剧本我都给你写好了，你只要表演，而且音频时长很短不到15秒，降低了表达成本，增加了内容趣味，恰巧因为这个低成本内容也变得易扩散。
-
+@reallissa
+https://vt.tiktok.com/ZSqy3RTLU/
 
 4.拉新
 ![](https://upload-images.jianshu.io/upload_images/8669504-ff8114efb2a74747.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800)
